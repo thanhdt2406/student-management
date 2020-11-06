@@ -10,7 +10,6 @@ public class User {
     private boolean status = true;
 
     public User() {
-
     }
 
     public User(String username, String password, String name, String role, String phoneNumber) {

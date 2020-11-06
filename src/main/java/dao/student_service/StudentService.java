@@ -56,14 +56,14 @@ public class StudentService implements IStudentService {
         return students;
     }
 
-//    public static void main(String[] args) {
-//        IStudentService service = new StudentService();
-//        List<Student> list;
-//        list = service.getAllStudent();
-//        for (Student one: list) {
-//            System.out.println(one.getName());
-//        }
-//    }
+    public static void main(String[] args) {
+        IStudentService service = new StudentService();
+        List<Student> list;
+        list = service.getAllStudent();
+        for (Student one: list) {
+            System.out.println(one.getName());
+        }
+    }
 
     @Override
     public boolean deleteStudent(int studentID) {

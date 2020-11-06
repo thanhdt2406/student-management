@@ -33,8 +33,7 @@ public class AcademicService implements IAcademmicService {
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()){
                int id = rs.getInt(1);
-                AcademicStaff academicStaff = new AcademicStaff(id,"username","password","name",);
-                academicStaffMap.put(academicStaff);
+
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();

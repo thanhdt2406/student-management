@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/view/login.jsp?error=0");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response   ) throws ServletException, IOException {
 
     }
 }

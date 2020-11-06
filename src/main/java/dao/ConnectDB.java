@@ -3,7 +3,7 @@ package dao;
 import java.sql.*;
 
 public class ConnectDB {
-    final static String DB_URL = "jdbc:mysql://localhost:3306/student_management?serverTimezone=UTC";
+    final static String DB_URL = "jdbc:mysql://localhost:3306/case_study_m3?serverTimezone=UTC";
     final static String jdbc_USERNAME = "root";
     final static String jdbc_PASSWORD = "";
 

@@ -1,7 +1,10 @@
-package model;
+package model.staff;
+
+import model.User;
 
 public class Staff extends User {
     private int salary;
+
 
     public Staff(String username, String password, String name, String role, String phoneNumber, int salary) {
         super(username, password, name, role, phoneNumber);

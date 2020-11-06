@@ -1,21 +1,22 @@
-CREATE DATABASE case3;
+create  database case_study_m3;
+
+use  case_study_m3;
 
 
-use  case3;
 
 CREATE TABLE `user` (
                         `id` int NOT NULL AUTO_INCREMENT,
                         `username` varchar(30) NOT NULL,
                         `password` varchar(30) NOT NULL,
-                        `name` varchar(30) NOT NULL,
-                        `role` varchar(30) NOT NULL,
-                        `phone_number` varchar(30) DEFAULT NULL,
-                        `status` bit(1) DEFAULT b'1',
                         PRIMARY KEY (`id`)
 );
 
 CREATE TABLE `teacher` (
                            `id` int NOT NULL AUTO_INCREMENT,
+                           `name` varchar(30) NOT NULL,
+                           `role` varchar(30) NOT NULL,
+                           `phone_number` varchar(30) DEFAULT NULL,
+                           `status` bit(1) DEFAULT b'1',
                            `salary` int DEFAULT NULL,
                            PRIMARY KEY (`id`),
                            CONSTRAINT `teacher_id` FOREIGN KEY (`id`) REFERENCES `user` (`id`)
@@ -30,6 +31,10 @@ CREATE TABLE `classroom` (
 
 CREATE TABLE `student` (
                            `id` int NOT NULL AUTO_INCREMENT,
+                           `name` varchar(30) NOT NULL,
+                           `role` varchar(30) NOT NULL,
+                           `phone_number` varchar(30) DEFAULT NULL,
+                           `status` bit(1) DEFAULT b'1',
                            `classID` int NOT NULL,
                            PRIMARY KEY (`id`),
                            KEY `student_id2` (`classID`),
@@ -66,6 +71,10 @@ CREATE TABLE `academic_staff` (
 CREATE TABLE `acedemic_classroom` (
                                       `classID` int NOT NULL,
                                       `asID` int NOT NULL,
+                                      `name` varchar(30) NOT NULL,
+                                      `role` varchar(30) NOT NULL,
+                                      `phone_number` varchar(30) DEFAULT NULL,
+                                      `status` bit(1) DEFAULT b'1',
                                       PRIMARY KEY (`classID`,`asID`),
                                       KEY `academic_classroom` (`asID`),
                                       CONSTRAINT `academic_classroom` FOREIGN KEY (`asID`) REFERENCES `academic_staff` (`asID`),
@@ -98,4 +107,6 @@ CREATE TABLE `teacher_class` (
                                  CONSTRAINT `teacher_id2` FOREIGN KEY (`teacherID`) REFERENCES `teacher` (`id`)
 );
 
-insert into user(username, password, name, role) VALUES ('admin','admin','Admin','admin');
+
+
+

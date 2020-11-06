@@ -111,7 +111,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="TeacherList.jsp" class="nav-link">
                   <i class="far fa-star nav-icon"></i>
                   <p>Teacher</p>
                 </a>

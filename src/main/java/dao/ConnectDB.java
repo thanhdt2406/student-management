@@ -3,9 +3,9 @@ package dao;
 import java.sql.*;
 
 public class ConnectDB {
-    final String DB_URL = "jdbc:mysql://localhost:3306/case3?useSSL=false";
+    final String DB_URL = "jdbc:mysql://localhost:3306/module_3_case?useSSL=false";
     final String jdbc_USERNAME = "root";
-    final String jdbc_PASSWORD = "123456";
+    final String jdbc_PASSWORD = "";
 
     private static ConnectDB instance;
 

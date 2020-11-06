@@ -1,2 +1,5 @@
-package dao.teacher_service;public class ITeacherService {
+package dao.teacher_service;
+
+public interface ITeacherService {
+
 }

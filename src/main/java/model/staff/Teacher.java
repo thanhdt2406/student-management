@@ -1,4 +1,6 @@
-package model;
+package model.staff;
+
+import model.User;
 
 public class Teacher extends User {
     public Teacher() {

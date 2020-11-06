@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html style="font-size: 16px;">
   <head>
@@ -7,10 +8,10 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>login</title>
-    <link rel="stylesheet" href="../index/nicepage.css" media="screen">
-<link rel="stylesheet" href="../index/login.css" media="screen">
-    <script class="u-script" type="text/javascript" src="../index/jquery-1.9.1.min.js" defer=""></script>
-    <script class="u-script" type="text/javascript" src="../index/nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="../style/nicepage.css" media="screen">
+<link rel="stylesheet" href="../style/login.css" media="screen">
+    <script class="u-script" type="text/javascript" src="../style/jquery-1.9.1.min.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="../style/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 2.29.6, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
     
@@ -36,20 +37,28 @@
       <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <div class="u-container-style u-group u-palette-5-light-1 u-radius-4 u-shape-round u-group-1" data-animation-name="zoomIn" data-animation-duration="1000" data-animation-delay="0" data-animation-direction="">
           <div class="u-container-layout u-valign-middle u-container-layout-1">
-              <form action="#" class="was-validated" method="post">
+              <form action="<%=request.getContextPath() %>/login" class="was-validated" method="post">
                   <div class="form-group">
                       <label for="uname">Username:</label>
-                      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+                      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required>
                       <div class="valid-feedback">Valid.</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
                   </div>
                   <div class="form-group">
                       <label for="pwd">Password:</label>
-                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd" required>
+                      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password" required>
                       <div class="valid-feedback">Valid.</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
+<%--                      <c:set var="error" scope="session" value=""--%>
+                      <%
+                          if(request.getParameter("error")!=null){
+                      %>
+                      <div class="invalid-feedback" align="center"><b>Wrong username or password!</b></div>
+                      <%
+                          }
+                      %>
                   </div>
-                  <button type="submit" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Submit</button>
+                  <button type="submit" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Login</button>
               </form>
           </div>
         </div>

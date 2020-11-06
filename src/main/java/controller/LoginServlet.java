@@ -18,7 +18,7 @@ public class LoginServlet extends HttpServlet {
         if(username.equals("admin")&&password.equals("admin")){
             session.setAttribute("username",username);
             session.setAttribute("password",password);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("test.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AdminIndex.jsp");
             dispatcher.forward(request,response);
         } else {
             response.sendRedirect(request.getContextPath()+"/view/login.jsp?error=0");

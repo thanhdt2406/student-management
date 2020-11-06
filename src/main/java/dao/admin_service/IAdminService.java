@@ -1,6 +1,6 @@
 package dao.admin_service;
 
-import model.Diary;
+import model.diary.Diary;
 import model.User;
 import model.staff.AcademicStaff;
 import model.Classroom;
@@ -15,7 +15,7 @@ public interface IAdminService {
     boolean createNewTeacher(Teacher teacher);
     boolean createNewAS(AcademicStaff as );
 
-    List<User> showUserList();
+    List<User> getAllUsers();
     List<Teacher> showTeacherList();
     List<AcademicStaff> showASList();
     List<Student> showStudentsList();

@@ -1,6 +1,6 @@
 package model;
 
-public class user {
+public class User {
     private int userId;
     private String username;
     private String password;
@@ -9,11 +9,11 @@ public class user {
     private String phoneNumber;
     private boolean status = true;
 
-    public user() {
+    public User() {
 
     }
 
-    public user(String username, String password, String name, String role, String phoneNumber) {
+    public User(String username, String password, String name, String role, String phoneNumber) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -21,7 +21,7 @@ public class user {
         this.phoneNumber = phoneNumber;
     }
 
-    public user(int userId, String username, String password, String name, String role, String phoneNumber) {
+    public User(int userId, String username, String password, String name, String role, String phoneNumber) {
         this.userId = userId;
         this.username = username;
         this.password = password;
@@ -30,7 +30,7 @@ public class user {
         this.phoneNumber = phoneNumber;
     }
 
-    public user(String username, String password, String name, String role) {
+    public User(String username, String password, String name, String role) {
         this.username = username;
         this.password = password;
         this.name = name;

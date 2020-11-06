@@ -1,19 +1,19 @@
 package model;
 
-public class diary {
+public class Diary {
     private int id;
     private String content;
     private String date;
 
-    public diary() {
+    public Diary() {
 
     }
 
-    public diary(String content) {
+    public Diary(String content) {
         this.content = content;
     }
 
-    public diary(int id, String content) {
+    public Diary(int id, String content) {
         this.id = id;
         this.content = content;
     }

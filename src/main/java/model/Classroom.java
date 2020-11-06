@@ -2,23 +2,23 @@ package model;
 
 import java.util.List;
 
-public class classroom {
+public class Classroom {
     private int classID;
     private String name;
     private String startDate;
     private int coachID;
 
-    public classroom() {
+    public Classroom() {
 
     }
 
-    public classroom(int classID, String name, int coachID) {
+    public Classroom(int classID, String name, int coachID) {
         this.classID = classID;
         this.name = name;
         this.coachID = coachID;
     }
 
-    public classroom(String name, int coachID) {
+    public Classroom(String name, int coachID) {
         this.name = name;
         this.coachID = coachID;
     }

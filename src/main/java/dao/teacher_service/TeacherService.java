@@ -52,7 +52,7 @@ public class TeacherService implements ITeacherService {
     public boolean addNewTeacher(Teacher teacher) {
         Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "insert into teacher(id,name,phone_number,status,salary)" + "values(?,?,?,?,?)";
-        try{
+        try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, teacher.getId());
             ps.setString(2, teacher.getName());
@@ -60,7 +60,7 @@ public class TeacherService implements ITeacherService {
             ps.setString(4, teacher.getStatus());
             ps.setFloat(5, teacher.getSalary());
 
-            return ps.executeUpdate()>0;
+            return ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,7 +69,13 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public void editTeacher(int teacherID) {
+        Teacher teacher = null;
+        try { Connection connection = ConnectDB.getInstance().getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement("select * from teacher where id = ?")
 
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

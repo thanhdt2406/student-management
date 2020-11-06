@@ -1,21 +1,27 @@
 package model.staff;
 
-import model.User;
-
-public class Teacher extends User {
-    public Teacher() {
-
+public class Teacher extends Staff {
+    public Teacher(int userId, String username, String password, String role, String signUpDate, String name) {
+        super(userId, username, password, role, signUpDate, name);
     }
 
-    public Teacher(String username, String password, String name, String role, String phoneNumber) {
-        super(username, password, name, role, phoneNumber);
+    public Teacher(String username, String password, String role, String signUpDate, String name) {
+        super(username, password, role, signUpDate, name);
     }
 
-    public Teacher(int userId, String username, String password, String name, String role, String phoneNumber) {
-        super(userId, username, password, name, role, phoneNumber);
+    public Teacher(String username, String password, String role, String name) {
+        super(username, password, role, name);
     }
 
-    public Teacher(String username, String password, String name, String role) {
-        super(username, password, name, role);
+    public Teacher(int userId, String username, String password, String role, String signUpDate, String name, String phoneNumber, String address, int salary) {
+        super(userId, username, password, role, signUpDate, name, phoneNumber, address, salary);
+    }
+
+    public Teacher(String username, String password, String role, String signUpDate, String name, String phoneNumber, String address, int salary) {
+        super(username, password, role, signUpDate, name, phoneNumber, address, salary);
+    }
+
+    public Teacher(String username, String password, String role, String name, String phoneNumber, String address, int salary) {
+        super(username, password, role, name, phoneNumber, address, salary);
     }
 }

@@ -1,26 +1,23 @@
 package model;
 
-import java.util.List;
-
 public class Classroom {
     private int classID;
     private String name;
     private String startDate;
-    private int coachID;
 
-    public Classroom() {
-
-    }
-
-    public Classroom(int classID, String name, int coachID) {
+    public Classroom(int classID, String name, String startDate) {
         this.classID = classID;
         this.name = name;
-        this.coachID = coachID;
+        this.startDate = startDate;
     }
 
-    public Classroom(String name, int coachID) {
+    public Classroom(String name, String startDate) {
         this.name = name;
-        this.coachID = coachID;
+        this.startDate = startDate;
+    }
+
+    public Classroom(String name) {
+        this.name = name;
     }
 
     public int getClassID() {
@@ -46,13 +43,4 @@ public class Classroom {
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
-
-    public int getCoachID() {
-        return coachID;
-    }
-
-    public void setCoachID(int coachID) {
-        this.coachID = coachID;
-    }
-
 }

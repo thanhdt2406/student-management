@@ -1,15 +1,32 @@
 package dao.admin_service;
 
+import dao.ConnectDB;
 import model.Classroom;
-import model.Diary;
+import model.diary.Diary;
 import model.Student;
 import model.User;
 import model.staff.AcademicStaff;
 import model.staff.Teacher;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminService implements IAdminService {
+    private List<User> users;
+    private final String SELECT_ALL_USER = "select * from user;";
+
+    public AdminService() {
+        this.users = new ArrayList<>();
+    }
+
+    public AdminService(List<User> users) {
+        this.users = users;
+    }
+
     @Override
     public boolean createNewClassroom(Classroom classroom) {
         return false;
@@ -31,8 +48,25 @@ public class AdminService implements IAdminService {
     }
 
     @Override
-    public List<User> showUserList() {
-        return null;
+    public List<User> getAllUsers() {
+        ConnectDB connectDB = ConnectDB.getInstance();
+        Connection connection = connectDB.getConnection();
+        try {
+            CallableStatement callableStatement = connection.prepareCall(SELECT_ALL_USER);
+            ResultSet resultSet = callableStatement.executeQuery();
+            while (resultSet.next()){
+                int id = resultSet.getInt("id");
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+                String role = resultSet.getString("role");
+                String signUpDate = resultSet.getString("signUp_Date");
+                String phone_number = resultSet.getString("phone_number");
+                users.add(new User(id,username,password,signUpDate,role));
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return users;
     }
 
     @Override

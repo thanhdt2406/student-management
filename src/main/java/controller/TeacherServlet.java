@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "TeacherServlet")
+@WebServlet(name = "TeacherServlet", urlPatterns = "/TeacherList114")
 public class TeacherServlet extends HttpServlet {
     ArrayList<Teacher> getAllTeacher = new ArrayList<>();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

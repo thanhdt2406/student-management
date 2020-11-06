@@ -5,7 +5,7 @@ import model.staff.Teacher;
 import java.util.List;
 
 public interface ITeacherService {
-    List<Teacher> showAllteacher();
+    List<Teacher> showAllTeacher();
     boolean addNewTeacher(Teacher teacher);
     void editTeacher(int teacherID);
     void deleteTeacher(int teacherID);

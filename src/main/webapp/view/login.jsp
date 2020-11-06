@@ -40,7 +40,7 @@
               <form action="<%=request.getContextPath() %>/login" class="was-validated" method="post">
                   <div class="form-group">
                       <label for="uname">Username:</label>
-                      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required>
+                      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required autofocus>
                       <div class="valid-feedback">Valid.</div>
                       <div class="invalid-feedback">Please fill out this field.</div>
                   </div>

@@ -16,15 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminService implements IAdminService {
-    private List<User> users;
     private final String SELECT_ALL_USER = "select * from user;";
 
     public AdminService() {
-        this.users = new ArrayList<>();
-    }
 
-    public AdminService(List<User> users) {
-        this.users = users;
     }
 
     @Override
@@ -49,6 +44,7 @@ public class AdminService implements IAdminService {
 
     @Override
     public List<User> getAllUsers() {
+        List<User> users = new ArrayList<>();
         ConnectDB connectDB = ConnectDB.getInstance();
         Connection connection = connectDB.getConnection();
         try {
@@ -59,9 +55,8 @@ public class AdminService implements IAdminService {
                 String username = resultSet.getString("username");
                 String password = resultSet.getString("password");
                 String role = resultSet.getString("role");
-                String signUpDate = resultSet.getString("signUp_Date");
-                String phone_number = resultSet.getString("phone_number");
-                users.add(new User(id,username,password,signUpDate,role));
+                String signUpDate = resultSet.getString("signUp_date");
+                users.add(new User(id,username,password,role,signUpDate));
             }
         } catch (SQLException exception) {
             exception.printStackTrace();

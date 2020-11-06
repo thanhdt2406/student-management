@@ -37,6 +37,13 @@ public class User {
         this.role = role;
     }
 
+    public User(int id, String name, String phone, boolean status) {
+        this.userId = id;
+        this.name = name;
+        this.phoneNumber = phone;
+        this.status = status;
+    }
+
     public int getUserId() {
         return userId;
     }

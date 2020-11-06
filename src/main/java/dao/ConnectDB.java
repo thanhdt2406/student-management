@@ -3,9 +3,9 @@ package dao;
 import java.sql.*;
 
 public class ConnectDB {
-    final String DB_URL = "jdbc:mysql://localhost:3306/student_management?useSSL=false";
-    final String jdbc_USERNAME = "root";
-    final String jdbc_PASSWORD = "123456";
+    final static String DB_URL = "jdbc:mysql://localhost:3306/case_study_m3?serverTimezone=UTC";
+    final static String jdbc_USERNAME = "root";
+    final static String jdbc_PASSWORD = "";
 
     private static ConnectDB instance;
 
@@ -20,7 +20,7 @@ public class ConnectDB {
         return instance;
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

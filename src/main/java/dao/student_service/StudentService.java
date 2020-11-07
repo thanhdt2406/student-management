@@ -4,10 +4,7 @@ import dao.ConnectDB;
 import model.Student;
 import model.User;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.*;
 
 public class StudentService implements IStudentService {
@@ -32,7 +29,7 @@ public class StudentService implements IStudentService {
 
     @Override
     public List<Student> getAllStudent() {
-        Connection connection = ConnectDB.getConnection();
+        Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "SELECT * FROM student;";
         try {
             Statement statement = connection.createStatement();
@@ -67,12 +64,31 @@ public class StudentService implements IStudentService {
 
     @Override
     public boolean deleteStudent(int studentID) {
-        return false;
+        boolean deleted = false;
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "DELETE FROM Student WHERE id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, studentID);
+            deleted = ps.executeUpdate() > 0;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return deleted;
     }
 
     @Override
-    public void editStudent(int studentID) {
-
+    public void editStudent(Student student) {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "UPDATE Student SET () VALUES (?, ?, ?, ?) WHERE id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(5, student.getUserId());
+            ps.setString(1, student.getName());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 
     @Override

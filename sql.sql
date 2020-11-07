@@ -83,8 +83,8 @@ CREATE TABLE `academic_classroom` (
 );
 
 CREATE TABLE `subject` (
-                           `subId` int NOT NULL AUTO_INCREMENT,
-                           `subName` varchar(30) NOT NULL,
+                           `ID` int NOT NULL AUTO_INCREMENT,
+                           `subName` varchar(30) NOT NULL UNIQUE,
                            PRIMARY KEY (`subId`)
 );
 
@@ -306,4 +306,9 @@ call createNewTeacherFullInformation('chault','111111','Le Thi Chau','0932563471
 call createNewTeacherFullInformation('thenk','111111','Nguyen Khac The','0982145786','Ca Mau',1000);
 call createNewTeacherFullInformation('sonmc','111111','Mai Cong Son','0932361747','Da Nang',1500);
 call createNewTeacherFullInformation('quannm','111111','Nguyen Minh Quan','0965141214','Thai Binh',500);
+
+call createNewSubject('Java');
+call createNewSubject('C++');
+call createNewSubject('Python');
+
 

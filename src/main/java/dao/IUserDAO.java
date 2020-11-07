@@ -19,8 +19,6 @@ public interface IUserDAO {
     List<Teacher> showTeacherList();
     List<AcademicStaff> showASList();
     List<Student> showStudentsList();
-
     Diary showDiaryList();
-
     Diary writeDiary();
 }

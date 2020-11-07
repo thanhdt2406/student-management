@@ -9,7 +9,11 @@ import java.util.*;
 
 public class StudentService implements IStudentService {
     Map<Integer, Student> studentMap = new HashMap<>();
-//    List<Student> studentList = new ArrayList<>();
+
+    private final String ADD_NEW_STUDENT = "call addNewStudent(?, ?, ?, ?, ?)";
+    private final String GET_ALL_STUDENT = "call getAllStudent();";
+    private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
+    private final String DELETE_STUDENT = "call deleteStudent(?);";
 
     public StudentService() {
     }
@@ -30,10 +34,9 @@ public class StudentService implements IStudentService {
     @Override
     public List<Student> getAllStudent() {
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "SELECT * FROM student;";
         try {
-            Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery(sql);
+            CallableStatement cs = connection.prepareCall(GET_ALL_STUDENT);
+            ResultSet rs = cs.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
@@ -66,31 +69,28 @@ public class StudentService implements IStudentService {
     public boolean deleteStudent(int studentID) {
         boolean deleted = false;
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "DELETE FROM Student WHERE id = ?";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, studentID);
-            deleted = ps.executeUpdate() > 0;
+            CallableStatement cs = connection.prepareCall(DELETE_STUDENT);
+            cs.setInt(1, studentID);
+            deleted = cs.executeUpdate() > 0;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
         return deleted;
     }
 
     @Override
     public void editStudent(Student student) {
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "UPDATE Student SET (name, phone_number, address, status, classID) VALUES (?, ?, ?, ?, ?) WHERE id = ?";
         try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(6, student.getUserId());
-            ps.setString(1, student.getName());
-            ps.setString(2, student.getPhoneNumber());
-            ps.setString(3, student.getAddress());
-            ps.setBoolean(4, student.isStatus());
-            ps.setInt(5, student.getClassID());
-            ps.executeUpdate();
+            CallableStatement cs = connection.prepareCall(EDIT_STUDENT);
+            cs.setInt(1, student.getUserId());
+            cs.setString(2, student.getName());
+            cs.setString(3, student.getPhoneNumber());
+            cs.setString(4, student.getAddress());
+            cs.setBoolean(5, student.isStatus());
+            cs.setInt(6, student.getClassID());
+            cs.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

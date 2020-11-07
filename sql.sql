@@ -233,6 +233,32 @@ begin
 end //
 delimiter ;
 
+-- Delete Student
+DROP  PROCEDURE IF EXISTS deleteStudent;
+delimiter //
+create procedure deleteStudent(in _studentID int)
+begin
+    delete from student where id = _studentID;
+end //
+//
+delimiter ;
+
+-- Delete Student
+DROP  PROCEDURE IF EXISTS updateStudent;
+delimiter //
+create procedure updateStudent(in _id int, in _name varchar(30), in _phonenumber varchar(30), in _address varchar(100),in _status bit, in _classID int)
+begin
+    update student set
+                       name = _name,
+                       phone_number = _phonenumber,
+                       address = _address,
+                       status = _status,
+                       classID = _classID
+    where id = _id;
+end //
+//
+delimiter ;
+
 
 -- Create Data
 insert into user (username, password, role) VALUEs ('admin','admin','admin');

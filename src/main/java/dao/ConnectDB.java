@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class ConnectDB {
 
-    final static String DB_URL = "jdbc:mysql://localhost:3306/student_management?serverTimezone=UTC";
-    final static String jdbc_USERNAME = "root";
-    final static String jdbc_PASSWORD = "";
+    final String DB_URL = "jdbc:mysql://localhost:3306/student_management?serverTimezone=UTC";
+    final String jdbc_USERNAME = "root";
+    final String jdbc_PASSWORD = "";
 
     private static ConnectDB instance;
 
@@ -21,7 +21,7 @@ public class ConnectDB {
         return instance;
     }
 
-    public static Connection getConnection() {
+    public Connection getConnection() {
         Connection connection = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

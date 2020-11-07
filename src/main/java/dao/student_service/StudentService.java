@@ -81,11 +81,16 @@ public class StudentService implements IStudentService {
     @Override
     public void editStudent(Student student) {
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "UPDATE Student SET () VALUES (?, ?, ?, ?) WHERE id = ?";
+        String sql = "UPDATE Student SET (name, phone_number, address, status, classID) VALUES (?, ?, ?, ?, ?) WHERE id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(5, student.getUserId());
+            ps.setInt(6, student.getUserId());
             ps.setString(1, student.getName());
+            ps.setString(2, student.getPhoneNumber());
+            ps.setString(3, student.getAddress());
+            ps.setBoolean(4, student.isStatus());
+            ps.setInt(5, student.getClassID());
+            ps.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

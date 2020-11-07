@@ -82,4 +82,12 @@ public class Student extends User {
     public void setStatus(boolean status) {
         this.status = status;
     }
+
+    public int getClassID() {
+        return classID;
+    }
+
+    public void setClassID(int classID) {
+        this.classID = classID;
+    }
 }

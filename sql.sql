@@ -154,6 +154,16 @@ delete from academic_staff where ID = _ID;
 delete from user where id = _ID;
 end  //
 delimiter ;
+
+DROP PROCEDURE IF EXISTS editAcademicStaff;
+delimiter //
+create procedure editAcademicStaff(IN _ID INT,IN _name varchar(30),IN _phone varchar(30),IN _address varchar(30),IN _status bit)
+begin
+    UPDATE academic_staff
+    SET name=_name, phone_number = _phone,address =_address, status = _status
+    WHERE ID=_ID;
+end  //
+delimiter ;
 -- Teacher
 DROP PROCEDURE IF EXISTS createNewTeacher;
 delimiter //

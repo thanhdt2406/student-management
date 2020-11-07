@@ -29,6 +29,7 @@ public class ClassroomService implements IClassroomService {
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
+        return classrooms;
     }
 
     @Override

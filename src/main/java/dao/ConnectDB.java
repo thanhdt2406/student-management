@@ -5,7 +5,7 @@ import java.sql.*;
 public class ConnectDB {
     final String DB_URL = "jdbc:mysql://localhost:3306/student_management?useSSL=false";
     final String jdbc_USERNAME = "root";
-    final String jdbc_PASSWORD = "123456";
+    final String jdbc_PASSWORD = "root";
 
     private static ConnectDB instance;
 

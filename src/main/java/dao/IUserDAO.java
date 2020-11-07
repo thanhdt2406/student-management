@@ -1,4 +1,4 @@
-package dao.admin_service;
+package dao;
 
 import model.diary.Diary;
 import model.User;
@@ -9,7 +9,7 @@ import model.staff.Teacher;
 
 import java.util.List;
 
-public interface IAdminService {
+public interface IUserDAO {
     boolean createNewClassroom(Classroom classroom);
     boolean createNewStudent(Student student);
     boolean createNewTeacher(Teacher teacher);

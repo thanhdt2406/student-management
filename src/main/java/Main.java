@@ -18,8 +18,10 @@ public class Main {
         AcademicStaff as = new AcademicStaff("username1","ddd","name1","phonenumber1","address1",10000);
 
 
-        //System.out.println(service.addNewAcademicStaff(as));
-        service.deleteAS(15);
+//        System.out.println(service.addNewAcademicStaff(as));
+        //service.deleteAS(15);
+        boolean rs = service.editAS(18,"ten moiws","sdt moiw", "address moi",false);
+        System.out.println(rs);
         System.out.println("lalala");
 
     }

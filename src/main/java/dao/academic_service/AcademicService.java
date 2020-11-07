@@ -35,10 +35,9 @@ public class AcademicService implements IAcademmicService {
             if (rs != 0) {
                 return true;
             }
-        }catch (SQLIntegrityConstraintViolationException e){
+        } catch (SQLIntegrityConstraintViolationException e) {
             System.out.println("trùng username");
-        }
-        catch (SQLException throwables) {
+        } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
         return false;
@@ -75,10 +74,10 @@ public class AcademicService implements IAcademmicService {
         String sql = "call deleteAcademicStaff(?)";
         try {
             CallableStatement stm = connection.prepareCall(sql);
-            stm.setInt(1,asID);
-            if (stm.execute()){
+            stm.setInt(1, asID);
+            if (stm.execute()) {
                 return true;
-            };
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -86,14 +85,18 @@ public class AcademicService implements IAcademmicService {
     }
 
     @Override
-    public boolean editAS(int asID) {
-        String sql = "call editAcademicStaff(?)";
+    public boolean editAS(int asID, String name, String phone, String address, boolean status) {
+        String sql = "call editAcademicStaff(?,?,?,?,?)";
         try {
             CallableStatement stm = connection.prepareCall(sql);
-            stm.setInt(1,asID);
-            if (stm.execute()){
+            stm.setInt(1, asID);
+            stm.setString(2, name);
+            stm.setString(3, phone);
+            stm.setString(4, address);
+            stm.setBoolean(5, status);
+            if (stm.executeUpdate() != 0){
                 return true;
-            };
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

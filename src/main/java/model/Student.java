@@ -5,6 +5,7 @@ public class Student extends User {
     private String phoneNumber;
     private String address;
     private boolean status;
+    private int classID;
 
     public Student(int userId, String username, String password, String role, String signUpDate, String name) {
         super(userId, username, password, role, signUpDate);
@@ -40,6 +41,14 @@ public class Student extends User {
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.address = address;
+    }
+
+    public Student(int id, String name, String phone, boolean status, int classID) {
+        super(id);
+        this.name = name;
+        this.phoneNumber = phone;
+        this.status = status;
+        this.classID = classID;
     }
 
     public String getName() {

@@ -51,6 +51,15 @@ public class Student extends User {
         this.classID = classID;
     }
 
+    public Student(int userID, String username, String password, String role, String date, String name, String phoneNumber, String address, boolean status, int classID) {
+        super(userID, username, password, role, date);
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.status = status;
+        this.classID = classID;
+    }
+
     public String getName() {
         return name;
     }
@@ -90,4 +99,15 @@ public class Student extends User {
     public void setClassID(int classID) {
         this.classID = classID;
     }
+
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "name='" + name + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", address='" + address + '\'' +
+//                ", status=" + status +
+//                ", classID=" + classID +
+//                '}';
+//    }
 }

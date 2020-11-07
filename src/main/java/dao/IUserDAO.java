@@ -16,6 +16,7 @@ public interface IUserDAO {
     boolean createNewAS(AcademicStaff as );
 
     List<User> getAllUsers();
+    User getUserInfor(int userID);
     List<Teacher> showTeacherList();
     List<AcademicStaff> showASList();
     List<Student> showStudentsList();

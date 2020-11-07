@@ -253,6 +253,16 @@ end //
 //
 delimiter ;
 
+-- Select Student by ID
+DROP  PROCEDURE IF EXISTS getStudentByID;
+delimiter //
+create procedure getStudentByID(in _id int)
+begin
+    select * from student where id = _id;
+end //
+//
+delimiter ;
+
 -- Add New Student
 DROP  PROCEDURE IF EXISTS addNewStudent;
 delimiter //

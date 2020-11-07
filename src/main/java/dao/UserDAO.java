@@ -7,18 +7,16 @@ import model.User;
 import model.staff.AcademicStaff;
 import model.staff.Teacher;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO implements IUserDAO {
     private final String SELECT_ALL_USER = "select * from user;";
+    private final String GET_USER_INFO = "select * from user where id = ?;";
+    private final String GET_COMMON_INFO = "select * from ? where id = ?;";
 
     public UserDAO() {
-
     }
 
     @Override
@@ -62,6 +60,77 @@ public class UserDAO implements IUserDAO {
         }
         return users;
     }
+
+    @Override
+    public User getUserInfor(int userID) {
+        User user = null;
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            PreparedStatement psAll = connection.prepareStatement(GET_USER_INFO);
+            psAll.setInt(1, userID);
+            ResultSet rsAll = psAll.executeQuery();
+            while (rsAll.next()){
+                String username = rsAll.getString("username");
+                String password = rsAll.getString("password");
+                String date = String.valueOf(rsAll.getDate("signUp_date"));
+                String role = rsAll.getString("role");
+
+                Statement psGet = connection.createStatement();
+//                ResultSet rsGet;
+                String name, phoneNumber, address, sql;
+                int classID, salary;
+                boolean status;
+
+                switch (role){
+                    case "student":
+                        sql = "select * from student where id = " + userID;
+                        ResultSet rsGet = psGet.executeQuery(sql);
+                        rsGet.next();
+                        name = rsGet.getString("name");
+                        phoneNumber = rsGet.getString("phone_number");
+                        address = rsGet.getString("address");
+                        classID = rsGet.getInt("classID");
+                        status = rsGet.getBoolean("status");
+                        user = new Student(userID, username, password, role, date, name, phoneNumber, address, status, classID);
+                        break;
+                    case "teacher":
+                        sql = "select * from teacher where id = " + userID;
+                        rsGet = psGet.executeQuery(sql);
+                        rsGet.next();
+                        name = rsGet.getString("name");
+                        phoneNumber = rsGet.getString("phone_number");
+                        address = rsGet.getString("address");
+                        salary = rsGet.getInt("salary");
+                        status = rsGet.getBoolean("status");
+                        user = new Teacher(userID, username, password, role, date, name, phoneNumber, address, status, salary);
+                        break;
+                    case "academic_staff":
+                        sql = "select * from academic_staff where id = " + userID;
+                        rsGet = psGet.executeQuery(sql);
+                        rsGet.next();
+                        name = rsGet.getString("name");
+                        phoneNumber = rsGet.getString("phone_number");
+                        address = rsGet.getString("address");
+                        salary = rsGet.getInt("salary");
+                        status = rsGet.getBoolean("status");
+                        user = new AcademicStaff(userID, username, password, role, date, name, phoneNumber, address, status, salary);
+                        break;
+                    default:
+                        user = new User(userID, username, password, role, date);
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return user;
+    }
+
+//    public static void main(String[] args) {
+//        IUserDAO userDAO = new UserDAO();
+//        User user = new User();
+//        user = userDAO.getUserInfor(8);
+//        System.out.println(user.toString());
+//    }
 
     @Override
     public List<Teacher> showTeacherList() {

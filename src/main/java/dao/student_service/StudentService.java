@@ -10,7 +10,7 @@ import java.util.*;
 public class StudentService implements IStudentService {
     Map<Integer, Student> studentMap = new HashMap<>();
 
-    private final String ADD_NEW_STUDENT = "call addNewStudent(?, ?, ?, ?, ?)";
+    private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?)";
     private final String GET_ALL_STUDENT = "call getAllStudent();";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";
@@ -26,6 +26,7 @@ public class StudentService implements IStudentService {
         this.studentMap = studentMap;
     }
 
+    //Đợi làm servlet rồi tạo hàm này
     @Override
     public Student addNewStudent(Student student) {
         return null;

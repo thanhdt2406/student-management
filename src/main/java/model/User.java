@@ -7,6 +7,8 @@ public class User {
     private String role;
     private String signUpDate;
 
+    public User(){};
+
     public User(int userId, String username, String password, String role, String signUpDate) {
         this.userId = userId;
         this.username = username;
@@ -76,4 +78,15 @@ public class User {
     public void setSignUpDate(String signUpDate) {
         this.signUpDate = signUpDate;
     }
+
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "userId=" + userId +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", role='" + role + '\'' +
+//                ", signUpDate='" + signUpDate + '\'' +
+//                '}';
+//    }
 }

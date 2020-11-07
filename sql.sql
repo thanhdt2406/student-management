@@ -243,6 +243,27 @@ begin
 end //
 delimiter ;
 
+-- Select All Student
+DROP  PROCEDURE IF EXISTS getAllStudent;
+delimiter //
+create procedure getAllStudent()
+begin
+    select * from student;
+end //
+//
+delimiter ;
+
+-- Add New Student
+DROP  PROCEDURE IF EXISTS addNewStudent;
+delimiter //
+create procedure addNewStudent(in _name varchar(30), in _phonenumber varchar(30), in _address varchar(100),in _status bit, in _classID int)
+begin
+    insert into student (name, classID, phone_number, address, status)
+        VALUES (_name, _phonenumber, _address, _status, _classID);
+end //
+//
+delimiter ;
+
 -- Delete Student
 DROP  PROCEDURE IF EXISTS deleteStudent;
 delimiter //
@@ -253,10 +274,10 @@ end //
 //
 delimiter ;
 
--- Delete Student
-DROP  PROCEDURE IF EXISTS updateStudent;
+-- Edit Student
+DROP  PROCEDURE IF EXISTS editStudent;
 delimiter //
-create procedure updateStudent(in _id int, in _name varchar(30), in _phonenumber varchar(30), in _address varchar(100),in _status bit, in _classID int)
+create procedure editStudent(in _id int, in _name varchar(30), in _phonenumber varchar(30), in _address varchar(100),in _status bit, in _classID int)
 begin
     update student set
                        name = _name,

@@ -76,7 +76,7 @@ public class UserDAO implements IUserDAO {
                 String role = rsAll.getString("role");
 
                 Statement psGet = connection.createStatement();
-//                ResultSet rsGet;
+                ResultSet rsGet;
                 String name, phoneNumber, address, sql;
                 int classID, salary;
                 boolean status;
@@ -84,7 +84,7 @@ public class UserDAO implements IUserDAO {
                 switch (role){
                     case "student":
                         sql = "select * from student where id = " + userID;
-                        ResultSet rsGet = psGet.executeQuery(sql);
+                        rsGet = psGet.executeQuery(sql);
                         rsGet.next();
                         name = rsGet.getString("name");
                         phoneNumber = rsGet.getString("phone_number");

@@ -14,6 +14,12 @@ public class Diary {
         this.content = content;
     }
 
+    public Diary(int id, String content, String date) {
+        this.id = id;
+        this.content = content;
+        this.date = date;
+    }
+
     public int getId() {
         return id;
     }

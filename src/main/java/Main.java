@@ -15,10 +15,11 @@ public class Main {
 
         AcademicService service = new AcademicService();
 
-        AcademicStaff as = new AcademicStaff("username","password","name","phonenumber","address",10000);
+        AcademicStaff as = new AcademicStaff("username1","ddd","name1","phonenumber1","address1",10000);
 
 
-        System.out.println(service.addNewAcademicStaff(as));
+        //System.out.println(service.addNewAcademicStaff(as));
+        service.deleteAS(15);
         System.out.println("lalala");
 
     }

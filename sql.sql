@@ -5,7 +5,7 @@ use  student_management;
 
 CREATE TABLE user (
                       id int NOT NULL AUTO_INCREMENT,
-                      username varchar(30) NOT NULL,
+                      username varchar(30) NOT NULL unique ,
                       password varchar(30) NOT NULL,
                       signUp_date datetime default now(),
                       role varchar(30) not null ,
@@ -146,8 +146,14 @@ begin
     insert into academic_staff(id,name,phone_number,address,salary) value ((select id from user where username = _username),_name,_phone_number,_address,_salary);
 end //
 delimiter ;
-
-
+DROP PROCEDURE IF EXISTS deleteAcademicStaff;
+delimiter //
+create procedure deleteAcademicStaff(IN _ID INT)
+begin
+delete from academic_staff where ID = _ID;
+delete from user where id = _ID;
+end  //
+delimiter ;
 -- Teacher
 DROP PROCEDURE IF EXISTS createNewTeacher;
 delimiter //

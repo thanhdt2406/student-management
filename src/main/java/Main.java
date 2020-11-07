@@ -1,5 +1,7 @@
 import dao.ConnectDB;
 import dao.academic_service.AcademicService;
+import dao.subject_service.SubjectService;
+import model.Subject;
 import model.staff.AcademicStaff;
 
 import java.sql.Connection;
@@ -13,16 +15,11 @@ public class Main {
 //        ConnectDB connectDB = ConnectDB.getInstance();
 //        Connection connection = connectDB.getConnection();
 
-        AcademicService service = new AcademicService();
-
-        AcademicStaff as = new AcademicStaff("username1","ddd","name1","phonenumber1","address1",10000);
-
-
-//        System.out.println(service.addNewAcademicStaff(as));
-        //service.deleteAS(15);
-        boolean rs = service.editAS(18,"ten moiws","sdt moiw", "address moi",false);
-        System.out.println(rs);
-        System.out.println("lalala");
+        SubjectService service = new SubjectService();
+        Subject subject = new Subject("C++");
+        service.editSubject(1,"Java");
+        service.editSubject(2,"C++");
+        System.out.println(service.editSubject(6,"ssdsds"));
 
     }
 }

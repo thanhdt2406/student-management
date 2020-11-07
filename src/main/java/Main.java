@@ -1,34 +1,25 @@
 import dao.ConnectDB;
+import dao.academic_service.AcademicService;
+import model.staff.AcademicStaff;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        ConnectDB connectDB = ConnectDB.getInstance();
-        Connection connection = connectDB.getConnection();
+//        ConnectDB connectDB = ConnectDB.getInstance();
+//        Connection connection = connectDB.getConnection();
 
-        if (connection != null) {
-            String sql = "SELECT * FROM user";
+        AcademicService service = new AcademicService();
 
-            try {
-                Statement stm = connection.createStatement();
-                ResultSet rs = stm.executeQuery(sql);
-                while (rs.next()) {
-                    System.out.println(rs.getInt(1));
-                    System.out.println(rs.getString(2));
-                    System.out.println(rs.getString(3));
-                    System.out.println(rs.getString("name"));
-                    System.out.println(rs.getString("role"));
+        AcademicStaff as = new AcademicStaff("username","password","name","phonenumber","address",10000);
 
-                }
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        System.out.println("connection");
-        System.out.println(connection);
+
+        System.out.println(service.addNewAcademicStaff(as));
+        System.out.println("lalala");
+
     }
 }

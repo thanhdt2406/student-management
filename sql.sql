@@ -64,7 +64,7 @@ CREATE TABLE `student_diary` (
 
 CREATE TABLE `academic_staff` (
                                   `ID` int NOT NULL,
-                                  `name` varchar(30) NOT NULL,
+                                  `name` varchar(30),
                                   `phone_number` varchar(30) ,
                                   address varchar(100) ,
                                   `salary` int ,

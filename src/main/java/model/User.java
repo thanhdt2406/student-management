@@ -29,7 +29,12 @@ public class User {
     }
 
     public User(int id) {
+        this.userId = id;
+    }
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public int getUserId() {

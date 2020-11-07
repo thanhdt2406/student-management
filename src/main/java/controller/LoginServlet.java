@@ -1,6 +1,6 @@
 package controller;
 
-import dao.admin_service.AdminService;
+import dao.UserDAO;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -16,17 +16,19 @@ import java.util.List;
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        AdminService adminService = new AdminService();
-        List<User> userList = adminService.getAllUsers();
+        UserDAO userDAO = new UserDAO();
+        List<User> userList = userDAO.getAllUsers();
         for (User user : userList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                session.setAttribute("username", username);
-                session.setAttribute("password", password);
+                session.setAttribute("username", user.getUsername());
+                session.setAttribute("password", user.getPassword());
+                session.setAttribute("roleLogin", user.getRole());
+                session.setAttribute("idLogin", user.getUserId());
                 if(user.getRole().equals("admin")){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AdminIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Admin/AdminIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("academic_staff")){
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AcademicStaffIndex.jsp");

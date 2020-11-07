@@ -48,6 +48,23 @@ public class Staff extends User {
         this.salary = salary;
     }
 
+    public Staff(int id, String name, String phone, String address, boolean status, int salary) {
+        super(id);
+        this.name = name;
+        this.phoneNumber = phone;
+        this.address = address;
+        this.status = status;
+        this.salary = salary;
+    }
+
+    public Staff(String username, String password, String name, String phonenumber, String address, int salary) {
+        super(username,password);
+        this.name = name;
+        this.phoneNumber = phonenumber;
+        this.address = address;
+        this.salary = salary;
+    }
+
     public String getName() {
         return name;
     }

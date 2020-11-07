@@ -1,6 +1,5 @@
-package dao.admin_service;
+package dao;
 
-import dao.ConnectDB;
 import model.Classroom;
 import model.diary.Diary;
 import model.Student;
@@ -15,10 +14,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminService implements IAdminService {
+public class UserDAO implements IUserDAO {
     private final String SELECT_ALL_USER = "select * from user;";
 
-    public AdminService() {
+    public UserDAO() {
 
     }
 

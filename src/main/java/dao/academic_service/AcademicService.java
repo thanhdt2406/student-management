@@ -12,14 +12,13 @@ import java.util.Map;
 
 public class AcademicService implements IAcademmicService {
     //private Map<Integer, AcademicStaff> academicStaffMap = new HashMap<>();
-    private ConnectDB connectDB = ConnectDB.getInstance();
-    private Connection connection = connectDB.getConnection();
-
     public AcademicService() {
     }
 
     @Override
     public boolean addNewAcademicStaff(AcademicStaff as) {
+        ConnectDB connectDB = ConnectDB.getInstance();
+        Connection connection = connectDB.getConnection();
         String sql = "call createNewAcademicStaffFullInformation(?,?,?,?,?,?)";
         try {
             CallableStatement stm = connection.prepareCall(sql);
@@ -45,6 +44,8 @@ public class AcademicService implements IAcademmicService {
 
     @Override
     public List<AcademicStaff> listAcademicStaff() {
+        ConnectDB connectDB = ConnectDB.getInstance();
+        Connection connection = connectDB.getConnection();
         List<AcademicStaff> list = new ArrayList<>();
         String sql = "SELECT * FROM academic_staff";
         try {
@@ -71,6 +72,8 @@ public class AcademicService implements IAcademmicService {
 
     @Override
     public boolean deleteAS(int asID) {
+        ConnectDB connectDB = ConnectDB.getInstance();
+        Connection connection = connectDB.getConnection();
         String sql = "call deleteAcademicStaff(?)";
         try {
             CallableStatement stm = connection.prepareCall(sql);
@@ -86,6 +89,8 @@ public class AcademicService implements IAcademmicService {
 
     @Override
     public boolean editAS(int asID, String name, String phone, String address, boolean status) {
+        ConnectDB connectDB = ConnectDB.getInstance();
+        Connection connection = connectDB.getConnection();
         String sql = "call editAcademicStaff(?,?,?,?,?)";
         try {
             CallableStatement stm = connection.prepareCall(sql);

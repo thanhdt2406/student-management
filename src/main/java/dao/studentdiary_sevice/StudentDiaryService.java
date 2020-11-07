@@ -1,25 +1,23 @@
-package dao.classdiary_service;
+package dao.studentdiary_sevice;
 
 import dao.ConnectDB;
-import model.diary.ClassDiary;
+import model.diary.StudentDiary;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassDiaryService implements IClassDiaryService {
-    private final String CREATE_CLASS_DIARY = "call createNewClassDiary(?, ?);";
-    private final String EDIT_CLASS_DIARY = "update class_diary set content = ? where diaryID = ?;";
-    private final String GET_CLASS_DIARY = "select * from class_diary where classID = ?;";
+public class StudentDiaryService implements IStudentDiaryService{
 
     @Override
-    public boolean createNewClassDiary(ClassDiary classDiary) {
+    public boolean createNewStudentDiary(StudentDiary studentDiary) {
         ConnectDB connectDB = ConnectDB.getInstance();
         Connection connection = connectDB.getConnection();
+        String sql = "call createNewStudentDiary(?, ?)";
         try {
-            CallableStatement callableStatement = connection.prepareCall(CREATE_CLASS_DIARY);
-            callableStatement.setString(1, classDiary.getContent());
-            callableStatement.setInt(2, classDiary.getClassID());
+            CallableStatement callableStatement = connection.prepareCall(sql);
+            callableStatement.setString(1, studentDiary.getContent());
+            callableStatement.setInt(2, studentDiary.getStudentID());
             int rs = callableStatement.executeUpdate();
             if (rs != 0) {
                 return true;
@@ -31,11 +29,12 @@ public class ClassDiaryService implements IClassDiaryService {
     }
 
     @Override
-    public boolean editClassDiary(int diaryID, String content) {
+    public boolean editStudentDiary(int diaryID, String content) {
         ConnectDB connectDB = ConnectDB.getInstance();
         Connection connection = connectDB.getConnection();
+        String sql = "update student_diary set content = ? where diaryID = ?;";
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(EDIT_CLASS_DIARY);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, content);
             preparedStatement.setInt(2, diaryID);
             int rs = preparedStatement.executeUpdate();
@@ -49,34 +48,36 @@ public class ClassDiaryService implements IClassDiaryService {
     }
 
     @Override
-    public List<ClassDiary> getClassDiary(int classID) {
+    public List<StudentDiary> getStudentDiary(int studentID) {
         ConnectDB connectDB = ConnectDB.getInstance();
         Connection connection = connectDB.getConnection();
-        List<ClassDiary> classDiaryList = new ArrayList<>();
+        String sql = "select * from student_diary where studentID = ?;";
+        List<StudentDiary> studentDiaryList = new ArrayList<>();
         try{
-            PreparedStatement preparedStatement = connection.prepareStatement(GET_CLASS_DIARY);
-            preparedStatement.setInt(1,classID);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,studentID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 int diaryID = resultSet.getInt("diaryID");
                 String content = resultSet.getString("content");
                 String date = resultSet.getString("date");
-                classDiaryList.add(new ClassDiary(diaryID,content,date,classID));
+                studentDiaryList.add(new StudentDiary(diaryID,content,date,studentID));
+                System.out.println(content);
             }
         } catch (SQLException exception) {
             exception.printStackTrace();
         }
-        return classDiaryList;
+        return studentDiaryList;
     }
 
     @Override
-    public boolean deleteClassDiary(int diaryID) {
-        String sql = "DELETE FROM class_diary WHERE diaryID = ?";
+    public boolean deleteStudentDiary(int studentID) {
+        String sql = "DELETE FROM student_diary WHERE diaryID = ?";
         ConnectDB connectDB = ConnectDB.getInstance();
         Connection connection = connectDB.getConnection();
         try {
             PreparedStatement stm = connection.prepareStatement(sql);
-            stm.setInt(1,diaryID);
+            stm.setInt(1,studentID);
             stm.executeUpdate();
             return true;
         } catch (SQLException throwables) {

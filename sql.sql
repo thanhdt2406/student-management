@@ -85,7 +85,7 @@ CREATE TABLE `academic_classroom` (
 CREATE TABLE `subject` (
                            `ID` int NOT NULL AUTO_INCREMENT,
                            `subName` varchar(30) NOT NULL UNIQUE,
-                           PRIMARY KEY (`subId`)
+                           PRIMARY KEY (`ID`)
 );
 
 CREATE TABLE `mark` (
@@ -98,7 +98,7 @@ CREATE TABLE `mark` (
                         KEY `subject_student` (`subID`),
                         KEY `student_subject` (`studentID`),
                         CONSTRAINT `student_subject` FOREIGN KEY (`studentID`) REFERENCES `student` (`id`),
-                        CONSTRAINT `subject_student` FOREIGN KEY (`subID`) REFERENCES `subject` (`subId`)
+                        CONSTRAINT `subject_student` FOREIGN KEY (`subID`) REFERENCES `subject` (`ID`)
 );
 
 CREATE TABLE `teacher_class` (

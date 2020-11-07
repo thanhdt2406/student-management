@@ -10,4 +10,6 @@ public interface IClassDiaryService {
     boolean editClassDiary(int diaryID, String content);
 
     List<ClassDiary> getClassDiary(int classID);
+
+    public boolean deleteClassDiary(int diaryID);
 }

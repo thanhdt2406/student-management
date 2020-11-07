@@ -1,13 +1,6 @@
-import dao.ConnectDB;
-import dao.academic_service.AcademicService;
-import dao.subject_service.SubjectService;
-import model.Subject;
-import model.staff.AcademicStaff;
+import dao.studentdiary_sevice.StudentDiaryService;
+import model.diary.StudentDiary;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 public class Main {
@@ -15,11 +8,15 @@ public class Main {
 //        ConnectDB connectDB = ConnectDB.getInstance();
 //        Connection connection = connectDB.getConnection();
 
-        SubjectService service = new SubjectService();
-        Subject subject = new Subject("C++");
-        service.editSubject(1,"Java");
-        service.editSubject(2,"C++");
-        System.out.println(service.editSubject(6,"ssdsds"));
-
+        StudentDiaryService service = new StudentDiaryService();
+        StudentDiary diary = new StudentDiary("thang ngu nay", 2);
+        //service.createNewStudentDiary(diary);
+        //System.out.println(service.editStudentDiary(2,"pro"));
+//        List<StudentDiary> list = service.getStudentDiary(2);
+//        System.out.println(list.size());
+//        for (StudentDiary ele : list){
+//            System.out.println(ele.getContent());
+//        }
+        service.deleteStudentDiary(4);
     }
 }

@@ -85,7 +85,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="/CreateClass" class="nav-link">
+                        <a href="/Class?fileName=CreateClassForm" class="nav-link">
                             <i class="nav-icon fas fa-plus"></i>
                             <p>Create New Class</p>
                         </a>
@@ -106,7 +106,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="" class="nav-link">
+                                <a href="/Class?fileName=listAcademicStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
@@ -135,7 +135,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="listAcademicStaff.jsp" class="nav-link">
+                                <a href="/Class?fileName=listAcademicStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
@@ -213,8 +213,8 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-    <jsp:include page="${fileName}.jsp" />
-    <h1>${fileName}</h1>
+    <jsp:include page="${fileNameRes}.jsp" />
+    <h1>${fileNameRes}</h1>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

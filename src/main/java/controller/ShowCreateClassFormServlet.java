@@ -16,8 +16,8 @@ public class ShowCreateClassFormServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String fileName = request.getParameter("fileName");
-        request.setAttribute("fileName",fileName);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/Admin/sideBar.jsp");
+        request.setAttribute("fileNameRes",fileName);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/Admin/adminIndex.jsp");
         dispatcher.forward(request,response);
     }
 }

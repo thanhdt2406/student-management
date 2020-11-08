@@ -31,7 +31,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">DataTables</li>
+                            <li class="breadcrumb-item active">AsStaff Information</li>
                         </ol>
                     </div>
                 </div>
@@ -51,10 +51,9 @@
                                         <th>ID</th>
                                         <th>Username</th>
                                         <th>Password</th>
-                                        <th>Position</th>
                                         <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
+                                        <th>Address</th>
+                                        <th>Salary</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -67,13 +66,11 @@
                                         <td> 4</td>
                                         <td>X</td>
                                         <td>X</td>
-                                        <td>X</td>
                                     </tr>
                                     <tr>
                                         <td>ABC</td>
                                         <td>ABC
                                         </td>
-                                        <td>ABC</td>
                                         <td>ABC</td>
                                         <td>ABC</td>
                                         <td>ABC</td>

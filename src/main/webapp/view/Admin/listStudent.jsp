@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +26,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User information</h1>
+                        <h1>Student Information</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">user Information</li>
+                            <li class="breadcrumb-item active">Student Information</li>
                         </ol>
                     </div>
                 </div>
@@ -52,10 +51,9 @@
                                         <th>ID</th>
                                         <th>Username</th>
                                         <th>Password</th>
-                                        <th>Position</th>
+                                        <th>Class</th>
                                         <th>PhoneNumber</th>
                                         <th>Address</th>
-
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -110,22 +108,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../data/dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script>
+
 </body>
 </html>
+

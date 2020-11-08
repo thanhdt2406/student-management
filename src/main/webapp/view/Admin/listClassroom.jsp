@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +26,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User information</h1>
+                        <h1>Class Information</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">user Information</li>
+                            <li class="breadcrumb-item active">Class Information</li>
                         </ol>
                     </div>
                 </div>
@@ -50,12 +49,8 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Position</th>
-                                        <th>PhoneNumber</th>
-                                        <th>Address</th>
-
+                                        <th>Class name</th>
+                                        <th>Start date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -65,17 +60,11 @@
                                             Explorer 4.0
                                         </td>
                                         <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
                                     </tr>
                                     <tr>
                                         <td>ABC</td>
                                         <td>ABC
                                         </td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
                                         <td>ABC</td>
                                     </tr>
                                 </table>
@@ -110,22 +99,7 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../data/dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script>
+
 </body>
 </html>
+

@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/Class?fileName=listClassroom" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
@@ -106,19 +106,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Class?fileName=listAcademicStaff" class="nav-link">
+                                <a href="/Class?fileName=createNewAcaStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Class?fileName=createNewTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Class?fileName=createNewStudent" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
@@ -141,19 +141,19 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Class?fileName=listTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Class?fileName=listStudent" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Class?fileName=listUser" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>All user</p>
                                 </a>

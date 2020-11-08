@@ -4,36 +4,27 @@ public class User {
     private int userId;
     private String username;
     private String password;
-    private String name;
     private String role;
-    private String phoneNumber;
-    private boolean status = true;
-
-    public User() {
-
-    }
-
-    public User(String username, String password, String name, String role, String phoneNumber) {
-        this.username = username;
-        this.password = password;
-        this.name = name;
-        this.role = role;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public User(int userId, String username, String password, String name, String role, String phoneNumber) {
+    private String signUpDate;
+    public User(){}
+    public User(int userId, String username, String password, String role, String signUpDate) {
         this.userId = userId;
         this.username = username;
         this.password = password;
-        this.name = name;
         this.role = role;
-        this.phoneNumber = phoneNumber;
+        this.signUpDate = signUpDate;
     }
 
-    public User(String username, String password, String name, String role) {
+    public User(String username, String password, String role, String signUpDate) {
         this.username = username;
         this.password = password;
-        this.name = name;
+        this.role = role;
+        this.signUpDate = signUpDate;
+    }
+
+    public User(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
         this.role = role;
     }
 
@@ -69,27 +60,11 @@ public class User {
         this.role = role;
     }
 
-    public boolean isStatus() {
-        return status;
+    public String getSignUpDate() {
+        return signUpDate;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setSignUpDate(String signUpDate) {
+        this.signUpDate = signUpDate;
     }
 }

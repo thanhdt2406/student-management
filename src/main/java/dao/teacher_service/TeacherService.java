@@ -2,6 +2,7 @@ package dao.teacher_service;
 
 import com.mysql.cj.x.protobuf.MysqlxCursor;
 import dao.ConnectDB;
+import model.Classroom;
 import model.staff.Teacher;
 
 import java.sql.*;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 public class TeacherService implements ITeacherService {
     List<Teacher> teachers = new ArrayList<>();
+    List<Classroom> classRooms = new ArrayList<>();
     Map<Integer, Teacher> teacherMap = new HashMap<>();
 
     public TeacherService() {
@@ -36,11 +38,11 @@ public class TeacherService implements ITeacherService {
             while (rs.next()) {
                 int id = Integer.parseInt(rs.getString("id"));
                 String name = rs.getString("name");
-                String role = rs.getString("role");
-                String phone_number = rs.getString("phone number");
-                String status = rs.getString(" status");
+                String address = rs.getString("address");
+                String phoneNumber = rs.getString("phone_number");
                 float salary = Float.parseFloat(rs.getString("salary"));
-                teachers.add(new Teacher(id, role, name, phone_number, status, salary));
+                boolean status = rs.getInt("status") == 1;
+                teachers.add(new Teacher(id, name, phoneNumber, address, salary));
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -50,36 +52,76 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public boolean addNewTeacher(Teacher teacher) {
+        boolean isAdded = false;
         Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "insert into teacher(id,name,phone_number,status,salary)" + "values(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, teacher.getId());
-            ps.setString(2, teacher.getName());
+            ps.setString(2, teacher.getUserName());
             ps.setString(3, teacher.getPhoneNumber());
-            ps.setString(4, teacher.getStatus());
             ps.setFloat(5, teacher.getSalary());
-
-            return ps.executeUpdate() > 0;
+            isAdded = ps.executeUpdate() > 0;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return false;
+        return isAdded;
     }
 
     @Override
-    public void editTeacher(int teacherID) {
-        Teacher teacher = null;
-        try { Connection connection = ConnectDB.getInstance().getConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement("select * from teacher where id = ?")
+    public boolean editTeacher(Teacher teacher) {
+        boolean isUpdated = false;
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "update [teacher] set userName = ?,PhoneNumber = ?, salary = ?  " + "where id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(4, teacher.getId());
+            ps.setString(1, teacher.getUserName());
+            ps.setString(2, teacher.getPhoneNumber());
+            ps.setFloat(3, teacher.getSalary());
 
+            isUpdated = ps.executeUpdate() > 0;//sex update du lieu trong data base tra ve so luong abn ghi duoc cap nhat
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return isUpdated;
     }
 
     @Override
-    public void deleteTeacher(int teacherID) {
+    public boolean deleteTeacher(int teacherID) {
+        boolean isDeleted = false;
 
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String DELETE_QUERY = "DELETE FROM teacher WHERE id = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(DELETE_QUERY);
+            ps.setInt(1, teacherID);
+            isDeleted = ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return isDeleted;
+    }
+
+    @Override
+    public List<Classroom> getClassRoom() {
+        String sql = "select * from classroom;";
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                int id = Integer.parseInt(rs.getString("id"));
+                String name = rs.getString("name");
+                String role = rs.getString("role");
+                String phone_number = rs.getString("phone number");
+                String status = rs.getString(" status");
+                float salary = Float.parseFloat(rs.getString("salary"));
+                // classRooms.add(new Classroom(id,name,));
+            }
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+        return classRooms;
     }
 }

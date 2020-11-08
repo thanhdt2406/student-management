@@ -1,71 +1,17 @@
 package model.staff;
 
-import model.User;
-
-public class Teacher extends User {
+public class Teacher{
     private int id;
-    private String name;
+    private String userName;
     private String phoneNumber;
-    private String status;
+    private String address;
     private float salary;
 
-
-    public Teacher() {
-
-    }
-
-    public Teacher(int id, String name, String phoneNumber, String status, float salary) {
+    public Teacher(int id, String userName, String phoneNumber, String address, float salary) {
         this.id = id;
-        this.name = name;
+        this.userName = userName;
         this.phoneNumber = phoneNumber;
-        this.status = status;
-        this.salary = salary;
-    }
-
-    public Teacher(String username, String password, String name, String role, String phoneNumber, int id, String name1, String phoneNumber1, String status, float salary) {
-        super(username, password, name, role, phoneNumber);
-        this.id = id;
-        this.name = name1;
-        this.phoneNumber = phoneNumber1;
-        this.status = status;
-        this.salary = salary;
-    }
-
-    public Teacher(int userId, String username, String password, String name, String role, String phoneNumber, int id, String name1, String phoneNumber1, String status, float salary) {
-        super(userId, username, password, name, role, phoneNumber);
-        this.id = id;
-        this.name = name1;
-        this.phoneNumber = phoneNumber1;
-        this.status = status;
-        this.salary = salary;
-    }
-
-    public Teacher(String username, String password, String name, String role, int id, String name1, String phoneNumber, String status, float salary) {
-        super(username, password, name, role);
-        this.id = id;
-        this.name = name1;
-        this.phoneNumber = phoneNumber;
-        this.status = status;
-        this.salary = salary;
-    }
-
-    public Teacher(String username, String password, String name, String role, String phoneNumber) {
-        super(username, password, name, role, phoneNumber);
-    }
-
-    public Teacher(int userId, String username, String password, String name, String role, String phoneNumber) {
-        super(userId, username, password, name, role, phoneNumber);
-    }
-
-    public Teacher(String username, String password, String name, String role) {
-        super(username, password, name, role);
-    }
-
-    public Teacher(int id, String role, String name, String phone_number, String status, float salary) {
-        this.id = id;
-        this.name = name;
-        this.phoneNumber = phone_number;
-        this.status = status;
+        this.address = address;
         this.salary = salary;
     }
 
@@ -77,32 +23,28 @@ public class Teacher extends User {
         this.id = id;
     }
 
-    @Override
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    @Override
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    @Override
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    @Override
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAddress() {
+        return address;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public float getSalary() {

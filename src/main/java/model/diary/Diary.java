@@ -1,13 +1,9 @@
-package model;
+package model.diary;
 
 public class Diary {
     private int id;
     private String content;
     private String date;
-
-    public Diary() {
-
-    }
 
     public Diary(String content) {
         this.content = content;

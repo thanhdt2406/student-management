@@ -1,11 +1,9 @@
-<%@ page import="model.staff.Teacher" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
+    <title>Class List</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../data/plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
@@ -81,8 +79,13 @@
             <!-- Sidebar Menu -->
 
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                    data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>Class Information</p>
+                        </a>
+                    </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
@@ -107,62 +110,11 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="/teachers?action=classIndex" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Class</p>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-trophy"></i>
+                            <p>Mark</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>Display Student</p>
-                        </a>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-paint-brush"></i>
-                            <p>
-                                Write Daily Diary
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Class Diary</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Student Diary</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-search"></i>
-                            <p>
-                                Display Diary
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                           lh     <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Class Diary</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Student Diary</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -178,10 +130,16 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Teachers</h1>
+                        <h1>DataTables</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">DataTables</li>
+                        </ol>
                     </div>
                 </div>
-            </div>
+            </div><!-- /.container-fluid -->
         </section>
 
         <!-- Main content -->
@@ -194,25 +152,19 @@
                                 <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Phone Number</th>
-                                        <th>Address</th>
-                                        <th>Salary</th>
+                                        <th>Subject</th>
+                                        <th>Practice Mark</th>
+                                        <th>Theoretical Mark</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:out value="213" />
-                                    <c:forEach items='${requestScope["teachers"]}' var="teacher">
                                     <tr>
-                                        <td><a href="/customers?action=view&id=${teacher.getId()}">${teacher.getName()}</a></td>
-                                        <td>${teacher.getPhoneNumber()}</td>
-                                        <td>${teacher.getAddress()}</td>
-                                        <td>${teacher.getSalary()}</td>
-                                        <td><a href="/customers?action=edit&id=${teacher.getId()}">edit</a></td>
-                                        <td><a href="/customers?action=delete&id=${teacher.getId()}">delete</a></td>
+                                        <td>Trident</td>
+                                        <td>Internet
+                                            Explorer 4.0
+                                        </td>
+                                        <td>Win 95+</td>
                                     </tr>
-                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -227,6 +179,7 @@
         </section>
         <!-- /.content -->
     </div>
+    <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 

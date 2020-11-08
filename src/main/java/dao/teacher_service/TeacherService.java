@@ -117,7 +117,7 @@ public class TeacherService implements ITeacherService {
                 String phone_number = rs.getString("phone number");
                 String status = rs.getString(" status");
                 float salary = Float.parseFloat(rs.getString("salary"));
-                // classRooms.add(new Classroom(id,name,));
+                classRooms.add(new Classroom());
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

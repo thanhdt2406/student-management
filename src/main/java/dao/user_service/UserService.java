@@ -20,8 +20,8 @@ public class UserService implements IUserService {
         ConnectDB connectDB = ConnectDB.getInstance();
         Connection connection = connectDB.getConnection();
         try {
-            CallableStatement callableStatement = connection.prepareCall(SELECT_ALL_USER);
-            ResultSet resultSet = callableStatement.executeQuery();
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_USER);
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
                 String username = resultSet.getString("username");

@@ -213,8 +213,8 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-    <jsp:include page="${action}.jsp" />
-    <h1>${action}</h1>
+    <jsp:include page="${fileName}.jsp" />
+    <h1>${fileName}</h1>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

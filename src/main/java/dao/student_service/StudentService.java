@@ -26,7 +26,7 @@ public class StudentService implements IStudentService {
         this.studentMap = studentMap;
     }
 
-    //Đợi làm servlet rồi tạo hàm này
+
     @Override
     public Student addNewStudent(Student student) {
         return null;

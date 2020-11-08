@@ -1,6 +1,6 @@
 package controller;
 
-import dao.UserDAO;
+import dao.user_service.UserService;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -19,8 +19,8 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        UserDAO userDAO = new UserDAO();
-        List<User> userList = userDAO.getAllUsers();
+        UserService userService = new UserService();
+        List<User> userList = userService.getAllUser();
         for (User user : userList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 session.setAttribute("username", user.getUsername());

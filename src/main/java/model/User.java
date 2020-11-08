@@ -79,14 +79,14 @@ public class User {
         this.signUpDate = signUpDate;
     }
 
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "userId=" + userId +
-//                ", username='" + username + '\'' +
-//                ", password='" + password + '\'' +
-//                ", role='" + role + '\'' +
-//                ", signUpDate='" + signUpDate + '\'' +
-//                '}';
-//    }
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", signUpDate='" + signUpDate + '\'' +
+                '}';
+    }
 }

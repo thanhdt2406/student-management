@@ -8,4 +8,6 @@ public interface IUserService {
     List<User> getAllUser();
 
     boolean changePassword(int id,String password);
+
+    User getUserInfor(int userID);
 }

@@ -86,7 +86,7 @@ public class UserService implements IUserService {
                         classID = rsGet.getInt("classID");
                         status = rsGet.getBoolean("status");
                         user = new Student(userID, username, password, role, date, name, phoneNumber, address, status, classID);
-                        return user;
+                        break;
                     case "teacher":
                         sql = "select * from teacher where id = " + userID;
                         rsGet = psGet.executeQuery(sql);
@@ -97,7 +97,7 @@ public class UserService implements IUserService {
                         salary = rsGet.getInt("salary");
                         status = rsGet.getBoolean("status");
                         user = new Teacher(userID, username, password, role, date, name, phoneNumber, address, status, salary);
-                        return user;
+                        break;
                     case "academic_staff":
                         sql = "select * from academic_staff where id = " + userID;
                         rsGet = psGet.executeQuery(sql);
@@ -108,7 +108,7 @@ public class UserService implements IUserService {
                         salary = rsGet.getInt("salary");
                         status = rsGet.getBoolean("status");
                         user = new AcademicStaff(userID, username, password, role, date, name, phoneNumber, address, status, salary);
-                        return user;
+                        break;
                     default:
                         user = new User(userID, username, password, role, date);
                 }
@@ -116,6 +116,6 @@ public class UserService implements IUserService {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return null;
+        return user;
     }
 }

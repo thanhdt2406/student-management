@@ -7,7 +7,7 @@ public class Staff extends User {
     private String phoneNumber;
     private String address;
     private boolean status;
-    private float salary;
+    private int salary;
 
 
 
@@ -148,11 +148,11 @@ public class Staff extends User {
         this.status = status;
     }
 
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 }

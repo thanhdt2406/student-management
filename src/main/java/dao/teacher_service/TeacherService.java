@@ -53,32 +53,35 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public boolean addNewTeacher(User user, Teacher teacher) {
+    public boolean addNewTeacher(Teacher teacher) {
         boolean isAdded = false;
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "insert into teacher(id,name,phone_number,status,salary)" + "values(?,?,?,?,?)";
+        String sql = "call createNewTeacherFullInformation(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, user.getUserId());
-            ps.setString(2, user.getUsername());
-            ps.setString(3, teacher.getPhoneNumber());
-            ps.setFloat(5, teacher.getSalary());
-            isAdded = ps.executeUpdate() > 0;
+            ps.setString(1, teacher.getUsername());
+            ps.setString(2, teacher.getPassword());
+            ps.setString(3, teacher.getName());
+            ps.setString(4, teacher.getPhoneNumber());
+            ps.setString(5, teacher.getAddress());
+            ps.setInt(6, teacher.getSalary());
+            ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return isAdded;
+        return false;
     }
 
     @Override
-    public boolean editTeacher(User user, Teacher teacher) {
+    public boolean editTeacher(Teacher teacher) {
         boolean isUpdated = false;
         Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "update [teacher] set userName = ?,PhoneNumber = ?, salary = ?  " + "where id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(4, user.getUserId());
-            ps.setString(1, user.getUsername());
+            ps.setInt(4, teacher.getUserId());
+            ps.setString(1, teacher.getUsername());
             ps.setString(2, teacher.getPhoneNumber());
             ps.setFloat(3, teacher.getSalary());
 

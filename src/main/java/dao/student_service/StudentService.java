@@ -2,7 +2,6 @@ package dao.student_service;
 
 import dao.ConnectDB;
 import model.Student;
-import model.User;
 
 import java.sql.*;
 import java.util.*;
@@ -28,7 +27,7 @@ public class StudentService implements IStudentService {
 
 
     @Override
-    public void addNewStudent(Student student) {
+    public boolean addNewStudent(Student student) {
         Connection connection = ConnectDB.getInstance().getConnection();
         try {
             CallableStatement cs = connection.prepareCall(ADD_NEW_STUDENT);
@@ -39,9 +38,11 @@ public class StudentService implements IStudentService {
             cs.setString(5, student.getPhoneNumber());
             cs.setString(6, student.getAddress());
             cs.executeUpdate();
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return false;
     }
 
     @Override

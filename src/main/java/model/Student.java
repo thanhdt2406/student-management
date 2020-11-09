@@ -60,6 +60,14 @@ public class Student extends User {
         this.classID = classID;
     }
 
+    public Student(String username, String password, String name, String address, String phone, int classId) {
+    super(username,password);
+    this.name = name;
+    this.address = address;
+    this.phoneNumber = phone;
+    this.classID = classId;
+    }
+
     public String getName() {
         return name;
     }

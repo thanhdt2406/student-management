@@ -132,13 +132,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllClassDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllStudentDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Student Diary</p>
                                 </a>

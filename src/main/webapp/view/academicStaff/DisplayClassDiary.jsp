@@ -178,31 +178,26 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <c:set var='as' value='${requestScope["academic_staff"]}'/>
-                                <form action="/editAccount" class="was-validated" method="post">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" id="name"
-                                               placeholder="Enter name" name="newName" value="${as.getName()}" required autofocus>
-                                        <div class="invalid-feedback">Name can't be empty!</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone_number">Phone Number</label>
-                                        <input type="text" class="form-control" id="phone_number"
-                                               placeholder="Enter phone number" name="newPhoneNumber" value="${as.getPhoneNumber()}">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="address">Address</label>
-                                        <input type="text" class="form-control" id="address"
-                                               placeholder="Enter address" name="newAddress" value="${as.getAddress()}">
-                                    </div>
-                                    <input type="text" class="form-control" id="status"
-                                           name="status"  style="visibility: hidden" value="${as.isStatus()}">
-                                    <button type="submit"
-                                            class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">
-                                        Save
-                                    </button>
-                                </form>
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
+                                    <thead>
+                                    <tr>
+                                        <th>Diary ID</th>
+                                        <th>Class ID</th>
+                                        <th>Date</th>
+                                        <th>Content</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+<%--                                    <jsp:useBean id="students" scope="request" type="java.util.List"/>--%>
+                                    <c:forEach items="${diaryList}" var="diary">
+                                    <tr>
+                                        <td><c:out value="${diary.getId()}"/></td>
+                                        <td><c:out value="${diary.getClassID()}"/></td>
+                                        <td><c:out value="${diary.getDate()}"/></td>
+                                        <td><c:out value="${diary.getContent()}"/></td>
+                                    </tr>
+                                    </c:forEach>
+                                </table>
                             </div>
                             <!-- /.card-body -->
                         </div>

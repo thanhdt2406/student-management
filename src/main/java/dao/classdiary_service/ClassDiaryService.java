@@ -84,4 +84,25 @@ public class ClassDiaryService implements IClassDiaryService {
         }
         return false;
     }
+
+    @Override
+    public List<ClassDiary> getAllClassDiary() {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        List<ClassDiary> classDiaryList = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from class_diary;");
+            while (rs.next()){
+                int diaryID = rs.getInt("diaryID");
+                String content = rs.getString("content");
+                String date = rs.getString("date");
+                int classID = rs.getInt("classID");
+                ClassDiary classDiary = new ClassDiary(diaryID,content,date,classID);
+                classDiaryList.add(classDiary);
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return classDiaryList;
+    }
 }

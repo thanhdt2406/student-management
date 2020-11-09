@@ -12,4 +12,6 @@ public interface IClassDiaryService {
     List<ClassDiary> getClassDiary(int classID);
 
     public boolean deleteClassDiary(int diaryID);
+
+    public List<ClassDiary> getAllClassDiary();
 }

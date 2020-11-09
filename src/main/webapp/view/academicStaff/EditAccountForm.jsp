@@ -178,26 +178,26 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                <c:set var='student' value='${requestScope["academic_staff"]}'/>
                                 <form action="/editAccount" class="was-validated" method="post">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name"
-                                               placeholder="Enter name" name="newName" value="${as.getName()}" required autofocus>
+                                               placeholder="Enter name" name="newName" value="${student.getName()}" required autofocus>
                                         <div class="invalid-feedback">Name can't be empty!</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone_number">Phone Number</label>
                                         <input type="text" class="form-control" id="phone_number"
-                                               placeholder="Enter phone number" name="newPhoneNumber" value="${as.getPhoneNumber()}">
+                                               placeholder="Enter phone number" name="newPhoneNumber" value="${student.getPhoneNumber()}">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" class="form-control" id="address"
-                                               placeholder="Enter address" name="newAddress" value="${as.getAddress()}">
+                                               placeholder="Enter address" name="newAddress" value="${student.getAddress()}">
                                     </div>
                                     <input type="text" class="form-control" id="status"
-                                           name="status"  style="visibility: hidden" value="${as.isStatus()}">
+                                           name="status"  style="visibility: hidden" value="${student.isStatus()}">
                                     <button type="submit"
                                             class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">
                                         Save

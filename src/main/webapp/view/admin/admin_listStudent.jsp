@@ -56,17 +56,25 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Class</th>
-                                            <th>Class</th>
+                                            <th>ClassID</th>
+                                            <th>Phone Number</th>
+                                            <th>Address</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${listStudent}" var="student">
+                                        <c:forEach items="${listStudent}" var="student" >
                                         <tr>
-                                            <td>${student.getUserId()}</td>
-                                            <td>${student.getName()}</td>
-                                            <td>${student.getClassId()}</td>
-                                            <td>${student.isStatus()}</td>
+                                            <td><c:out value="${student.getUserId()}"/></td>
+                                            <td><c:out value="${student.getName()}"/></td>
+                                            <td><c:out value="${student.getClassID()}"/></td>
+                                            <td><c:out value="${student.getPhoneNumber()}"/></td>
+                                            <td><c:out value="${student.getAddress()}"/></td>
+                                            <td><c:out value="${student.isStatus()}"/></td>
+                                            <td>
+                                                <a href="/editAccount?action=editStudentAccount&&ID=${student.getUserId()}">Change Status</a>
+                                            </td>
                                         </tr>
                                         </c:forEach>
                                     </table>

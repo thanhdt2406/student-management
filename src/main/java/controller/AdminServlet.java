@@ -128,7 +128,8 @@ public class AdminServlet extends HttpServlet {
                 createNewStudentForm(request, response);
                 break;
             case "displayClass":
-                request.setAttribute("action", "");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/class");
+                dispatcher.forward(request,response);
                 break;
             case "listAs":
                 listAllAs(request, response);
@@ -182,6 +183,7 @@ public class AdminServlet extends HttpServlet {
         StudentService service = new StudentService();
         List<Student> list = service.getAllStudent();
         request.setAttribute("listStudent",list);
+        System.out.println(list.size());
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_listStudent.jsp");
         try {
             dispatcher.forward(request, response);

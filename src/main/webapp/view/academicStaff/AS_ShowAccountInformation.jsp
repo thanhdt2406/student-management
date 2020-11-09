@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,23 +183,30 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Username</th>
-                                        <th>Password</th>
                                         <th>Signup Date</th>
                                         <th>Position</th>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Address</th>
+                                        <th>Salary</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                    </tr>
+                                    <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                        <tr>
+                                            <td><c:out value="${as.getUserId()}"/></td>
+                                            <td><c:out value="${as.getUsername()}"/></td>
+                                            <td><c:out value="${as.getSignUpDate()}"/></td>
+                                            <td><c:out value="${as.getRole()}"/></td>
+                                            <td><c:out value="${as.getName()}"/></td>
+                                            <td><c:out value="${as.getPhoneNumber()}"/></td>
+                                            <td><c:out value="${as.getAddress()}"/></td>
+                                            <td><c:out value="${as.getSalary()}"/></td>
+                                            <td>
+                                                <a href="/editAccount">Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -212,6 +222,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

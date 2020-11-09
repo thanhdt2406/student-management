@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -175,29 +178,31 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Signup Date</th>
-                                        <th>Position</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                    </tr>
-                                </table>
+                                <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                <form action="/editAccount" class="was-validated" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name"
+                                               placeholder="Enter name" name="newName" value="${as.getName()}" required autofocus>
+                                        <div class="invalid-feedback">Name can't be empty!</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone_number">Phone Number</label>
+                                        <input type="text" class="form-control" id="phone_number"
+                                               placeholder="Enter phone number" name="newPhoneNumber" value="${as.getPhoneNumber()}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control" id="address"
+                                               placeholder="Enter address" name="newAddress" value="${as.getAddress()}">
+                                    </div>
+                                    <input type="text" class="form-control" id="status"
+                                           name="status"  style="visibility: hidden" value="${as.isStatus()}">
+                                    <button type="submit"
+                                            class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">
+                                        Save
+                                    </button>
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -212,6 +217,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

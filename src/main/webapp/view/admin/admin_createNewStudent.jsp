@@ -51,6 +51,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <c:out value="${message}"/>
                                     <form action="/admin?action=createNewStudent" class="was-validated" method="post">
                                         <div class="form-group">
                                             <label for="username">Username:</label>

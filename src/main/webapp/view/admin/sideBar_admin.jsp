@@ -1,4 +1,3 @@
-
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
@@ -85,19 +84,19 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin?action=createNewAs" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>Academic Staff</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin?action=createNewTeacher" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>Teacher</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin?action=createNewStudent" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>Student</p>
                             </a>

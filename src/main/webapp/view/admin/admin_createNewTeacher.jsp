@@ -1,5 +1,5 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +22,6 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <jsp:include page="sideBar_admin.jsp" />
-
     <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
@@ -32,12 +31,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Create New Student</h1>
+                            <h1>Add New Teacher</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="AdminIndex.jsp">Home</a></li>
-                                <li class="breadcrumb-item active">Create New Student</li>
+                                <li class="breadcrumb-item active">Add new teacher</li>
                             </ol>
                         </div>
                     </div>
@@ -51,48 +50,42 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="/admin?action=createNewStudent" class="was-validated" method="post">
+                                    <form action="/admin?action=createNewTeacher" class="was-validated" method="post">
                                         <div class="form-group">
-                                            <label for="username">Username:</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required autofocus>
+                                            <label for="uname">Username:</label>
+                                            <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required autofocus>
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="password">Password:</label>
+                                            <label for="uname">Password:</label>
                                             <input type="text" class="form-control" id="password" placeholder="Enter password" name="password" required autofocus>
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="name">Full name:</label>
-                                            <input type="text" class="form-control" id="name" placeholder="Enter full name" name="name" required autofocus>
+                                            <label for="uname">Full name:</label>
+                                            <input type="text" class="form-control" id="name" placeholder="Enter full name" name="name" required >
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="phoneNumber">Phone number:</label>
-                                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number" name="phoneNumber" required autofocus>
+                                            <label for="uname">Phone number:</label>
+                                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number" name="phoneNumber" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uname">Address:</label>
+                                            <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" >
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Address:</label>
-                                            <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required autofocus>
+                                            <label for="uname">Salary:</label>
+                                            <input type="text" class="form-control" id="salary" placeholder="Enter salary" name="salary">
                                             <div class="valid-feedback">Valid.</div>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="className">Class name:</label>
-                                            <select name="className" id="className">
-                                                <c:forEach items="${listClass}" var="classroom">
-                                                    <option value="${classroom.getClassID()}">${classroom.getName()}</option>
-                                                </c:forEach>
-                                            </select>
-                                            <div class="valid-feedback">Valid.</div>
-                                            <div class="invalid-feedback">Please fill out this field.</div>
-                                        </div>
-                                        <button type="submit" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Create New Student</button>
+                                        <button type="submit" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Create New Teacher</button>
                                     </form>
                                 </div>
                                 <!-- /.card-body -->
@@ -158,5 +151,3 @@
 </script>
 </body>
 </html>
-
-

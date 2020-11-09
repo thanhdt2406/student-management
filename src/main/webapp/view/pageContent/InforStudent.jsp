@@ -45,39 +45,43 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                                <h1> Đây là infor của nó này anh em nhé!!</h1>
+                                <h1><c:out value = "${student.getName()}"></c:out></h1>
+                                <h2><c:out value = "${student.getPhoneNumber()}"></c:out></h2>
+                                <h3><c:out value = "${student.isStatus()}"></c:out></h3>
 
-<%--                                <table id="example2" class="table table-bordered table-hover">--%>
-<%--                                    <thead>--%>
-<%--                                    <tr>--%>
-<%--                                        <th>ID</th>--%>
-<%--                                        <th>Username</th>--%>
-<%--                                        <th>Password</th>--%>
-<%--                                        <th>Class</th>--%>
-<%--                                        <th>PhoneNumber</th>--%>
-<%--                                        <th>Address</th>--%>
-<%--                                    </tr>--%>
-<%--                                    </thead>--%>
-<%--                                    <tbody>--%>
-<%--                                    <tr>--%>
-<%--                                        <td>Trident</td>--%>
-<%--                                        <td>Internet--%>
-<%--                                            Explorer 4.0--%>
-<%--                                        </td>--%>
-<%--                                        <td>Win 95+</td>--%>
-<%--                                        <td> 4</td>--%>
-<%--                                        <td>X</td>--%>
-<%--                                        <td>X</td>--%>
-<%--                                    </tr>--%>
-<%--                                    <tr>--%>
-<%--                                        <td>ABC</td>--%>
-<%--                                        <td>ABC--%>
-<%--                                        </td>--%>
-<%--                                        <td>ABC</td>--%>
-<%--                                        <td>ABC</td>--%>
-<%--                                        <td>ABC</td>--%>
-<%--                                        <td>ABC</td>--%>
-<%--                                    </tr>--%>
-<%--                                </table>--%>
+                                <%--                                <table id="example2" class="table table-bordered table-hover">--%>
+                                <%--                                    <thead>--%>
+                                <%--                                    <tr>--%>
+                                <%--                                        <th>ID</th>--%>
+                                <%--                                        <th>Username</th>--%>
+                                <%--                                        <th>Password</th>--%>
+                                <%--                                        <th>Class</th>--%>
+                                <%--                                        <th>PhoneNumber</th>--%>
+                                <%--                                        <th>Address</th>--%>
+                                <%--                                    </tr>--%>
+                                <%--                                    </thead>--%>
+                                <%--                                    <tbody>--%>
+                                <%--                                    <tr>--%>
+                                <%--                                        <td>Trident</td>--%>
+                                <%--                                        <td>Internet--%>
+                                <%--                                            Explorer 4.0--%>
+                                <%--                                        </td>--%>
+                                <%--                                        <td>Win 95+</td>--%>
+                                <%--                                        <td> 4</td>--%>
+                                <%--                                        <td>X</td>--%>
+                                <%--                                        <td>X</td>--%>
+                                <%--                                    </tr>--%>
+                                <%--                                    <tr>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC--%>
+                                <%--                                        </td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                    </tr>--%>
+                                <%--                                </table>--%>
                             </div>
                             <!-- /.card-body -->
                         </div>

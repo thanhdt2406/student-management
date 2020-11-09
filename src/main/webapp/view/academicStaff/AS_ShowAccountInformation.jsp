@@ -1,9 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
+    <title>AS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -37,9 +40,9 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-3" action="#">
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="seachName">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
                 <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit" action="/student_handle">
+                    <button class="btn btn-navbar" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -50,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/Logout" class="nav-link">Log out</a>
+                <a href="#" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -75,22 +78,17 @@
                     <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Student</a>
+                    <a href="#" class="d-block">Academic Staff</a>
                 </div>
             </div>
 
             <!-- Sidebar Menu -->
 
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="/student_handle?action=acc_infor" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Class Information</p>
-                        </a>
-                    </li>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="/accountInformation" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Account
@@ -114,10 +112,38 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-trophy"></i>
-                            <p>Mark</p>
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>Display Class</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Display Student</p>
+                        </a>
+                    </li>
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                Display Diary
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far  fa-bookmark nav-icon"></i>
+                                    <p>Class Diary</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far  fa-bookmark nav-icon"></i>
+                                    <p>Student Diary</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </nav>
@@ -127,8 +153,76 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>DataTables</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">DataTables</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Username</th>
+                                        <th>Signup Date</th>
+                                        <th>Position</th>
+                                        <th>Name</th>
+                                        <th>Phone Number</th>
+                                        <th>Address</th>
+                                        <th>Salary</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                        <tr>
+                                            <td><c:out value="${as.getUserId()}"/></td>
+                                            <td><c:out value="${as.getUsername()}"/></td>
+                                            <td><c:out value="${as.getSignUpDate()}"/></td>
+                                            <td><c:out value="${as.getRole()}"/></td>
+                                            <td><c:out value="${as.getName()}"/></td>
+                                            <td><c:out value="${as.getPhoneNumber()}"/></td>
+                                            <td><c:out value="${as.getAddress()}"/></td>
+                                            <td><c:out value="${as.getSalary()}"/></td>
+                                            <td>
+                                                <a href="/editAccount">Edit</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

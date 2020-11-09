@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../data/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../data/plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="../../data/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../data/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../data/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../data/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../data/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../data/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -50,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/Logout" class="nav-link">Log out</a>
+                <a href="/Logout" class="nav-link">Logout</a>
             </li>
         </ul>
     </nav>
@@ -60,7 +63,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="#" class="brand-link">
-            <img src="../../data/dist/img/AdminLTELogo.png"
+            <img src="../data/dist/img/AdminLTELogo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
@@ -72,10 +75,10 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Teacher</a>
+                    <a href="#" class="d-block">Admin</a>
                 </div>
             </div>
 
@@ -84,40 +87,81 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
+                    <li class="nav-item">
+                        <a href="/Admin?action=createClass" class="nav-link">
+                            <i class="nav-icon fas fa-plus"></i>
+                            <p>Create New Class</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/Class" class="nav-link">
+                            <i class="nav-icon fas fa-book"></i>
+                            <p>Display Class</p>
+                        </a>
+                    </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user"></i>
+                            <i class="nav-icon fas fa-user-plus"></i>
                             <p>
-                                Account
+                                Create New User
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Admin?fileName=CreateNewAcaStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
-                                    <p>Account Information</p>
+                                    <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Admin?fileName=CreateNewTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
-                                    <p>Change Password</p>
+                                    <p>Teacher</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Admin?fileName=CreateNewStudent" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>Student</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-book"></i>
-                            <p>Display Class</p>
+                            <i class="nav-icon fas  fa-users"></i>
+                            <p>
+                                User List
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>Display Student</p>
-                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/Admin?fileName=ListAcademicStaff" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>Academic Staff</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Admin?fileName=ListTeacher" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>Teacher</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Admin?fileName=ListStudent" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>Student</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/Admin?fileName=ListUser" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>All user</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -129,7 +173,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Admin?fileName=createDiaryForm&&action=createDiaryForm" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
@@ -144,27 +188,28 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-search"></i>
+                            <i class="nav-icon fas  fa-trophy"></i>
                             <p>
-                                Display Diary
+                                Mark
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Class Diary</p>
+                                    <i class="far  fa-star nav-icon"></i>
+                                    <p>Class</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Student Diary</p>
+                                    <i class="far  fa-star nav-icon"></i>
+                                    <p>All Student</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -172,7 +217,6 @@
         <!-- /.sidebar -->
     </aside>
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
@@ -181,12 +225,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Student Information</h1>
+                            <h1>Display Class</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Student Information</li>
+                                <li class="breadcrumb-item active">Display Class</li>
                             </ol>
                         </div>
                     </div>
@@ -204,33 +248,22 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Class</th>
-                                            <th>PhoneNumber</th>
-                                            <th>Address</th>
+                                            <th>Name</th>
+                                            <th>Start Date</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach var="classroom" items="${classrooms}" >
                                         <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
+                                            <td><c:out value="${classroom.getClassID()}"/></td>
+                                            <td><c:out value="${classroom.getName()}"/></td>
+                                            <td><c:out value="${classroom.getStartDate()}"/></td>
+                                            <td>
+<%--                                                <a href="/class?action=edit?ID=${classroom.getID()}">Edit</a>--%>
+<%--                                                <a href="/class?action=delete?ID=${classroom.getID()}">Delete</a>--%>
                                             </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>X</td>
                                         </tr>
-                                        <tr>
-                                            <td>ABC</td>
-                                            <td>ABC
-                                            </td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                        </tr>
+                                        </c:forEach>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -247,7 +280,7 @@
         </div>
         <!-- /.content-wrapper -->
     </div>
-    <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>
@@ -264,35 +297,19 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../data/plugins/jquery/jquery.min.js"></script>
+<script src="../data/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
-<script src="../../data/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../data/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../data/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../data/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../data/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../data/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../data/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../data/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../data/dist/js/adminlte.min.js"></script>
+<script src="../data/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../data/dist/js/demo.js"></script>
+<script src="../data/dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script>
+
 </body>
 </html>

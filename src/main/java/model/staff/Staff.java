@@ -2,12 +2,14 @@ package model.staff;
 
 import model.User;
 
+import java.util.Date;
+
 public class Staff extends User {
     private String name;
     private String phoneNumber;
     private String address;
-    private boolean status;
-    private float salary;
+    private boolean status = true;
+    private int salary;
 
 
 
@@ -111,6 +113,15 @@ public class Staff extends User {
         this.salary = salary;
     }
 
+    public Staff(int id, String username, String password, String name, String phone, String address, String date, boolean status, int salary) {
+    super(id,username,password,date);
+    this.name = name;
+    this.phoneNumber = phone;
+    this.address=address;
+    this.status = status;
+    this.salary = salary;
+    }
+
 //    public Staff(int id, String name, String address, String phoneNumber, float salary, boolean status) {
 //        super(id,name,address,phoneNumber,salary,status);
 //    }
@@ -148,11 +159,11 @@ public class Staff extends User {
         this.status = status;
     }
 
-    public float getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 }

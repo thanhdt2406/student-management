@@ -1,4 +1,5 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="wrapper">
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -26,7 +27,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <form action="<%=request.getContextPath() %>/login" class="was-validated" method="post">
+                <form action="/class?action=create" class="was-validated" method="post">
                   <div class="form-group">
                     <label for="uname">Class name:</label>
                     <input type="text" class="form-control" id="uname" placeholder="Enter class name" name="className" required autofocus>

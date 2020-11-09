@@ -1,21 +1,10 @@
 package model.staff;
 
+import java.util.Date;
+
 public class Teacher extends Staff {
-    private int idTeacher;
-
-
-
-    public int getIdTeacher() {
-        return idTeacher;
-    }
-
-    public void setIdTeacher(int idTeacher) {
-        this.idTeacher = idTeacher;
-    }
-
-    public Teacher(int idTeacher,String name,String address,String phoneNumber, int salary, boolean status){
-        super(name,address,phoneNumber, status, salary);
-        this.idTeacher=idTeacher;
+    public Teacher(int id, String username, String password, String name, String phone, String address, String date, boolean status, int salary) {
+        super(id,username,password,name,phone,address,date,date,status,salary);
     }
 
     public Teacher(String name, String phoneNumber, String address, boolean status, int salary) {

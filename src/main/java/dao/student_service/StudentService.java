@@ -1,34 +1,26 @@
 package dao.student_service;
 
 import dao.ConnectDB;
+import dao.user_service.IUserService;
+import dao.user_service.UserService;
 import model.Student;
-import model.User;
 
 import java.sql.*;
 import java.util.*;
 
 public class StudentService implements IStudentService {
-    Map<Integer, Student> studentMap = new HashMap<>();
+    List<Student> list = new ArrayList<>();
 
-    private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ?, ?)";
-    private final String GET_ALL_STUDENT = "call getAllStudent();";
+    private final String ADD_NEW_STUDENT = "call createNewStudentFullInformation(?, ?, ?, ?, ?, ?)";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";
 
     public StudentService() {
     }
 
-    public Map<Integer, Student> getStudentMap() {
-        return studentMap;
-    }
-
-    public void setStudentMap(Map<Integer, Student> studentMap) {
-        this.studentMap = studentMap;
-    }
-
 
     @Override
-    public void addNewStudent(Student student) {
+    public boolean addNewStudent(Student student) {
         Connection connection = ConnectDB.getInstance().getConnection();
         try {
             CallableStatement cs = connection.prepareCall(ADD_NEW_STUDENT);
@@ -39,44 +31,34 @@ public class StudentService implements IStudentService {
             cs.setString(5, student.getPhoneNumber());
             cs.setString(6, student.getAddress());
             cs.executeUpdate();
+            return true;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        return false;
     }
 
     @Override
-    public List<Student> getAllStudent() {
+    public Student getStudentInfor(int id){
         Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "select * from student where id = " + id;
+        Student student = null;
         try {
-            CallableStatement cs = connection.prepareCall(GET_ALL_STUDENT);
-            ResultSet rs = cs.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt(1);
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
                 String name = rs.getString(2);
                 String phone = rs.getString(4);
                 String role = rs.getString(3);
                 boolean status = rs.getBoolean(5);
                 int classID = rs.getInt(6);
-                Student student = new Student(id, name, phone, status, classID);
-                studentMap.put(id, student);
+                student = new Student(id, name, phone, status, classID);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        Collection<Student> values = studentMap.values();
-        List<Student> students = new ArrayList<>(values);
-        return students;
+        return student;
     }
-
-//    public static void main(String[] args) {
-//        IStudentService service = new StudentService();
-//        List<Student> list;
-//        list = service.getAllStudent();
-//        for (Student one: list) {
-//            System.out.println(one.getName());
-//        }
-//    }
 
     @Override
     public boolean deleteStudent(int studentID) {
@@ -117,5 +99,68 @@ public class StudentService implements IStudentService {
     @Override
     public int AvgTheoreticalMark() {
         return 0;
+    }
+
+    @Override
+    public List<Student> getAllStudent() {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from student;");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String phone = rs.getString("phone_number");
+                String address = rs.getString("address");
+                boolean status = rs.getBoolean("status");
+                int classID = rs.getInt("classID");
+                Student student = new Student(id,name,phone,address,status,classID);
+                list.add(student);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Student> getStudentInClass(int classID) {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from student where classID = ?;");
+            preparedStatement.setInt(1,classID);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String phone = rs.getString("phone_number");
+                String address = rs.getString("address");
+                boolean status = rs.getBoolean("status");
+                Student student = new Student(id,name,phone,address,status,classID);
+                list.add(student);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public boolean changeStatus(int ID) {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("update student set status = ? where id = ?;");
+            IUserService userService = new UserService();
+            Student student = (Student) userService.getUserInfor(ID);
+            preparedStatement.setBoolean(1,!student.isStatus());
+            preparedStatement.setInt(2,ID);
+            int rs = preparedStatement.executeUpdate();
+            if(rs!=0){
+                return true;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return false;
     }
 }

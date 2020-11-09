@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,12 +28,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>DataTables</h1>
+                        <h1>Display Class</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">DataTables</li>
+                            <li class="breadcrumb-item active">Display Class</li>
                         </ol>
                     </div>
                 </div>
@@ -46,40 +47,29 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Position</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
+                                        <th>Name</th>
+                                        <th>Start Date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                    <c:forEach items="${classrooms}" var="classroom" >
                                     <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
+                                        <td><c:out value="${classroom.getClassID()}"/></td>
+                                        <td><c:out value="${classroom.getName()}"/></td>
+                                        <td><c:out value="${classroom.getStartDate()}"/></td>
+                                        <td>
+                                            <a href="/class?action=edit?ID=${classroom.getClassID()}">Edit</a>
+                                            <p> </p>
+                                            <a href="/class?action=delete?ID=${classroom.getClassID()}">Delete</a>
                                         </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
                                     </tr>
-                                    <tr>
-                                        <td>ABC</td>
-                                        <td>ABC
-                                        </td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                    </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -143,3 +133,4 @@
 </script>
 </body>
 </html>
+

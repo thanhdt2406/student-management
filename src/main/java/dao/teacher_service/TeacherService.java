@@ -8,12 +8,12 @@ import model.staff.Teacher;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TeacherService implements ITeacherService {
-    List<Teacher> teachers = new ArrayList<>();
     List<Classroom> classRooms = new ArrayList<>();
     Map<Integer, Teacher> teacherMap = new HashMap<>();
 
@@ -30,21 +30,20 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public List<Teacher> showAllTeacher() {
-        teachers.clear();
-        String sql = "select * from teacher;";
+        List<Teacher> teachers = new ArrayList<>();
+        String sql = "SELECT * FROM teacher";
         Connection connection = ConnectDB.getInstance().getConnection();
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                int id = Integer.parseInt(rs.getString("id"));
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String address = rs.getString("address");
                 String phone = rs.getString("phone_number");
-                float salary = Float.parseFloat(rs.getString("salary"));
-                boolean status = rs.getInt("status") == 1;
-                teachers.add(new Teacher(id, name,phone,address,status, (int) salary));
-//                id, name, phone, address, status, salary
+                int salary = rs.getInt("salary");
+                boolean status = rs.getBoolean("status");
+                teachers.add(new Teacher(id, name, phone, address, status, salary));
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();
@@ -53,32 +52,35 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public boolean addNewTeacher(User user,Teacher teacher) {
+    public boolean addNewTeacher(Teacher teacher) {
         boolean isAdded = false;
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "insert into teacher(id,name,phone_number,status,salary)" + "values(?,?,?,?,?)";
+        String sql = "call createNewTeacherFullInformation(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, user.getUserId());
-            ps.setString(2, user.getUsername());
-            ps.setString(3, teacher.getPhoneNumber());
-            ps.setFloat(5, teacher.getSalary());
-            isAdded = ps.executeUpdate() > 0;
+            ps.setString(1, teacher.getUsername());
+            ps.setString(2, teacher.getPassword());
+            ps.setString(3, teacher.getName());
+            ps.setString(4, teacher.getPhoneNumber());
+            ps.setString(5, teacher.getAddress());
+            ps.setInt(6, teacher.getSalary());
+            ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return isAdded;
+        return false;
     }
 
     @Override
-    public boolean editTeacher(User user, Teacher teacher) {
+    public boolean editTeacher(Teacher teacher) {
         boolean isUpdated = false;
         Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "update [teacher] set userName = ?,PhoneNumber = ?, salary = ?  " + "where id = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(4, user.getUserId());
-            ps.setString(1, user.getUsername());
+            ps.setInt(4, teacher.getUserId());
+            ps.setString(1, teacher.getUsername());
             ps.setString(2, teacher.getPhoneNumber());
             ps.setFloat(3, teacher.getSalary());
 
@@ -119,7 +121,7 @@ public class TeacherService implements ITeacherService {
                 String phone_number = rs.getString("phone number");
                 String status = rs.getString(" status");
                 float salary = Float.parseFloat(rs.getString("salary"));
-                classRooms.add(new Classroom(id,name,role,phone_number,status,salary));
+                classRooms.add(new Classroom(id, name, role, phone_number, status, salary));
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

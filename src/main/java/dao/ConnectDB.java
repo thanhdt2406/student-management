@@ -6,9 +6,7 @@ public class ConnectDB {
 
     final String DB_URL = "jdbc:mysql://localhost:3306/student_management?serverTimezone=UTC";
     final String jdbc_USERNAME = "root";
-    final String jdbc_PASSWORD = "";
-
-
+    final String jdbc_PASSWORD = "root";
 
     private static ConnectDB instance;
 
@@ -32,9 +30,6 @@ public class ConnectDB {
             e.printStackTrace();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-        }
-        if (connection != null) {
-            System.out.println("connect database succeed!");
         }
         return connection;
     }

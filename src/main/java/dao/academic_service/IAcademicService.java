@@ -4,7 +4,7 @@ import model.staff.AcademicStaff;
 
 import java.util.List;
 
-public interface IAcademmicService {
+public interface IAcademicService {
     boolean addNewAcademicStaff(AcademicStaff academicStaff);
     List<AcademicStaff> listAcademicStaff();
     boolean deleteAS(int asID);

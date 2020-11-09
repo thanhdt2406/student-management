@@ -183,10 +183,11 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Name</th>
-                                        <th>Class</th>
+                                        <th>ClassID</th>
                                         <th>Phone Number</th>
                                         <th>Address</th>
                                         <th>Status</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -200,7 +201,7 @@
                                         <td><c:out value="${student.getAddress()}"/></td>
                                         <td><c:out value="${student.isStatus()}"/></td>
                                         <td>
-                                            <a href="/class?action=editStudent&&ID=${student.getUserId()}">Edit</a>
+                                            <a href="/editAccount?action=editStudentAccount&&ID=${student.getUserId()}">Change Status</a>
                                         </td>
                                     </tr>
                                     </c:forEach>

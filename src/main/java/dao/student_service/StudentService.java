@@ -1,6 +1,8 @@
 package dao.student_service;
 
 import dao.ConnectDB;
+import dao.user_service.IUserService;
+import dao.user_service.UserService;
 import model.Student;
 
 import java.sql.*;
@@ -45,27 +47,7 @@ public class StudentService implements IStudentService {
         return false;
     }
 
-    @Override
-    public List<Student> getAllStudent() {
-        Connection connection = ConnectDB.getInstance().getConnection();
-        try {
-            CallableStatement cs = connection.prepareCall(GET_ALL_STUDENT);
-            ResultSet rs = cs.executeQuery();
-            while (rs.next()) {
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                String phone = rs.getString(4);
-                String role = rs.getString(3);
-                boolean status = rs.getBoolean(5);
-                int classID = rs.getInt(6);
-                Student student = new Student(id, name, phone, status, classID);
-                list.add(student);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return list;
-    }
+
 
     @Override
     public Student getStudentInfor(int id){
@@ -131,6 +113,28 @@ public class StudentService implements IStudentService {
     }
 
     @Override
+    public List<Student> getAllStudent() {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from student;");
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String phone = rs.getString("phone_number");
+                String address = rs.getString("address");
+                boolean status = rs.getBoolean("status");
+                int classID = rs.getInt("classID");
+                Student student = new Student(id,name,phone,address,status,classID);
+                list.add(student);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
     public List<Student> getStudentInClass(int classID) {
         Connection connection = ConnectDB.getInstance().getConnection();
         try {
@@ -150,5 +154,24 @@ public class StudentService implements IStudentService {
             throwables.printStackTrace();
         }
         return list;
+    }
+
+    @Override
+    public boolean changeStatus(int ID) {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("update student set status = ? where id = ?;");
+            IUserService userService = new UserService();
+            Student student = (Student) userService.getUserInfor(ID);
+            preparedStatement.setBoolean(1,!student.isStatus());
+            preparedStatement.setInt(2,ID);
+            int rs = preparedStatement.executeUpdate();
+            if(rs!=0){
+                return true;
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return false;
     }
 }

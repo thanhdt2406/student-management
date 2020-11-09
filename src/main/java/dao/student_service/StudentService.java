@@ -10,11 +10,7 @@ import java.util.*;
 public class StudentService implements IStudentService {
     Map<Integer, Student> studentMap = new HashMap<>();
 
-<<<<<<< HEAD
     private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ?, ?)";
-=======
-    private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ? , ?)";
->>>>>>> 5d3ccf1bf187dc506c546be54757dfadb816ed32
     private final String GET_ALL_STUDENT = "call getAllStudent();";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";

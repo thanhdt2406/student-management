@@ -58,7 +58,7 @@ public class LoginServlet extends HttpServlet {
                 } else {
                     Student student = getStudentInfor(user.getUserId());
                     request.setAttribute("student",student);
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/student_handle");
                     dispatcher.forward(request, response);
                 }
                 return;

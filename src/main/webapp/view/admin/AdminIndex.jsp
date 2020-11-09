@@ -51,7 +51,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Log out</a>
+                <a href="/Logout" class="nav-link">Logout</a>
             </li>
         </ul>
     </nav>
@@ -85,13 +85,13 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="/Class?fileName=CreateClassForm" class="nav-link">
+                        <a href="/Admin?fileName=CreateClassForm" class="nav-link">
                             <i class="nav-icon fas fa-plus"></i>
                             <p>Create New Class</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/Class?fileName=listClassroom" class="nav-link">
+                        <a href="/Admin?fileName=listClassroom" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
@@ -106,19 +106,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Class?fileName=createNewAcaStaff" class="nav-link">
+                                <a href="/Admin?fileName=createNewAcaStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Class?fileName=createNewTeacher" class="nav-link">
+                                <a href="/Admin?fileName=createNewTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Class?fileName=createNewStudent" class="nav-link">
+                                <a href="/Admin?fileName=createNewStudent" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
@@ -135,25 +135,25 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Class?fileName=listAcademicStaff" class="nav-link">
+                                <a href="/Admin?fileName=listAcademicStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Class?fileName=listTeacher" class="nav-link">
+                                <a href="/Admin?fileName=listTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Class?fileName=listStudent" class="nav-link">
+                                <a href="/Admin?fileName=listStudent" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Class?fileName=listUser" class="nav-link">
+                                <a href="/Admin?fileName=listUser" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>All user</p>
                                 </a>
@@ -214,7 +214,7 @@
         <!-- /.sidebar -->
     </aside>
 
-    <jsp:include page="../PageContent/${fileNameRes}.jsp" />
+    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

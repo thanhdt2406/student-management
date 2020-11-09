@@ -5,6 +5,8 @@ public class Classroom {
     private String name;
     private String startDate;
 
+    public Classroom(){}
+
     public Classroom(int classID, String name, String startDate) {
         this.classID = classID;
         this.name = name;

@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "ShowCreateClassFormServlet",urlPatterns = "/Admin")
+@WebServlet(name = "ShowCreateClassFormServlet",urlPatterns = "/admin")
 public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -27,17 +27,13 @@ public class AdminServlet extends HttpServlet {
         System.out.println(request.getParameter("action"));
         System.out.println(action);
         switch (action){
-            case "createNewClass":
-                System.out.println("create new class form");
-                showCreateNewClassForm(request,response);
-                break;
             case "createClass":
                 createClassForm(request,response);
                 break;
             case "displayClass":
+                request.setAttribute("action","");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/class");
                 requestDispatcher.forward(request,response);
-//                displayClass(request,response);
                 break;
             default:
         }

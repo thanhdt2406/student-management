@@ -113,19 +113,25 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin?action=listTeacher" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>Teacher</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin?action=listStudent" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>Student</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/admin?action=listAs" class="nav-link">
+                                <i class="far fa-star nav-icon"></i>
+                                <p>Academic Staff</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin?action=listUser" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>All user</p>
                             </a>

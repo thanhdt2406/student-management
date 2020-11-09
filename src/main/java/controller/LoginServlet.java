@@ -17,6 +17,22 @@ import java.util.List;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
+        if(session.getAttribute("roleLogin")!=null){
+            if(session.getAttribute("roleLogin").equals("admin")){
+                request.setAttribute("fileNameRes","ListUser");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
+                dispatcher.forward(request, response);
+            } else if(session.getAttribute("roleLogin").equals("academic_staff")){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
+                dispatcher.forward(request, response);
+            }else if(session.getAttribute("roleLogin").equals("teacher")){
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
+                dispatcher.forward(request, response);
+            } else {
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
+                dispatcher.forward(request, response);
+            }
+        }
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserService userService = new UserService();
@@ -27,16 +43,16 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("idLogin", user.getUserId());
                 if(user.getRole().equals("admin")){
                     request.setAttribute("fileNameRes","ListUser");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Admin/AdminIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("academic_staff")){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AcademicStaff/AcademicStaffIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("teacher")){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/TeacherIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/StudentIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                     dispatcher.forward(request, response);
                 }
                 return;
@@ -46,6 +62,6 @@ public class LoginServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response   ) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 }

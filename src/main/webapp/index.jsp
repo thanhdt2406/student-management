@@ -62,7 +62,7 @@
                 <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
                     <li class="u-nav-item"><a
                             class="u-border-2 u-border-active-palette-1-base u-border-hover-palette-1-light-1 u-button-style u-nav-link u-text-active-palette-3-base u-text-hover-palette-1-light-1"
-                            href="view/login.jsp" style="padding: 10px 20px;">Login</a>
+                            href="/login" style="padding: 10px 20px;">Login</a>
                     </li>
                 </ul>
             </div>

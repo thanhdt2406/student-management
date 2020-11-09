@@ -213,8 +213,9 @@
         </div>
         <!-- /.sidebar -->
     </aside>
+
     <jsp:include page="../PageContent/${fileNameRes}.jsp" />
-    <h1>${fileNameRes}</h1>
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>
@@ -244,22 +245,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../data/dist/js/demo.js"></script>
 <!-- page script -->
-<script>
-    $(function () {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
-        });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
-</script>
+
 </body>
 </html>

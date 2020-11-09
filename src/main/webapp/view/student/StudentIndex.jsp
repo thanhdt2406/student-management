@@ -50,7 +50,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Log out</a>
+                <a href="/Logout" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -127,7 +127,7 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <jsp:include page="../PageContent/${fileNameRes}.jsp" />
+    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

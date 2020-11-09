@@ -1,6 +1,9 @@
 package controller;
 
+import dao.student_service.IStudentService;
+import dao.student_service.StudentService;
 import dao.user_service.UserService;
+import model.Student;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "LoginServlet", urlPatterns = "/login")
@@ -58,11 +62,8 @@ public class LoginServlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.removeAttribute("fileNameRes");
-                    request.setAttribute("userId", user.getUserId());
-                    request.setAttribute("fileNameRes", "ListStudent");
-                    request.setAttribute("user", user.getUserId());
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
+                    request.setAttribute("idStudent", user.getUserId());
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/student_handle");
                     dispatcher.forward(request, response);
                 }
                 return;

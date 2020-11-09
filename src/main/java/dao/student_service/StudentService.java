@@ -71,6 +71,16 @@ public class StudentService implements IStudentService {
         return student;
     }
 
+//    public static void main(String[] args) {
+//        IStudentService service = new StudentService();
+//        Student student = service.getStudentInfor(4);
+//        System.out.println(student.getName());
+//        System.out.println(student.getPhoneNumber());
+//        System.out.println(student.getAddress());
+//        System.out.println(student.getClassID());
+//        System.out.println(student.getUserId());
+//    }
+
     @Override
     public boolean deleteStudent(int studentID) {
         boolean deleted = false;

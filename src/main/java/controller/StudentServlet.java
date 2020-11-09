@@ -3,6 +3,7 @@ package controller;
 import dao.student_service.IStudentService;
 import dao.student_service.StudentService;
 import model.Student;
+import model.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,6 +49,7 @@ public class StudentServlet extends HttpServlet {
             case "change_password":
                 break;
             case "class_infor":
+                displayStudentInClass(request, response);
                 break;
             case "acc_infor":
                 displayAccInfor(request, response);
@@ -60,6 +62,8 @@ public class StudentServlet extends HttpServlet {
                 break;
         }
     }
+
+
 
     private void displayAccInfor(HttpServletRequest request, HttpServletResponse response) {
         Student student = null;
@@ -92,8 +96,11 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void displayDefault(HttpServletRequest request, HttpServletResponse response) {
-        request.removeAttribute("fileNameRes");
-        request.setAttribute("fileNameRes", "ListStudent");
+        int id = (int) request.getAttribute("idStudent");
+
+        StudentService service = new StudentService();
+        Student student = service.getStudentInfor(id);
+        request.setAttribute("student", student);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
         try {
             dispatcher.forward(request, response);

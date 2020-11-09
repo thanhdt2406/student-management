@@ -29,8 +29,7 @@ public class AdminServlet extends HttpServlet {
                 break;
             case "createNewTeacher":
                 createNewTeacher(request,response);
-                request.setAttribute("message","add new teacher success!");
-                RequestDispatcher dispatcher =request.getRequestDispatcher("");
+                RequestDispatcher dispatcher =request.getRequestDispatcher("/view/admin/admin_createNewTeacher.jsp");
                 dispatcher.forward(request,response);
                 break;
             case "createNewAs":
@@ -57,6 +56,7 @@ public class AdminServlet extends HttpServlet {
       //doing...
     }
     private void createNewTeacher(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("adminpost create teacher");
         String username =request.getParameter("username");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
@@ -65,7 +65,14 @@ public class AdminServlet extends HttpServlet {
         int salary = Integer.parseInt(request.getParameter("salary"));
 
         TeacherService service = new TeacherService();
-        service.addNewTeacher(new Teacher(username,password,name,address,phone,salary));
+        boolean rs =  service.addNewTeacher(new Teacher(username,password,name,address,phone,salary));
+        if (rs){
+            request.setAttribute("message","add teacher success!");
+            System.out.println("add success!");
+        }else {
+            request.setAttribute("message"," ");
+        }
+        System.out.println("add teacher"+rs);
     }
     private void createNewAs(HttpServletRequest request, HttpServletResponse response) {
     }

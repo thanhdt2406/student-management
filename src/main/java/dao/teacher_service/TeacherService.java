@@ -56,18 +56,21 @@ public class TeacherService implements ITeacherService {
     public boolean addNewTeacher(Teacher teacher) {
         boolean isAdded = false;
         Connection connection = ConnectDB.getInstance().getConnection();
-        String sql = "insert into teacher(id,name,phone_number,status,salary)" + "values(?,?,?,?,?)";
+        String sql = "call createNewTeacherFullInformation(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setInt(1, teacher.getUserId());
-            ps.setString(2, teacher.getName());
-            ps.setString(3, teacher.getPhoneNumber());
-            ps.setInt(5, teacher.getSalary());
-            isAdded = ps.executeUpdate() > 0;
+            ps.setString(1, teacher.getUsername());
+            ps.setString(2, teacher.getPassword());
+            ps.setString(3, teacher.getName());
+            ps.setString(4, teacher.getPhoneNumber());
+            ps.setString(5, teacher.getAddress());
+            ps.setInt(6, teacher.getSalary());
+            ps.executeUpdate();
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return isAdded;
+        return false;
     }
 
     @Override

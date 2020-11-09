@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -50,6 +51,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <c:out value="${message}"/>
                                     <form action="/admin?action=createNewTeacher" class="was-validated" method="post">
                                         <div class="form-group">
                                             <label for="uname">Username:</label>

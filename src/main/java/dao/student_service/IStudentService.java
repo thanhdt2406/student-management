@@ -5,7 +5,7 @@ import model.Student;
 import java.util.List;
 
 public interface IStudentService {
-    Student addNewStudent(Student student);
+    void addNewStudent(Student student);
     List<Student> getAllStudent();
     boolean deleteStudent(int studentID);
     void editStudent(Student student);

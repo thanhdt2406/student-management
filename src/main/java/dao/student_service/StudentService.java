@@ -12,19 +12,10 @@ public class StudentService implements IStudentService {
     List<Student> list = new ArrayList<>();
 
     private final String ADD_NEW_STUDENT = "call createNewStudentFullInformation(?, ?, ?, ?, ?, ?)";
-    private final String GET_ALL_STUDENT = "call getAllStudent();";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";
 
     public StudentService() {
-    }
-
-    public List<Student> getStudentList() {
-        return list;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-        this.list = studentList;
     }
 
 
@@ -46,8 +37,6 @@ public class StudentService implements IStudentService {
         }
         return false;
     }
-
-
 
     @Override
     public Student getStudentInfor(int id){

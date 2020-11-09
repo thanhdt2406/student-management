@@ -193,16 +193,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                    <c:set var='student' value='${requestScope["academic_staff"]}'/>
                                         <tr>
-                                            <td><c:out value="${as.getUserId()}"/></td>
-                                            <td><c:out value="${as.getUsername()}"/></td>
-                                            <td><c:out value="${as.getSignUpDate()}"/></td>
-                                            <td><c:out value="${as.getRole()}"/></td>
-                                            <td><c:out value="${as.getName()}"/></td>
-                                            <td><c:out value="${as.getPhoneNumber()}"/></td>
-                                            <td><c:out value="${as.getAddress()}"/></td>
-                                            <td><c:out value="${as.getSalary()}"/></td>
+                                            <td><c:out value="${student.getUserId()}"/></td>
+                                            <td><c:out value="${student.getUsername()}"/></td>
+                                            <td><c:out value="${student.getSignUpDate()}"/></td>
+                                            <td><c:out value="${student.getRole()}"/></td>
+                                            <td><c:out value="${student.getName()}"/></td>
+                                            <td><c:out value="${student.getPhoneNumber()}"/></td>
+                                            <td><c:out value="${student.getAddress()}"/></td>
+                                            <td><c:out value="${student.getSalary()}"/></td>
                                             <td>
                                                 <a href="/editAccount?action=editAccount">Edit</a>
                                             </td>

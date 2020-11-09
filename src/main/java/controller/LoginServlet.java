@@ -1,6 +1,7 @@
 package controller;
 
 import dao.user_service.UserService;
+import model.Student;
 import model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -19,8 +20,6 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         if (session.getAttribute("roleLogin") != null) {
             if (session.getAttribute("roleLogin").equals("admin")) {
-                request.removeAttribute("fileNameRes");
-                request.setAttribute("fileNameRes", "ListUser");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
                 dispatcher.forward(request, response);
             } else if (session.getAttribute("roleLogin").equals("academic_staff")) {
@@ -32,12 +31,11 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                 dispatcher.forward(request, response);
             } else {
-                request.removeAttribute("fileNameRes");
-                request.setAttribute("fileNameRes", "ListStudent");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                 dispatcher.forward(request, response);
             }
         }
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         UserService userService = new UserService();
@@ -58,10 +56,9 @@ public class LoginServlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.removeAttribute("fileNameRes");
-                    request.setAttribute("userId", user.getUserId());
-                    request.setAttribute("fileNameRes", "ListStudent");
-                    request.setAttribute("user", user.getUserId());
+
+                    Student student = getStudentInfor(user.getUserId());
+                    request.setAttribute("student",student);
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                     dispatcher.forward(request, response);
                 }
@@ -69,6 +66,12 @@ public class LoginServlet extends HttpServlet {
             }
         }
         response.sendRedirect(request.getContextPath() + "/view/login.jsp?error=0");
+    }
+
+    private Student getStudentInfor(int userID) {
+        UserService service = new UserService();
+        Student student = (Student) service.getUserInfor(userID);
+        return student;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

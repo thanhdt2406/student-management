@@ -134,6 +134,9 @@ public class AdminServlet extends HttpServlet {
             case "createNewStudent":
                 createNewStudentForm(request, response);
                 break;
+            case "createClassDiary":
+                createClassDiaryForm(request,response);
+                break;
             case "displayClass":
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/class");
                 dispatcher.forward(request,response);
@@ -157,6 +160,20 @@ public class AdminServlet extends HttpServlet {
                 displayStudentDiary(request,response);
                 break;
             default:
+        }
+    }
+
+    private void createClassDiaryForm(HttpServletRequest request, HttpServletResponse response) {
+        ClassroomService service = new ClassroomService();
+        List<Classroom> list = service.getAllClassroom();
+        request.setAttribute("listClass",list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/admin_createClassDiaryForm.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

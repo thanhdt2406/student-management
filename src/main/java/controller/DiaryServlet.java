@@ -19,11 +19,13 @@ import java.util.List;
 @WebServlet(name = "DiaryServlet", urlPatterns = "/diary")
 public class DiaryServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("action post diaryservlet ");
+        doGet(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        System.out.println("action doget diaryservlet "+action);
         switch (action){
             case "displayAllClassDiary":
                 displayClassDiary(request,response);
@@ -31,8 +33,40 @@ public class DiaryServlet extends HttpServlet {
             case "displayAllStudentDiary":
                 displayStudentDiary(request,response);
                 break;
+            case "create":
+                createNewClassDiary(request,response);
+                break;
             default:
         }
+    }
+
+    private void createNewClassDiary(HttpServletRequest request, HttpServletResponse response) {
+    String type = request.getParameter("type");
+    switch (type){
+        case "class":
+            System.out.println("class tyoe");
+            ClassDiaryService service = new ClassDiaryService();
+            String content = request.getParameter("content");
+            System.out.println("classID: "+request.getParameter("classId"));
+            System.out.println(content);
+            int classID = Integer.parseInt(request.getParameter("classId"));
+            System.out.println("classiD"+classID);
+            boolean rs = service.createNewClassDiary(new ClassDiary(content,classID));
+            System.out.println("create class diary "+rs);
+
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/diary?action=displayAllClassDiary");
+            try {
+                dispatcher.forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            break;
+        case "student":
+            break;
+        default:
+    }
     }
 
     private void displayStudentDiary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

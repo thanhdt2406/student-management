@@ -10,7 +10,7 @@ import java.util.*;
 public class StudentService implements IStudentService {
     Map<Integer, Student> studentMap = new HashMap<>();
 
-    private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ? , ?)";
+    private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ?, ?)";
     private final String GET_ALL_STUDENT = "call getAllStudent();";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";
@@ -35,10 +35,10 @@ public class StudentService implements IStudentService {
             cs.setString(1, student.getUsername());
             cs.setString(2, student.getPassword());
             cs.setString(3, student.getName());
-            cs.setInt(4,student.getClassID());
+            cs.setInt(4, student.getClassID());
             cs.setString(5, student.getPhoneNumber());
             cs.setString(6, student.getAddress());
-            cs.executeQuery();
+            cs.executeUpdate();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

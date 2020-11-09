@@ -38,30 +38,6 @@ public class StudentService implements IStudentService {
         return false;
     }
 
-
-    @Override
-    public List<Student> getAllStudent() {
-        Connection connection = ConnectDB.getInstance().getConnection();
-        String GET_ALL_STUDENT = "select * from student";
-        try {
-            Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery(GET_ALL_STUDENT);
-            while (rs.next()) {
-                int id = rs.getInt(1);
-                String name = rs.getString("name");
-                String phone = rs.getString("phone_number");
-                boolean status = rs.getBoolean("status");
-                int classID = rs.getInt("classID");
-                Student student = new Student(id, name, phone, status, classID);
-                list.add(student);
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        System.out.println(list.size());
-        return list;
-    }
-
     @Override
     public Student getStudentInfor(int id){
         Connection connection = ConnectDB.getInstance().getConnection();

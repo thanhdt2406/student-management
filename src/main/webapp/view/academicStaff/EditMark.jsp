@@ -178,35 +178,27 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>ClassID</th>
-                                        <th>Phone Number</th>
-                                        <th>Address</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-<%--                                    <jsp:useBean id="students" scope="request" type="java.util.List"/>--%>
-                                    <c:forEach items="${students}" var="student" >
-                                    <tr>
-                                        <td><c:out value="${student.getUserId()}"/></td>
-                                        <td><c:out value="${student.getName()}"/></td>
-                                        <td><c:out value="${student.getClassID()}"/></td>
-                                        <td><c:out value="${student.getPhoneNumber()}"/></td>
-                                        <td><c:out value="${student.getAddress()}"/></td>
-                                        <td><c:out value="${student.isStatus()}"/></td>
-                                        <td>
-                                            <a href="/editAccount?action=editStudentAccount&&ID=${student.getUserId()}">Change Status</a>
-                                            <a href="/subject?action=showStudentSubject&&studentID=${student.getUserId()}">Show Subject</a>
-                                        </td>
-                                    </tr>
-                                    </c:forEach>
-                                </table>
+                                <c:set var='mark' value='${requestScope["mark"]}'/>
+                                <form action="/subject?action=editMark" class="was-validated" method="post">
+                                    <div class="form-group">
+                                        <label for="practiceMark">Practice Mark</label>
+                                        <input type="text" class="form-control" id="practiceMark"
+                                               placeholder="Enter Practice Mark" name="newPracticeMark" value="${mark.getPracticeMark()}" required autofocus>
+                                        <div class="invalid-feedback">Mark can't be empty!</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="theoreticalMark">Theoretical Mark</label>
+                                        <input type="text" class="form-control" id="theoreticalMark"
+                                               placeholder="Enter Theoretical Mark" name="newTheoreticalMark" value="${mark.getTheoreticalMark()}" required>
+                                        <div class="invalid-feedback">Mark can't be empty!</div>
+                                    </div>
+                                    <input type="text" class="form-control" id="status"
+                                           name="markID"  style="visibility: hidden" value="${mark.getMarkID()}">
+                                    <button type="submit"
+                                            class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">
+                                        Save
+                                    </button>
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>

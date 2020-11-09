@@ -41,14 +41,13 @@ public class SubjectService implements ISubjectService {
     @Override
     public List<Subject> listSubject() {
         List<Subject> list = new ArrayList<>();
-        String sql = "select * from subject";
+        String sql = "select * from subject;";
         try {
-            Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery(sql);
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
             while (rs.next()){
                 int id = rs.getInt(1);
                 String name = rs.getString(2);
-
                 list.add(new Subject(id,name));
             }
         } catch (SQLException throwables) {
@@ -71,4 +70,25 @@ public class SubjectService implements ISubjectService {
         }
         return false;
     }
+
+    @Override
+    public List<Subject> getStudentSubject(int studentID) {
+        List<Subject> list = new ArrayList<>();
+//        String sql = "select subject.* from subject join mark m on subject.subId = m.subID join student s on s.id = m.studentID and studentID = ?;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select subject.* from subject join mark m on subject.subId = m.subID join student s on s.id = m.studentID and s.id = ?;");
+            preparedStatement.setInt(1,studentID);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                int id = rs.getInt(1);
+                String name = rs.getString(2);
+                list.add(new Subject(id,name));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
+    }
+
+
 }

@@ -9,4 +9,6 @@ public interface ISubjectService {
     boolean deleteSubject(int id);
     List<Subject> listSubject();
     boolean editSubject(int id, String name);
+
+    List<Subject> getStudentSubject(int studentID);
 }

@@ -22,30 +22,36 @@ public class AdminServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String fileName = request.getParameter("fileName");
         String action =  request.getParameter("action");
         System.out.println(request.getParameter("action"));
         System.out.println(action);
         switch (action){
-            case "createClassDiary":
-                showCreateDiaryForm(request,response);
-                request.setAttribute("fileNameRes","createDiaryForm");
+            case "createDiaryForm":
+                System.out.println("create");
+                showCreateDiaryClassForm(request,response);
                 break;
+            case "createNewClass":
+                System.out.println("create new class form");
+                showCreateNewClassForm(request,response);
             default:
         }
-        if (fileName.equals("AdminIndex")){
-            fileName = "ListUser";
-        }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
-        dispatcher.forward(request,response);
     }
 
-    private void showCreateDiaryForm(HttpServletRequest request, HttpServletResponse response) {
-        ClassroomService service = new ClassroomService();
-        List<Classroom> list = service.getAllClassroom();
-        request.setAttribute("listClass",list);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/Admin/AdminIndex.jsp");
+    private void showCreateNewClassForm(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("fileNameRes", "CreateClassForm");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void showCreateDiaryClassForm(HttpServletRequest request, HttpServletResponse response) {
+        request.setAttribute("fileNameRes", "createDiaryForm");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
         try {
             dispatcher.forward(request,response);
         } catch (ServletException e) {

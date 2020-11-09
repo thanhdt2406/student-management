@@ -1,4 +1,5 @@
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +86,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="/Admin?fileName=CreateClassForm" class="nav-link">
+                        <a href="/Admin?action=createNewClass" class="nav-link">
                             <i class="nav-icon fas fa-plus"></i>
                             <p>Create New Class</p>
                         </a>
@@ -170,7 +171,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin?fileName=createDiaryForm&&action=createDiaryForm" class="nav-link">
+                                <a href="/Admin?action=createDiaryForm" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
@@ -213,9 +214,7 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-
-    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
-
+    <jsp:include page="../PageContent/${fileNameRes}.jsp" />
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

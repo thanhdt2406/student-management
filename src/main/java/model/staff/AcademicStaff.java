@@ -1,7 +1,7 @@
 package model.staff;
 
 public class AcademicStaff extends Staff {
-    boolean status;
+    boolean status = true;
 
     public AcademicStaff(int userId, String username, String password, String role, String signUpDate, String name) {
         super(userId, username, password, role, signUpDate, name);

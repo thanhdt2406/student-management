@@ -10,19 +10,10 @@ public class StudentService implements IStudentService {
     List<Student> list = new ArrayList<>();
 
     private final String ADD_NEW_STUDENT = "call createNewStudentFullInformation(?, ?, ?, ?, ?, ?)";
-    private final String GET_ALL_STUDENT = "call getAllStudent();";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";
 
     public StudentService() {
-    }
-
-    public List<Student> getStudentList() {
-        return list;
-    }
-
-    public void setStudentList(List<Student> studentList) {
-        this.list = studentList;
     }
 
 
@@ -48,22 +39,23 @@ public class StudentService implements IStudentService {
     @Override
     public List<Student> getAllStudent() {
         Connection connection = ConnectDB.getInstance().getConnection();
+        String GET_ALL_STUDENT = "select * from student";
         try {
-            CallableStatement cs = connection.prepareCall(GET_ALL_STUDENT);
-            ResultSet rs = cs.executeQuery();
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(GET_ALL_STUDENT);
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String name = rs.getString(2);
-                String phone = rs.getString(4);
-                String role = rs.getString(3);
-                boolean status = rs.getBoolean(5);
-                int classID = rs.getInt(6);
+                String name = rs.getString("name");
+                String phone = rs.getString("phone_number");
+                boolean status = rs.getBoolean("status");
+                int classID = rs.getInt("classID");
                 Student student = new Student(id, name, phone, status, classID);
                 list.add(student);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+        System.out.println(list.size());
         return list;
     }
 

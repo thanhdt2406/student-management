@@ -49,15 +49,14 @@ public class AcademicService implements IAcademicService {
             Statement stm = connection.createStatement();
             ResultSet rs = stm.executeQuery(sql);
             while (rs.next()) {
-                int id = rs.getInt(1);
-                String name = rs.getString(2);
-                String phone = rs.getString(3);
-                String address = rs.getString(4);
-                int salary = rs.getInt(5);
-                boolean status = rs.getBoolean(6);
+                int id = rs.getInt("ID");
+                String name = rs.getString("name");
+                String phone = rs.getString("phone_number");
+                String address = rs.getString("address");
+                int salary = rs.getInt("salary");
+                boolean status = rs.getBoolean("status");
 
                 AcademicStaff obj = new AcademicStaff(id, name, phone, address, status, salary);
-                System.out.println(obj.getName());
                 list.add(obj);
             }
         } catch (SQLException throwables) {

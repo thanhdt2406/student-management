@@ -65,6 +65,7 @@
                                         <td><c:out value="${classroom.getStartDate()}"/></td>
                                         <td>
                                             <a href="/class?action=edit?ID=${classroom.getClassID()}">Edit</a>
+                                            <p> </p>
                                             <a href="/class?action=delete?ID=${classroom.getClassID()}">Delete</a>
                                         </td>
                                     </tr>

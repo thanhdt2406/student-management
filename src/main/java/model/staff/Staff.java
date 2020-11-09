@@ -2,11 +2,13 @@ package model.staff;
 
 import model.User;
 
+import java.util.Date;
+
 public class Staff extends User {
     private String name;
     private String phoneNumber;
     private String address;
-    private boolean status;
+    private boolean status = true;
     private int salary;
 
 
@@ -109,6 +111,15 @@ public class Staff extends User {
         this.phoneNumber = phonenumber;
         this.address = address;
         this.salary = salary;
+    }
+
+    public Staff(int id, String username, String password, String name, String phone, String address, String date, boolean status, int salary) {
+    super(id,username,password,date);
+    this.name = name;
+    this.phoneNumber = phone;
+    this.address=address;
+    this.status = status;
+    this.salary = salary;
     }
 
 //    public Staff(int id, String name, String address, String phoneNumber, float salary, boolean status) {

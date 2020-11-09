@@ -1,4 +1,3 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +20,7 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-    <jsp:include page="sideBar_admin.jsp" />
+    <jsp:include page="sideBar_admin.jsp"/>
     <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
         <div class="content-wrapper">
@@ -53,25 +52,28 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
+                                            <th>Name</th>
                                             <th>PhoneNumber</th>
                                             <th>Address</th>
                                             <th>Salary</th>
+                                            <th>Option</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${listAs}" var="staff">
+                                        <script>alert(${listAs.get(1).getName()})</script>
                                         <tr>
-                                            <c:forEach items="${listStaff}" var="staff">
-                                                <td>${staff.getUserId()}</td>
-                                                <td>${staff.getUsername()}</td>
-                                                <td>${staff.getPassword()}</td>
-                                                <td>${staff.getPhoneNumber()}</td>
-                                                <td>${staff.getAddress()}</td>
-                                                <td>${staff.getSalary()}</td>
-                                            </c:forEach>
-
+                                            <td>${staff.getUserId()}</td>
+                                            <td>${staff.getName()}</td>
+                                            <td>${staff.getPhoneNumber()}</td>
+                                            <td>${staff.getAddress()}</td>
+                                            <td>${staff.getSalary()}</td>
+                                            <td>
+                                                <a href="/class?action=edit?ID=${staff.getUserId()}"><button>Edit</button></a>
+                                                <a href="/class?action=delete?ID=${staff.getUserId()}"><button>Delete</button></a>
+                                            </td>
                                         </tr>
+                                        </c:forEach>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->

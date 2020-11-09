@@ -20,24 +20,21 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-    <jsp:include page="sideBar_admin.jsp" />
-    <!-- Main Sidebar Container -->
-<
+    <jsp:include page="sideBar_admin.jsp"/>
     <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
-        <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Student Information</h1>
+                            <h1>Teacher information</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Student Information</li>
+                                <li class="breadcrumb-item active">Teacher Information</li>
                             </ol>
                         </div>
                     </div>
@@ -56,17 +53,28 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Name</th>
-                                            <th>Class</th>
-                                            <th>Class</th>
+                                            <th>PhoneNumber</th>
+                                            <th>Address</th>
+                                            <th>Salary</th>
+                                            <th>Option</th>
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach items="${listStudent}" var="student">
+                                        <c:forEach items="${listTeacher}" var="staff">
                                         <tr>
-                                            <td>${student.getUserId()}</td>
-                                            <td>${student.getName()}</td>
-                                            <td>${student.getClassId()}</td>
-                                            <td>${student.isStatus()}</td>
+                                            <td>${staff.getUserId()}</td>
+                                            <td>${staff.getName()}</td>
+                                            <td>${staff.getPhoneNumber()}</td>
+                                            <td>${staff.getAddress()}</td>
+                                            <td>${staff.getSalary()}</td>
+                                            <td><a href="/class?action=edit?ID=${staff.getUserId()}">
+                                                <button>Edit</button>
+                                            </a>
+                                                <p></p>
+                                                <a href="/class?action=delete?ID=${staff.getUserId()}">
+                                                    <button>Delete</button>
+                                                </a>
+                                            </td>
                                         </tr>
                                         </c:forEach>
                                     </table>
@@ -83,7 +91,6 @@
             </section>
             <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">

@@ -39,6 +39,23 @@ public class StudentService implements IStudentService {
     }
 
     @Override
+    public String getClassOfStudent(int classId){
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "select name from classroom where classID = " + classId;
+        String result =  null;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                result = rs.getString("name");
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
     public Student getStudentInfor(int id){
         Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "select * from student where id = " + id;
@@ -154,6 +171,8 @@ public class StudentService implements IStudentService {
         }
         return list;
     }
+
+
 
     @Override
     public boolean changeStatus(int ID) {

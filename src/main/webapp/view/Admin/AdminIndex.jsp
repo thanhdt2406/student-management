@@ -153,7 +153,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Class?fileName=listUser" class="nav-link">
+                                <a href="/Class?fileName=ListUser" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>All user</p>
                                 </a>
@@ -170,7 +170,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/Class?fileName=diary_content/createDiaryForm" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>

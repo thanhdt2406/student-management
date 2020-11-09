@@ -9,6 +9,41 @@ public class Staff extends User {
     private boolean status;
     private int salary;
 
+    public Staff(String name, String phoneNumber, String address, boolean status, int salary) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.status = status;
+        this.salary = salary;
+    }
+
+    public Staff(int userId, String username, String password, String role, String signUpDate, String name, String phoneNumber, String address, boolean status, int salary) {
+        super(userId, username, password, role, signUpDate);
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.status = status;
+        this.salary = salary;
+    }
+
+    public Staff(String username, String password, String role, String signUpDate, String name, String phoneNumber, String address, boolean status, int salary) {
+        super(username, password, role, signUpDate);
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.status = status;
+        this.salary = salary;
+    }
+
+    public Staff(String username, String password, String role, String name, String phoneNumber, String address, boolean status, int salary) {
+        super(username, password, role);
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.status = status;
+        this.salary = salary;
+    }
+
     public Staff(int userId, String username, String password, String role, String signUpDate, String name) {
         super(userId, username, password, role, signUpDate);
         this.name = name;
@@ -52,6 +87,15 @@ public class Staff extends User {
         super(id);
         this.name = name;
         this.phoneNumber = phone;
+        this.address = address;
+        this.status = status;
+        this.salary = salary;
+    }
+
+    public Staff(String username, String password, String name, String phoneNumber, String address, boolean status, int salary) {
+        super(username, password);
+        this.name = name;
+        this.phoneNumber = phoneNumber;
         this.address = address;
         this.status = status;
         this.salary = salary;

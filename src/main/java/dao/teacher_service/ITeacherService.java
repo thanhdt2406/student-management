@@ -1,13 +1,16 @@
 package dao.teacher_service;
 
+import model.Classroom;
+import model.User;
 import model.staff.Teacher;
 
 import java.util.List;
 
 public interface ITeacherService {
-    List<Teacher> showAllteacher();
-    boolean addNewTeacher(Teacher teacher);
-    void editTeacher(int teacherID);
-    void deleteTeacher(int teacherID);
+    List<Teacher> showAllTeacher();
+    boolean addNewTeacher(User user, Teacher teacher);
+    boolean editTeacher(User user,Teacher teacher);
+    boolean deleteTeacher(int teacherID);
+    List<Classroom> getClassRoom();
 
 }

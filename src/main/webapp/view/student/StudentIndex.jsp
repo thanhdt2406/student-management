@@ -164,7 +164,9 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="profile-head">
-                                                        <c:out value="${user}"></c:out>
+<%--                                                        <c:out value="${student}"/>--%>
+
+                                                    <input type="hidden" name="id" value="<c:out value="${student.getUserId()}"/>">
                                                         <h5>
                                                             ${student.getName()}
                                                         </h5>

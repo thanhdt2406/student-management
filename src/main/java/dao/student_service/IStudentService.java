@@ -11,6 +11,7 @@ public interface IStudentService {
     void editStudent(Student student);
     Student getStudentInfor(int id);
 
+    String getClassOfStudent(int classID);
     int AvgPracticeMark();
     int AvgTheoreticalMark();
     List<Student> getStudentInClass(int classID);

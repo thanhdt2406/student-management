@@ -77,6 +77,10 @@ public class Student extends User {
     this.classID = classId;
     }
 
+    public Student() {
+
+    }
+
     public String getName() {
         return name;
     }

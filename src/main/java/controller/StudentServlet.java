@@ -1,9 +1,14 @@
 package controller;
 
 import dao.ConnectDB;
+import dao.mark_service.MarkService;
 import dao.student_service.IStudentService;
 import dao.student_service.StudentService;
+import dao.subject_service.SubjectService;
+import model.Mark;
 import model.Student;
+import model.Subject;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -98,9 +103,13 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void displayMark(HttpServletRequest request, HttpServletResponse response) {
-        request.removeAttribute("fileNameRes");
-        request.setAttribute("fileNameRes", "ListStudent");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
+        SubjectService subjectService = new SubjectService();
+        MarkService markService = new MarkService();
+        List<Mark> markList = markService.getMarkOfStudent(student.getUserId());
+        List<Subject> subjectList = subjectService.getAllSubject();
+        request.setAttribute("markList", markList);
+        request.setAttribute("subjectList", subjectList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/student_marks.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

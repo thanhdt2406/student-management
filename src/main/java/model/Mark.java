@@ -2,6 +2,7 @@ package model;
 
 public class Mark {
     private int markID;
+    private int subID;
     private double practiceMark;
     private double theoreticalMark;
 
@@ -18,6 +19,21 @@ public class Mark {
     public Mark(double practiceMark, double theoreticalMark) {
         this.practiceMark = practiceMark;
         this.theoreticalMark = theoreticalMark;
+    }
+
+    public Mark(int markID, int subID, double practiceMark, double theoreticalMark) {
+        this.markID = markID;
+        this.subID = subID;
+        this.practiceMark = practiceMark;
+        this.theoreticalMark = theoreticalMark;
+    }
+
+    public int getSubID() {
+        return subID;
+    }
+
+    public void setSubID(int subID) {
+        this.subID = subID;
     }
 
     public int getMarkID() {

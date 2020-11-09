@@ -72,6 +72,25 @@ public class SubjectService implements ISubjectService {
     }
 
     @Override
+    public List<Subject> getAllSubject(){
+        List<Subject> subjectList = new ArrayList<>();
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "select * from Subject;";
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                int subID = rs.getInt(1);
+                String subName = rs.getString(2);
+                subjectList.add(new Subject(subID, subName));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return subjectList;
+    }
+
+    @Override
     public List<Subject> getStudentSubject(int studentID) {
         List<Subject> list = new ArrayList<>();
 //        String sql = "select subject.* from subject join mark m on subject.subId = m.subID join student s on s.id = m.studentID and studentID = ?;";

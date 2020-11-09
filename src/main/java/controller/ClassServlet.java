@@ -21,6 +21,7 @@ import java.util.List;
 public class ClassServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        System.out.println("dopost /class");
         switch (action) {
             case "create":
                 createNewClass(request, response);
@@ -32,6 +33,7 @@ public class ClassServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
+        System.out.println(action);
         switch (action) {
             case "showStudentInClass":
                 showStudentInClass(request, response);
@@ -39,8 +41,31 @@ public class ClassServlet extends HttpServlet {
             case "showAllStudent":
                 showAllStudent(request,response);
                 break;
+            case "delete":
+                System.out.println("deletecls");
+                deleteClass(request,response);
+                break;
             default:
                 displayClassRoom(request, response);
+        }
+    }
+
+    private void deleteClass(HttpServletRequest request, HttpServletResponse response) {
+        ClassroomService service = new ClassroomService();
+        int ID = Integer.parseInt(request.getParameter("ID"));
+        System.out.println(ID+100);
+        boolean rs = service.deleteClassroom(ID);
+        System.out.println("delete class"+rs);
+        if (rs){
+            request.setAttribute("message","delete success!");
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/admin?action=displayClass");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -86,7 +111,8 @@ public class ClassServlet extends HttpServlet {
         Classroom classroom = new Classroom(className);
         IClassroomService classroomService = new ClassroomService();
         classroomService.createNewClassroom(classroom);
-        response.sendRedirect("/class");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/class?action=#");
+        dispatcher.forward(request,response);
     }
 
 

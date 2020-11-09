@@ -30,12 +30,15 @@ public class AdminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action) {
+            case "displayClass":
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/class?action=#");
+                dispatcher.forward(request,response);
             case "createClass":
                 createNewClass(request, response);
                 break;
             case "createNewTeacher":
                 createNewTeacher(request, response);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_createNewTeacher.jsp");
+                dispatcher = request.getRequestDispatcher("/view/admin/admin_createNewTeacher.jsp");
                 dispatcher.forward(request, response);
                 break;
             case "createNewAs":

@@ -41,6 +41,7 @@ CREATE TABLE `student` (
                            KEY `student_id2` (`classID`),
                            CONSTRAINT `student_id` FOREIGN KEY (`id`) REFERENCES `user` (`id`),
                            CONSTRAINT `student_id2` FOREIGN KEY (`classID`) REFERENCES `classroom` (`classID`)
+                           ON DELETE SET NULL
 );
 
 CREATE TABLE `class_diary` (
@@ -127,7 +128,14 @@ begin
 end //
 delimiter ;
 
-
+DROP PROCEDURE IF EXISTS deleteClass;
+delimiter //
+create procedure deleteClass(IN _ID INT)
+begin
+    DELETE FROM student WHERE classID = _ID;
+    DELETE FROM classroom WHERE classID = _ID;
+end //
+delimiter ;
 -- Academic Staff
 DROP PROCEDURE IF EXISTS createNewAcademicStaff;
 delimiter //
@@ -279,6 +287,7 @@ DROP  PROCEDURE IF EXISTS deleteStudent;
 delimiter //
 create procedure deleteStudent(in _studentID int)
 begin
+    delete from student_diary where studentID = _studentID;
     delete from student where id = _studentID;
 end //
 //

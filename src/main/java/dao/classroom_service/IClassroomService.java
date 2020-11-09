@@ -9,6 +9,7 @@ public interface IClassroomService {
 
     boolean createNewClassroom(Classroom classroom);
 
-    boolean editClassroom(int classId,String name, String date);
+    boolean editClassroom(int classId, String name, String date);
 
+    boolean deleteClassroom(int classId);
 }

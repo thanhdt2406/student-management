@@ -1,10 +1,12 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
+    <title>AS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -20,7 +22,43 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-    <jsp:include page="sideBar_admin.jsp" />
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Contact</a>
+            </li>
+        </ul>
+
+        <!-- SEARCH FORM -->
+        <form class="form-inline ml-3" action="#">
+            <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-navbar" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Messages Dropdown Menu -->
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="#" class="nav-link">Log out</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- /.navbar -->
+
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -40,19 +78,37 @@
                     <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Admin</a>
+                    <a href="#" class="d-block">Academic Staff</a>
                 </div>
             </div>
 
             <!-- Sidebar Menu -->
 
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-plus"></i>
-                            <p>Create New Class</p>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item has-treeview">
+                        <a href="/accountInformation" class="nav-link">
+                            <i class="nav-icon fas fa-user"></i>
+                            <p>
+                                Account
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>Account Information</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">
+                                    <i class="far fa-star nav-icon"></i>
+                                    <p>Change Password</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
@@ -60,86 +116,11 @@
                             <p>Display Class</p>
                         </a>
                     </li>
-                    <li class="nav-item has-treeview">
+                    <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user-plus"></i>
-                            <p>
-                                Create New User
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
+                            <i class="nav-icon fas fa-users"></i>
+                            <p>Display Student</p>
                         </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>Academic Staff</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>Teacher</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>Student</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas  fa-users"></i>
-                            <p>
-                                User List
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>Teacher</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>Student</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>All user</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-paint-brush"></i>
-                            <p>
-                                Write Daily Diary
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Class Diary</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Student Diary</p>
-                                </a>
-                            </li>
-                        </ul>
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
@@ -178,12 +159,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User information</h1>
+                        <h1>DataTables</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">user Information</li>
+                            <li class="breadcrumb-item active">DataTables</li>
                         </ol>
                     </div>
                 </div>
@@ -197,39 +178,31 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Position</th>
-                                        <th>PhoneNumber</th>
-                                        <th>Address</th>
-
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
-                                        </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                    </tr>
-                                    <tr>
-                                        <td>ABC</td>
-                                        <td>ABC
-                                        </td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                    </tr>
-                                </table>
+                                <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                <form action="/editAccount" class="was-validated" method="post">
+                                    <div class="form-group">
+                                        <label for="name">Name</label>
+                                        <input type="text" class="form-control" id="name"
+                                               placeholder="Enter name" name="newName" value="${as.getName()}" required autofocus>
+                                        <div class="invalid-feedback">Name can't be empty!</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone_number">Phone Number</label>
+                                        <input type="text" class="form-control" id="phone_number"
+                                               placeholder="Enter phone number" name="newPhoneNumber" value="${as.getPhoneNumber()}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="address">Address</label>
+                                        <input type="text" class="form-control" id="address"
+                                               placeholder="Enter address" name="newAddress" value="${as.getAddress()}">
+                                    </div>
+                                    <input type="text" class="form-control" id="status"
+                                           name="status"  style="visibility: hidden" value="${as.isStatus()}">
+                                    <button type="submit"
+                                            class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">
+                                        Save
+                                    </button>
+                                </form>
                             </div>
                             <!-- /.card-body -->
                         </div>
@@ -244,6 +217,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>
@@ -292,7 +266,3 @@
 </script>
 </body>
 </html>
-
-
-
-

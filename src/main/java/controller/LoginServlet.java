@@ -49,8 +49,9 @@ public class LoginServlet extends HttpServlet {
                     request.setAttribute("fileNameRes", "ListUser");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
                     dispatcher.forward(request, response);
-                } else if (user.getRole().equals("academic_staff")) {
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
+                } else if(user.getRole().equals("academic_staff")){
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/accountInformation");
+
                     dispatcher.forward(request, response);
                 } else if (user.getRole().equals("teacher")) {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");

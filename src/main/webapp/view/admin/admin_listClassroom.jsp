@@ -21,9 +21,9 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-    <jsp:include page="sideBar_admin.jsp" />
-    <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+<%--    <jsp:include page="sideBar_admin.jsp" />--%>
+<%--    <!-- Main Sidebar Container -->--%>
+<%--    <aside class="main-sidebar sidebar-dark-primary elevation-4">--%>
         <!-- Brand Logo -->
         <a href="#" class="brand-link">
             <img src="../../data/dist/img/AdminLTELogo.png"

@@ -21,8 +21,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <jsp:include page="sideBar_admin.jsp" />
-    <!-- Main Sidebar Container -->
-
+    <!--content-wrapper -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -48,7 +47,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -57,17 +56,16 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
                                     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                    <%@ page language="java" contentType="text/html; charset=UTF-8"
-                                             pageEncoding="UTF-8" %>
                                     <c:forEach items="${classrooms}" var="classroom" >
                                     <tr>
                                         <td><c:out value="${classroom.getClassID()}"/></td>
                                         <td><c:out value="${classroom.getName()}"/></td>
                                         <td><c:out value="${classroom.getStartDate()}"/></td>
                                         <td>
-                                            <a href="/class?action=edit?ID=${classroom.getID()}">Edit</a>
-                                            <a href="/class?action=delete?ID=${classroom.getID()}">Delete</a>
+                                            <a href="/class?action=edit?ID=${classroom.getClassID()}">Edit</a>
+                                            <a href="/class?action=delete?ID=${classroom.getClassID()}">Delete</a>
                                         </td>
                                     </tr>
                                     </c:forEach>
@@ -134,7 +132,4 @@
 </script>
 </body>
 </html>
-
-
-
 

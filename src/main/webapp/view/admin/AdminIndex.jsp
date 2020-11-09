@@ -91,7 +91,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/Admin?fileName=listClassroom" class="nav-link">
+                        <a href="/Admin?fileName=ListClassroom" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
@@ -106,19 +106,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin?fileName=createNewAcaStaff" class="nav-link">
+                                <a href="/Admin?fileName=CreateNewAcaStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=createNewTeacher" class="nav-link">
+                                <a href="/Admin?fileName=CreateNewTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=createNewStudent" class="nav-link">
+                                <a href="/Admin?fileName=CreateNewStudent" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
@@ -135,19 +135,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin?fileName=listAcademicStaff" class="nav-link">
+                                <a href="/Admin?fileName=ListAcademicStaff" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=listTeacher" class="nav-link">
+                                <a href="/Admin?fileName=ListTeacher" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=listStudent" class="nav-link">
+                                <a href="/Admin?fileName=ListStudent" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>

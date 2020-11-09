@@ -29,9 +29,9 @@ public class ClassServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action= request.getParameter("action");
 //        int ID = Integer.parseInt(request.getParameter("ID"));
+        System.out.println("get class action"+action);
         switch (action){
             case "edit":
-
             break;
             default:
                 displayClassRoom(request,response);
@@ -41,6 +41,7 @@ public class ClassServlet extends HttpServlet {
     private void displayClassRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         IClassroomService classroomService = new ClassroomService();
         List<Classroom> classrooms = classroomService.getAllClassroom();
+        System.out.println(classrooms.size());
         request.setAttribute("classrooms",classrooms);
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/admin_displayClass.jsp");
         dispatcher.forward(request,response);

@@ -53,7 +53,7 @@ public class AdminServlet extends HttpServlet {
 
     private void createClassForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setAttribute("fileNameRes","CreateClassForm");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/admin_createClassForm.jsp");
         dispatcher.forward(request,response);
     }
 }

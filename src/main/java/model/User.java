@@ -9,7 +9,6 @@ public class User {
 
     public User(){};
 
-
     public User(int userId, String username, String password, String role, String signUpDate) {
         this.userId = userId;
         this.username = username;

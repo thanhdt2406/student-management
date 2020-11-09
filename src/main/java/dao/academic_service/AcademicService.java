@@ -28,7 +28,7 @@ public class AcademicService implements IAcademmicService {
             stm.setString(3, as.getName());
             stm.setString(4, as.getPhoneNumber());
             stm.setString(5, as.getAddress());
-            stm.setInt(6, as.getSalary());
+            stm.setFloat(6, as.getSalary());
 
             int rs = stm.executeUpdate();
             if (rs != 0) {

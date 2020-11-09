@@ -170,7 +170,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Class?fileName=diary_content/createDiaryForm" class="nav-link">
+                                <a href="/Admin?fileName=createDiaryForm&&action=createDiaryForm" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>

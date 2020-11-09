@@ -1,6 +1,23 @@
 package model.staff;
 
 public class Teacher extends Staff {
+    private int idTeacher;
+
+
+
+    public int getIdTeacher() {
+        return idTeacher;
+    }
+
+    public void setIdTeacher(int idTeacher) {
+        this.idTeacher = idTeacher;
+    }
+
+    public Teacher(int idTeacher,String name,String address,String phoneNumber, int salary, boolean status){
+        super(name,address,phoneNumber, status, salary);
+        this.idTeacher=idTeacher;
+    }
+
     public Teacher(String name, String phoneNumber, String address, boolean status, int salary) {
         super(name, phoneNumber, address, status, salary);
     }
@@ -52,10 +69,9 @@ public class Teacher extends Staff {
     public Teacher(String username, String password, String name, String phonenumber, String address, int salary) {
         super(username, password, name, phonenumber, address, salary);
     }
-    //    @Override
-//    public String toString() {
-//        return "Teacher{" +
-//                "status=" + status +
-//                '}';
+
+
+//    public Teacher(int id, String name, String address, String phoneNumber, float salary, boolean status) {
+//        super(id,name,address,phoneNumber,salary,status);
 //    }
 }

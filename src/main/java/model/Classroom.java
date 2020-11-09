@@ -5,7 +5,7 @@ public class Classroom {
     private String name;
     private String startDate;
 
-    public Classroom(){}
+    public Classroom(int id, String name, String role, String phone_number, String status, float salary){}
 
     public Classroom(int classID, String name, String startDate) {
         this.classID = classID;

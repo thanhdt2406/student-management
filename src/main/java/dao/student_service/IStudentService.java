@@ -12,5 +12,6 @@ public interface IStudentService {
 
     int AvgPracticeMark();
     int AvgTheoreticalMark();
+    List<Student> getStudentInClass(int classID);
 
 }

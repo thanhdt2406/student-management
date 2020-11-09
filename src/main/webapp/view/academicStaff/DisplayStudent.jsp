@@ -111,7 +111,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="/admin?action=displayClass" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
@@ -178,35 +178,32 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Signup Date</th>
-                                        <th>Position</th>
                                         <th>Name</th>
+                                        <th>Class</th>
                                         <th>Phone Number</th>
                                         <th>Address</th>
-                                        <th>Salary</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:set var='as' value='${requestScope["academic_staff"]}'/>
-                                        <tr>
-                                            <td><c:out value="${as.getUserId()}"/></td>
-                                            <td><c:out value="${as.getUsername()}"/></td>
-                                            <td><c:out value="${as.getSignUpDate()}"/></td>
-                                            <td><c:out value="${as.getRole()}"/></td>
-                                            <td><c:out value="${as.getName()}"/></td>
-                                            <td><c:out value="${as.getPhoneNumber()}"/></td>
-                                            <td><c:out value="${as.getAddress()}"/></td>
-                                            <td><c:out value="${as.getSalary()}"/></td>
-                                            <td>
-                                                <a href="/editAccount">Edit</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+<%--                                    <jsp:useBean id="students" scope="request" type="java.util.List"/>--%>
+                                    <c:forEach items="${students}" var="student" >
+                                    <tr>
+                                        <td><c:out value="${student.getUserId()}"/></td>
+                                        <td><c:out value="${student.getName()}"/></td>
+                                        <td><c:out value="${student.getClassID()}"/></td>
+                                        <td><c:out value="${student.getPhoneNumber()}"/></td>
+                                        <td><c:out value="${student.getAddress()}"/></td>
+                                        <td><c:out value="${student.isStatus()}"/></td>
+                                        <td>
+                                            <a href="/class?action=editStudent&&ID=${student.getUserId()}">Edit</a>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- /.card-body -->

@@ -148,7 +148,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin?action=displayClassDiary" class="nav-link">
+                            <a href="/admin?action=createClassDiary" class="nav-link">
                                 <i class="far  fa-bookmark nav-icon"></i>
                                 <p>Class Diary</p>
                             </a>

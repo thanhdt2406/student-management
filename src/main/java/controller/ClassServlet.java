@@ -53,7 +53,6 @@ public class ClassServlet extends HttpServlet {
     private void deleteClass(HttpServletRequest request, HttpServletResponse response) {
         ClassroomService service = new ClassroomService();
         int ID = Integer.parseInt(request.getParameter("ID"));
-        System.out.println(ID+100);
         boolean rs = service.deleteClassroom(ID);
         System.out.println("delete class"+rs);
         if (rs){

@@ -178,34 +178,30 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
+                                <table id="example2" class="table table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>ClassID</th>
-                                        <th>Phone Number</th>
-                                        <th>Address</th>
-                                        <th>Status</th>
+                                        <th>Subject ID</th>
+                                        <th>Student ID</th>
+                                        <th>Practice Mark</th>
+                                        <th>Theoretical Mark</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-<%--                                    <jsp:useBean id="students" scope="request" type="java.util.List"/>--%>
-                                    <c:forEach items="${students}" var="student" >
+                                    <c:set var='subID' value='${requestScope["subID"]}'/>
+                                    <c:set var='studentID' value='${requestScope["studentID"]}'/>
+                                    <c:set var='mark' value='${requestScope["mark"]}'/>
                                     <tr>
-                                        <td><c:out value="${student.getUserId()}"/></td>
-                                        <td><c:out value="${student.getName()}"/></td>
-                                        <td><c:out value="${student.getClassID()}"/></td>
-                                        <td><c:out value="${student.getPhoneNumber()}"/></td>
-                                        <td><c:out value="${student.getAddress()}"/></td>
-                                        <td><c:out value="${student.isStatus()}"/></td>
+                                        <td><c:out value="${subID}"/></td>
+                                        <td><c:out value="${studentID}"/></td>
+                                        <td><c:out value="${mark.getPracticeMark()}"/></td>
+                                        <td><c:out value="${mark.getTheoreticalMark()}"/></td>
                                         <td>
-                                            <a href="/editAccount?action=editStudentAccount&&ID=${student.getUserId()}">Change Status</a>
-                                            <a href="/subject?action=showStudentSubject&&studentID=${student.getUserId()}">Show Subject</a>
+                                            <a href="/subject?action=editMark&&markID=${mark.getMarkID()}">Edit</a>
                                         </td>
                                     </tr>
-                                    </c:forEach>
+                                    </tbody>
                                 </table>
                             </div>
                             <!-- /.card-body -->

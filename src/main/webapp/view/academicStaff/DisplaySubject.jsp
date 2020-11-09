@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +88,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="/accountInformation" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Account
@@ -94,7 +97,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/accountInformation" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Account Information</p>
                                 </a>
@@ -108,13 +111,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/admin?action=displayClass" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/class?action=showAllStudent" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Display Student</p>
                         </a>
@@ -129,13 +132,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllClassDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllStudentDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Student Diary</p>
                                 </a>
@@ -175,28 +178,26 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Signup Date</th>
-                                        <th>Position</th>
+                                        <th>Subject ID</th>
+                                        <th>Subject Name</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <%--@elvariable id="classrooms" type="java.util.List"--%>
+                                    <c:set var='ID' value='${requestScope["studentID"]}'/>
+                                    <c:forEach items="${subjects}" var="subject" >
                                     <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
+                                        <td><c:out value="${subject.getSubId()}"/></td>
+                                        <td><c:out value="${subject.getSubName()}"/></td>
+                                        <td>
+                                            <a href="/subject?action=showMark&&subID=${subject.getSubId()}&&ID=${ID}">Show Mark</a>
                                         </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
                                     </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -212,6 +213,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

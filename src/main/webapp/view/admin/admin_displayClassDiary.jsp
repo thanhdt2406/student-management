@@ -1,10 +1,12 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
+    <title>AS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -21,19 +23,19 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <jsp:include page="sideBar_admin.jsp" />
-    <!--content-wrapper -->
+    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Display Class</h1>
+                        <h1>DataTables</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Display Class</li>
+                            <li class="breadcrumb-item active">DataTables</li>
                         </ol>
                     </div>
                 </div>
@@ -50,24 +52,20 @@
                                 <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Start Date</th>
+                                        <th>Diary ID</th>
+                                        <th>Class ID</th>
+                                        <th>Date</th>
+                                        <th>Content</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-                                    <c:forEach items="${classrooms}" var="classroom" >
+<%--                                    <jsp:useBean id="students" scope="request" type="java.util.List"/>--%>
+                                    <c:forEach items="${diaryList}" var="diary">
                                     <tr>
-                                        <td><c:out value="${classroom.getClassID()}"/></td>
-                                        <td><c:out value="${classroom.getName()}"/></td>
-                                        <td><c:out value="${classroom.getStartDate()}"/></td>
-                                        <td>
-                                            <a href="/class?action=edit&&ID=${classroom.getClassID()}">Edit</a>
-                                            <p> </p>
-                                            <a href="/class?action=delete&&ID=${classroom.getClassID()}">Delete</a>
-                                        </td>
+                                        <td><c:out value="${diary.getId()}"/></td>
+                                        <td><c:out value="${diary.getClassID()}"/></td>
+                                        <td><c:out value="${diary.getDate()}"/></td>
+                                        <td><c:out value="${diary.getContent()}"/></td>
                                     </tr>
                                     </c:forEach>
                                 </table>
@@ -85,6 +83,7 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>
@@ -133,4 +132,3 @@
 </script>
 </body>
 </html>
-

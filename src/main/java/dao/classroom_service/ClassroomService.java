@@ -69,5 +69,31 @@ public class ClassroomService implements IClassroomService {
         return false;
     }
 
+    @Override
+    public boolean deleteClassroom(int classId) {
+        ConnectDB connectDB = ConnectDB.getInstance();
+        Connection connection = connectDB.getConnection();
+        String deleteClass = "delete from classroom where classID ="+classId;
+        String sql = "call deleteStudent(?)";
+        String getStudentID = "SELECT id From student Where classID =" + classId;
+        try {
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(getStudentID);
+            while (rs.next()){
+                int id = rs.getInt(1);
+                CallableStatement callableStatement = connection.prepareCall(sql);
+                callableStatement.setInt(1,id);
+                callableStatement.executeUpdate();
+            }
+            stm.execute(deleteClass);
+            return true;
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return false;
+    }
+
 
 }

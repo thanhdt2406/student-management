@@ -6,7 +6,7 @@ public class ConnectDB {
 
     final String DB_URL = "jdbc:mysql://localhost:3306/student_management?serverTimezone=UTC";
     final String jdbc_USERNAME = "root";
-    final String jdbc_PASSWORD = "123456";
+    final String jdbc_PASSWORD = "6";
 
     private static ConnectDB instance;
 

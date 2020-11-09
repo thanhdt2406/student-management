@@ -96,7 +96,7 @@ public class UserService implements IUserService {
                         address = rsGet.getString("address");
                         salary = rsGet.getInt("salary");
                         status = rsGet.getBoolean("status");
-                        user = new Teacher(userID, username, password, role, date, name, phoneNumber, address, status, salary);
+                        user = new Teacher(userID, username, password, role, date, name, phoneNumber, address, salary, status);
                         return user;
                     case "academic_staff":
                         sql = "select * from academic_staff where id = " + userID;

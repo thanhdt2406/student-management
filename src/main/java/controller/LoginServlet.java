@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
                     dispatcher.forward(request, response);
                 } else {
                     request.removeAttribute("fileNameRes");
+                    request.setAttribute("userId", user.getUserId());
                     request.setAttribute("fileNameRes", "ListStudent");
 
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");

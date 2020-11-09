@@ -42,7 +42,7 @@ public class ClassServlet extends HttpServlet {
         IClassroomService classroomService = new ClassroomService();
         List<Classroom> classrooms = classroomService.getAllClassroom();
         request.setAttribute("classrooms",classrooms);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/DisplayClass.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/admin_displayClass.jsp");
         dispatcher.forward(request,response);
     }
 

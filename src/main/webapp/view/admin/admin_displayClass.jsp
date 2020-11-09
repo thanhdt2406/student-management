@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,19 +21,20 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <jsp:include page="sideBar_admin.jsp" />
-    <!--content-wrapper -->
+    <!-- Main Sidebar Container -->
+
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>DataTables</h1>
+                        <h1>Display Class</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">DataTables</li>
+                            <li class="breadcrumb-item active">Display Class</li>
                         </ol>
                     </div>
                 </div>
@@ -50,36 +52,25 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Password</th>
-                                        <th>Position</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
+                                        <th>Name</th>
+                                        <th>Start Date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+                                    <%@ page language="java" contentType="text/html; charset=UTF-8"
+                                             pageEncoding="UTF-8" %>
+                                    <c:forEach items="${classrooms}" var="classroom" >
                                     <tr>
-                                        <td>Trident</td>
-                                        <td>Internet
-                                            Explorer 4.0
+                                        <td><c:out value="${classroom.getClassID()}"/></td>
+                                        <td><c:out value="${classroom.getName()}"/></td>
+                                        <td><c:out value="${classroom.getStartDate()}"/></td>
+                                        <td>
+                                            <a href="/class?action=edit?ID=${classroom.getID()}">Edit</a>
+                                            <a href="/class?action=delete?ID=${classroom.getID()}">Delete</a>
                                         </td>
-                                        <td>Win 95+</td>
-                                        <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
                                     </tr>
-                                    <tr>
-                                        <td>ABC</td>
-                                        <td>ABC
-                                        </td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                    </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- /.card-body -->
@@ -143,3 +134,7 @@
 </script>
 </body>
 </html>
+
+
+
+

@@ -43,7 +43,7 @@ public class TeacherService implements ITeacherService {
                 String phoneNumber = rs.getString("phone_number");
                 float salary = Float.parseFloat(rs.getString("salary"));
                 boolean status = rs.getInt("status") == 1;
-                teachers.add(new Teacher(id, name,address,phoneNumber,status,salary));
+//                teachers.add(new Teacher(id, name,address,phoneNumber,status,salary));
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

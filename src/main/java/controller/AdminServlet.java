@@ -20,7 +20,7 @@ public class AdminServlet extends HttpServlet {
             fileName = "ListUser";
         }
         request.setAttribute("fileNameRes",fileName);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/Admin/AdminIndex.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
         dispatcher.forward(request,response);
     }
 }

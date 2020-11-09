@@ -40,10 +40,11 @@ public class TeacherService implements ITeacherService {
                 int id = Integer.parseInt(rs.getString("id"));
                 String name = rs.getString("name");
                 String address = rs.getString("address");
-                String phoneNumber = rs.getString("phone_number");
+                String phone = rs.getString("phone_number");
                 float salary = Float.parseFloat(rs.getString("salary"));
                 boolean status = rs.getInt("status") == 1;
-                teachers.add(new Teacher(id, name,address,phoneNumber,salary,status));
+                teachers.add(new Teacher(id, name,phone,address,status, (int) salary));
+//                id, name, phone, address, status, salary
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

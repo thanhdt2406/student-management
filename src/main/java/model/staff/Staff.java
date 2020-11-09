@@ -9,6 +9,8 @@ public class Staff extends User {
     private boolean status;
     private float salary;
 
+
+
     public Staff(String name, String phoneNumber, String address, boolean status, int salary) {
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -108,6 +110,11 @@ public class Staff extends User {
         this.address = address;
         this.salary = salary;
     }
+
+//    public Staff(int id, String name, String address, String phoneNumber, float salary, boolean status) {
+//        super(id,name,address,phoneNumber,salary,status);
+//    }
+
 
     public String getName() {
         return name;

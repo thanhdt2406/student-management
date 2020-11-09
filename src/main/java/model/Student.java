@@ -100,14 +100,4 @@ public class Student extends User {
         this.classID = classID;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Student{" +
-//                "name='" + name + '\'' +
-//                ", phoneNumber='" + phoneNumber + '\'' +
-//                ", address='" + address + '\'' +
-//                ", status=" + status +
-//                ", classID=" + classID +
-//                '}';
-//    }
 }

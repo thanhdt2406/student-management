@@ -63,7 +63,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/student_handle?action=acc_infor" class="nav-link">
+                    <a href="/student_handle?action=class_infor" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
                         <p>Class Information</p>
                     </a>
@@ -78,7 +78,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="/student_handle?action=acc_infor" class="nav-link">
                                 <i class="far fa-star nav-icon"></i>
                                 <p>Account Information</p>
                             </a>

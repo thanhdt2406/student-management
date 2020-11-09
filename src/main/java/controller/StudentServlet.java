@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @WebServlet(name = "StudentServlet", urlPatterns = "/student_handle")
@@ -29,7 +31,7 @@ public class StudentServlet extends HttpServlet {
             case "class_infor":
                 break;
             case "acc_infor":
-//                displayAccInfor(request, response);
+                displayAccInfor(request, response);
                 break;
             case "mark":
                 displayMark(request,response);
@@ -64,6 +66,19 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void displayStudentInClass(HttpServletRequest request, HttpServletResponse response) {
+        StudentService service = new StudentService();
+        List<Student> studentList = service.getStudentInClass(student.getClassID());
+        String classRoom = service.getClassOfStudent(student.getClassID());
+        request.setAttribute("studentList", studentList);
+        request.setAttribute("classRoom", classRoom);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/student_displayClass.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

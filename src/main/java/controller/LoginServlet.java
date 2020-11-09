@@ -23,13 +23,11 @@ public class LoginServlet extends HttpServlet {
         List<User> userList = userService.getAllUser();
         for (User user : userList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                session.setAttribute("username", user.getUsername());
-                session.setAttribute("password", user.getPassword());
                 session.setAttribute("roleLogin", user.getRole());
                 session.setAttribute("idLogin", user.getUserId());
                 if(user.getRole().equals("admin")){
                     request.setAttribute("fileNameRes","listUser");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Admin/adminIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Admin/AdminIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("academic_staff")){
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AcademicStaff/AcademicStaffIndex.jsp");

@@ -8,8 +8,8 @@ import java.util.List;
 
 public interface ITeacherService {
     List<Teacher> showAllTeacher();
-    boolean addNewTeacher(User user, Teacher teacher);
-    boolean editTeacher(User user,Teacher teacher);
+    boolean addNewTeacher(Teacher teacher);
+    boolean editTeacher(Teacher teacher);
     boolean deleteTeacher(int teacherID);
     List<Classroom> getClassRoom();
 

@@ -17,18 +17,23 @@ import java.util.List;
 public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
-        if(session.getAttribute("roleLogin")!=null){
-            if(session.getAttribute("roleLogin").equals("admin")){
-                request.setAttribute("fileNameRes","ListUser");
+        if (session.getAttribute("roleLogin") != null) {
+            if (session.getAttribute("roleLogin").equals("admin")) {
+                request.removeAttribute("fileNameRes");
+                request.setAttribute("fileNameRes", "ListUser");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
                 dispatcher.forward(request, response);
-            } else if(session.getAttribute("roleLogin").equals("academic_staff")){
+            } else if (session.getAttribute("roleLogin").equals("academic_staff")) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
                 dispatcher.forward(request, response);
-            }else if(session.getAttribute("roleLogin").equals("teacher")){
+            } else if (session.getAttribute("roleLogin").equals("teacher")) {
+                request.removeAttribute("fileNameRes");
+                request.setAttribute("fileNameRes", "ListUser");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                 dispatcher.forward(request, response);
             } else {
+                request.removeAttribute("fileNameRes");
+                request.setAttribute("fileNameRes", "ListStudent");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                 dispatcher.forward(request, response);
             }
@@ -41,18 +46,22 @@ public class LoginServlet extends HttpServlet {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
                 session.setAttribute("roleLogin", user.getRole());
                 session.setAttribute("idLogin", user.getUserId());
-                if(user.getRole().equals("admin")){
-                    request.setAttribute("fileNameRes","ListUser");
+                if (user.getRole().equals("admin")) {
+                    request.removeAttribute("fileNameRes");
+                    request.setAttribute("fileNameRes", "ListUser");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("academic_staff")){
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/accountInformation");
                     dispatcher.forward(request, response);
-                } else if(user.getRole().equals("teacher")){
+                } else if (user.getRole().equals("teacher")) {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                     dispatcher.forward(request, response);
                 } else {
-                    request.setAttribute("fileNameRes","showAccountInfor");
+                    request.removeAttribute("fileNameRes");
+                    request.setAttribute("userId", user.getUserId());
+                    request.setAttribute("fileNameRes", "ListStudent");
+                    request.setAttribute("user", user.getUserId());
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                     dispatcher.forward(request, response);
                 }
@@ -62,7 +71,7 @@ public class LoginServlet extends HttpServlet {
         response.sendRedirect(request.getContextPath() + "/view/login.jsp?error=0");
     }
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response   ) throws ServletException, IOException {
-        doPost(request,response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 }

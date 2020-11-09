@@ -1,3 +1,5 @@
+<%@ page import="model.User" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,9 +39,9 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-3" action="#">
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="seachName">
                 <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
+                    <button class="btn btn-navbar" type="submit" action="/student_handle">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -50,7 +52,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Log out</a>
+                <a href="/Logout" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -84,7 +86,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/student_handle?action=acc_infor" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Class Information</p>
                         </a>
@@ -127,7 +129,154 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
+<<<<<<< HEAD
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Student Information</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Student Information</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <c:out value = "${user}"/>
+<%--                                    <table id="example2" class="table table-bordered table-hover">--%>
+<%--                                        <thead>--%>
+<%--                                        <tr>--%>
+<%--                                            <th>ID</th>--%>
+<%--                                            <th>Username</th>--%>
+<%--                                            <th>Password</th>--%>
+<%--                                            <th>Class</th>--%>
+<%--                                            <th>PhoneNumber</th>--%>
+<%--                                            <th>Address</th>--%>
+<%--                                        </tr>--%>
+<%--                                        </thead>--%>
+<%--                                        <tbody>--%>
+<%--                                        <tr>--%>
+<%--                                            <td>Trident</td>--%>
+<%--                                            <td>Internet--%>
+<%--                                                Explorer 4.0--%>
+<%--                                            </td>--%>
+<%--                                            <td>Win 95+</td>--%>
+<%--                                            <td> 4</td>--%>
+<%--                                            <td>X</td>--%>
+<%--                                            <td>X</td>--%>
+<%--                                        </tr>--%>
+<%--                                        <tr>--%>
+<%--                                            <td>ABC</td>--%>
+<%--                                            <td>ABC--%>
+<%--                                            </td>--%>
+<%--                                            <td>ABC</td>--%>
+<%--                                            <td>ABC</td>--%>
+<%--                                            <td>ABC</td>--%>
+<%--                                            <td>ABC</td>--%>
+<%--                                        </tr>--%>
+<%--                                    </table>--%>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+=======
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Student Information</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Student Information</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+
+                                <%--                                <table id="example2" class="table table-bordered table-hover">--%>
+                                <%--                                    <thead>--%>
+                                <%--                                    <tr>--%>
+                                <%--                                        <th>ID</th>--%>
+                                <%--                                        <th>Username</th>--%>
+                                <%--                                        <th>Password</th>--%>
+                                <%--                                        <th>Class</th>--%>
+                                <%--                                        <th>PhoneNumber</th>--%>
+                                <%--                                        <th>Address</th>--%>
+                                <%--                                    </tr>--%>
+                                <%--                                    </thead>--%>
+                                <%--                                    <tbody>--%>
+                                <%--                                    <tr>--%>
+                                <%--                                        <td>Trident</td>--%>
+                                <%--                                        <td>Internet--%>
+                                <%--                                            Explorer 4.0--%>
+                                <%--                                        </td>--%>
+                                <%--                                        <td>Win 95+</td>--%>
+                                <%--                                        <td> 4</td>--%>
+                                <%--                                        <td>X</td>--%>
+                                <%--                                        <td>X</td>--%>
+                                <%--                                    </tr>--%>
+                                <%--                                    <tr>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC--%>
+                                <%--                                        </td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                        <td>ABC</td>--%>
+                                <%--                                    </tr>--%>
+                                <%--                                </table>--%>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+>>>>>>> 8021ec38d2da83ed1b51b249d16c1668f744e6c8
+    </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

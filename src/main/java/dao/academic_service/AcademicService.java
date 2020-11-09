@@ -1,16 +1,13 @@
 package dao.academic_service;
 
 import dao.ConnectDB;
-import model.User;
 import model.staff.AcademicStaff;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-public class AcademicService implements IAcademmicService {
+public class AcademicService implements IAcademicService {
     //private Map<Integer, AcademicStaff> academicStaffMap = new HashMap<>();
     public AcademicService() {
     }

@@ -213,7 +213,7 @@
         </div>
         <!-- /.sidebar -->
     </aside>
-    <jsp:include page="${fileNameRes}.jsp" />
+    <jsp:include page="../PageContent/${fileNameRes}.jsp" />
     <h1>${fileNameRes}</h1>
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

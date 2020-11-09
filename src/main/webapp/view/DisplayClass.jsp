@@ -11,12 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../../data/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../data/plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="../../data/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../../data/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../data/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../data/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../../data/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../data/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -63,7 +63,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="#" class="brand-link">
-            <img src="../../data/dist/img/AdminLTELogo.png"
+            <img src="../data/dist/img/AdminLTELogo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
@@ -75,7 +75,7 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Admin</a>
@@ -85,7 +85,8 @@
             <!-- Sidebar Menu -->
 
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     <li class="nav-item">
                         <a href="/Admin?action=createClass" class="nav-link">
                             <i class="nav-icon fas fa-plus"></i>
@@ -93,7 +94,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/Admin?action=displayClass" class="nav-link">
+                        <a href="/Class" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
@@ -216,7 +217,69 @@
         <!-- /.sidebar -->
     </aside>
 
-    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Display Class</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                <li class="breadcrumb-item active">Display Class</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="example2" class="table table-bordered table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Start Date</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <c:forEach var="classroom" items="${classrooms}" >
+                                        <tr>
+                                            <td><c:out value="${classroom.getClassID()}"/></td>
+                                            <td><c:out value="${classroom.getName()}"/></td>
+                                            <td><c:out value="${classroom.getStartDate()}"/></td>
+                                            <td>
+<%--                                                <a href="/class?action=edit?ID=${classroom.getID()}">Edit</a>--%>
+<%--                                                <a href="/class?action=delete?ID=${classroom.getID()}">Delete</a>--%>
+                                            </td>
+                                        </tr>
+                                        </c:forEach>
+                                    </table>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
@@ -234,18 +297,18 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../../data/plugins/jquery/jquery.min.js"></script>
+<script src="../data/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../../data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
-<script src="../../data/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../../data/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../../data/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../../data/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../data/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../data/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../data/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../data/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../../data/dist/js/adminlte.min.js"></script>
+<script src="../data/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../../data/dist/js/demo.js"></script>
+<script src="../data/dist/js/demo.js"></script>
 <!-- page script -->
 
 </body>

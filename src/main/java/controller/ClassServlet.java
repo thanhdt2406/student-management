@@ -11,20 +11,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet(name = "ClassServlet",urlPatterns = "/class")
-public class CreateClassServlet extends HttpServlet {
+public class ClassServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         switch (action){
             case "create":
                 createNewClass(request,response);
                 break;
+            default:
+                displayClassRoom(request,response);
         }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        createNewClass(request,response);
+        String action= request.getParameter("action");
+//        int ID = Integer.parseInt(request.getParameter("ID"));
+        switch (action){
+            case "edit":
+
+            break;
+            default:
+                displayClassRoom(request,response);
+        }
+    }
+
+    private void displayClassRoom(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        IClassroomService classroomService = new ClassroomService();
+        List<Classroom> classrooms = classroomService.getAllClassroom();
+        request.setAttribute("classrooms",classrooms);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("view/DisplayClass.jsp");
+        dispatcher.forward(request,response);
     }
 
     private void createNewClass(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,4 +53,6 @@ public class CreateClassServlet extends HttpServlet {
         classroomService.createNewClassroom(classroom);
         response.sendRedirect("/login");
     }
+
+
 }

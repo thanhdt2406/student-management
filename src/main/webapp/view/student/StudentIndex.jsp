@@ -127,7 +127,7 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <jsp:include page="../PageContent/${fileNameRes}.jsp" />
+    <jsp:include page="../pageContent/${fileNameRes}.jsp" />
     <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">

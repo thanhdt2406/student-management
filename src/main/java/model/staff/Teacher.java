@@ -3,8 +3,8 @@ package model.staff;
 public class Teacher extends Staff {
     boolean status;
 
-    public Teacher(String name, String phoneNumber, String address, boolean status, int salary, boolean status1) {
-        super(name, phoneNumber, address, status, salary);
+    public Teacher(int name, String phoneNumber, String address, String status, float salary, boolean status1) {
+        super(name, phoneNumber, address, status, String.valueOf(salary));
         this.status = status1;
     }
 
@@ -28,10 +28,10 @@ public class Teacher extends Staff {
         this.status = status;
     }
 
-    public Teacher(int username, String password, String role, String signUpDate, boolean name, float status) {
-        super(username, password, role, signUpDate, name);
-        this.status = status;
-    }
+//    public Teacher(int username, String password, String role, String signUpDate, boolean name, float status) {
+//        super(username, password, role, signUpDate, name);
+//        this.status = status;
+//    }
 
     public Teacher(String username, String password, String role, String name, boolean status) {
         super(username, password, role, name);

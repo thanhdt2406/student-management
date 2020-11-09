@@ -22,6 +22,7 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+<<<<<<< HEAD
     <!-- Navbar -->
     <jsp:include page="student_navbar.jsp" />
 <%--    <nav class="main-header navbar navbar-expand navbar-white navbar-light">--%>
@@ -130,6 +131,9 @@
 <%--        <!-- /.sidebar -->--%>
 <%--    </aside>--%>
 
+=======
+    <jsp:include page="menuBar_student.jsp" />
+>>>>>>> 4eeffac25f1a7f5671b05af16fdd5aec3e05e84b
     <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
         <!-- /.content-wrapper -->
@@ -158,8 +162,6 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <c:out value="${id}"></c:out>
-
                                     <%--                                <table id="example2" class="table table-bordered table-hover">--%>
                                     <%--                                    <thead>--%>
                                     <%--                                    <tr>--%>
@@ -192,6 +194,10 @@
                                     <%--                                        <td>ABC</td>--%>
                                     <%--                                    </tr>--%>
                                     <%--                                </table>--%>
+                                    <c:out value = "${user}"/>
+                                    <h1>${student.getUserId()}-</h1>
+                                    <h1>${student.getName()}-</h1>
+                                    <h1>${student.getClassID()}-</h1>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

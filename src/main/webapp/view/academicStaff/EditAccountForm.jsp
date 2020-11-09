@@ -88,7 +88,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="/accountInformation" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Account
@@ -97,7 +97,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/accountInformation" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Account Information</p>
                                 </a>
@@ -111,13 +111,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/admin?action=displayClass" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/class?action=showAllStudent" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Display Student</p>
                         </a>
@@ -132,13 +132,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllClassDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllStudentDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Student Diary</p>
                                 </a>
@@ -178,26 +178,26 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <c:set var='as' value='${requestScope["academic_staff"]}'/>
+                                <c:set var='student' value='${requestScope["academic_staff"]}'/>
                                 <form action="/editAccount" class="was-validated" method="post">
                                     <div class="form-group">
                                         <label for="name">Name</label>
                                         <input type="text" class="form-control" id="name"
-                                               placeholder="Enter name" name="newName" value="${as.getName()}" required autofocus>
+                                               placeholder="Enter name" name="newName" value="${student.getName()}" required autofocus>
                                         <div class="invalid-feedback">Name can't be empty!</div>
                                     </div>
                                     <div class="form-group">
                                         <label for="phone_number">Phone Number</label>
                                         <input type="text" class="form-control" id="phone_number"
-                                               placeholder="Enter phone number" name="newPhoneNumber" value="${as.getPhoneNumber()}">
+                                               placeholder="Enter phone number" name="newPhoneNumber" value="${student.getPhoneNumber()}">
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
                                         <input type="text" class="form-control" id="address"
-                                               placeholder="Enter address" name="newAddress" value="${as.getAddress()}">
+                                               placeholder="Enter address" name="newAddress" value="${student.getAddress()}">
                                     </div>
                                     <input type="text" class="form-control" id="status"
-                                           name="status"  style="visibility: hidden" value="${as.isStatus()}">
+                                           name="status"  style="visibility: hidden" value="${student.isStatus()}">
                                     <button type="submit"
                                             class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">
                                         Save

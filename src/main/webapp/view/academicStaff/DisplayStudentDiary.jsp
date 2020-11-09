@@ -53,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/Logout" class="nav-link">Logout</a>
+                <a href="#" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -78,7 +78,7 @@
                     <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="/accountInformation" class="d-block">Academic Staff</a>
+                    <a href="#" class="d-block">Academic Staff</a>
                 </div>
             </div>
 
@@ -159,12 +159,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Account Information</h1>
+                        <h1>DataTables</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/accountInformation">Home</a></li>
-                            <li class="breadcrumb-item active">Account Information</li>
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">DataTables</li>
                         </ol>
                     </div>
                 </div>
@@ -178,36 +178,25 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="example2" class="table table-bordered table-hover">
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Username</th>
-                                        <th>Signup Date</th>
-                                        <th>Position</th>
-                                        <th>Name</th>
-                                        <th>Phone Number</th>
-                                        <th>Address</th>
-                                        <th>Salary</th>
-                                        <th>Action</th>
+                                        <th>Diary ID</th>
+                                        <th>Student ID</th>
+                                        <th>Date</th>
+                                        <th>Content</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <c:set var='student' value='${requestScope["academic_staff"]}'/>
-                                        <tr>
-                                            <td><c:out value="${student.getUserId()}"/></td>
-                                            <td><c:out value="${student.getUsername()}"/></td>
-                                            <td><c:out value="${student.getSignUpDate()}"/></td>
-                                            <td><c:out value="${student.getRole()}"/></td>
-                                            <td><c:out value="${student.getName()}"/></td>
-                                            <td><c:out value="${student.getPhoneNumber()}"/></td>
-                                            <td><c:out value="${student.getAddress()}"/></td>
-                                            <td><c:out value="${student.getSalary()}"/></td>
-                                            <td>
-                                                <a href="/editAccount?action=editAccount">Edit</a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
+                                    <%--                                    <jsp:useBean id="students" scope="request" type="java.util.List"/>--%>
+                                    <c:forEach items="${diaryList}" var="diary">
+                                    <tr>
+                                        <td><c:out value="${diary.getId()}"/></td>
+                                        <td><c:out value="${diary.getStudentID()}"/></td>
+                                        <td><c:out value="${diary.getDate()}"/></td>
+                                        <td><c:out value="${diary.getContent()}"/></td>
+                                    </tr>
+                                    </c:forEach>
                                 </table>
                             </div>
                             <!-- /.card-body -->

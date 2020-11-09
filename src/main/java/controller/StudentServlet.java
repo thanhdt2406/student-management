@@ -63,6 +63,8 @@ public class StudentServlet extends HttpServlet {
         }
     }
 
+    private void displayStudentInClass(HttpServletRequest request, HttpServletResponse response) {
+    }
 
 
     private void displayAccInfor(HttpServletRequest request, HttpServletResponse response) {

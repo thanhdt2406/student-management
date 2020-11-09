@@ -6,8 +6,10 @@ import dao.classroom_service.ClassroomService;
 import dao.classroom_service.IClassroomService;
 import dao.student_service.StudentService;
 import dao.teacher_service.TeacherService;
+import dao.user_service.UserService;
 import model.Classroom;
 import model.Student;
+import model.User;
 import model.diary.ClassDiary;
 import model.staff.AcademicStaff;
 import model.staff.Teacher;
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,12 +128,72 @@ public class AdminServlet extends HttpServlet {
                 createNewStudentForm(request, response);
                 break;
             case "displayClass":
-                request.setAttribute("action", "");
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/class");
-                requestDispatcher.forward(request, response);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/class");
+                dispatcher.forward(request,response);
+                break;
+            case "listAs":
+                listAllAs(request, response);
+                break;
+            case "listTeacher":
+                listAllTeacher(request, response);
+                break;
+            case "listStudent":
+                listAllStudent(request, response);
+                break;
+            case "listUser":
+                listAllUser(request, response);
+
                 break;
             default:
         }
+    }
+
+    private void listAllTeacher(HttpServletRequest request, HttpServletResponse response) {
+        TeacherService service = new TeacherService();
+        List<Teacher> list = service.showAllTeacher();
+        request.setAttribute("listTeacher",list);
+        System.out.println(list.size());
+        System.out.println(list.get(1).getName());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_listTeacher.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void listAllAs(HttpServletRequest request, HttpServletResponse response) {
+        AcademicService service = new AcademicService();
+        List<AcademicStaff> list = service.listAcademicStaff();
+        request.setAttribute("listAs",list);
+        System.out.println(list.size());
+                System.out.println(list.get(1).getName());
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_listStaff.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void listAllStudent(HttpServletRequest request, HttpServletResponse response) {
+        StudentService service = new StudentService();
+        List<Student> list = service.getAllStudent();
+        request.setAttribute("listStudent",list);
+        System.out.println(list.size());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_listStudent.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void listAllUser(HttpServletRequest request, HttpServletResponse response) {
     }
 
     private void createNewTeacherForm(HttpServletRequest request, HttpServletResponse response) {

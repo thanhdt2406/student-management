@@ -8,12 +8,12 @@ import model.staff.Teacher;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class TeacherService implements ITeacherService {
-    List<Teacher> teachers = new ArrayList<>();
     List<Classroom> classRooms = new ArrayList<>();
     Map<Integer, Teacher> teacherMap = new HashMap<>();
 
@@ -30,21 +30,20 @@ public class TeacherService implements ITeacherService {
 
     @Override
     public List<Teacher> showAllTeacher() {
-        teachers.clear();
-        String sql = "select * from teacher;";
+        List<Teacher> teachers = new ArrayList<>();
+        String sql = "SELECT * FROM teacher";
         Connection connection = ConnectDB.getInstance().getConnection();
         try {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
-                int id = Integer.parseInt(rs.getString("id"));
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String address = rs.getString("address");
                 String phone = rs.getString("phone_number");
-                float salary = Float.parseFloat(rs.getString("salary"));
-                boolean status = rs.getInt("status") == 1;
-                teachers.add(new Teacher(id, name, phone, address, status, (int) salary));
-//                id, name, phone, address, status, salary
+                int salary = rs.getInt("salary");
+                boolean status = rs.getBoolean("status");
+                teachers.add(new Teacher(id, name, phone, address, status, salary));
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

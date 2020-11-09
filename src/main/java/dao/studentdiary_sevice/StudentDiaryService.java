@@ -1,6 +1,7 @@
 package dao.studentdiary_sevice;
 
 import dao.ConnectDB;
+import model.diary.ClassDiary;
 import model.diary.StudentDiary;
 
 import java.sql.*;
@@ -84,5 +85,26 @@ public class StudentDiaryService implements IStudentDiaryService{
             throwables.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public List<StudentDiary> getAllStudentDiary() {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        List<StudentDiary> studentDiaryList = new ArrayList<>();
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select * from student_diary;");
+            while (rs.next()){
+                int diaryID = rs.getInt("diaryID");
+                String content = rs.getString("content");
+                String date = rs.getString("date");
+                int studentID = rs.getInt("studentID");
+                StudentDiary studentDiary = new StudentDiary(diaryID,content,date,studentID);
+                studentDiaryList.add(studentDiary);
+            }
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return studentDiaryList;
     }
 }

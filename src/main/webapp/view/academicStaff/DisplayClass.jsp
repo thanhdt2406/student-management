@@ -88,7 +88,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="/accountInformation" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Account
@@ -97,7 +97,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/accountInformation" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Account Information</p>
                                 </a>
@@ -111,13 +111,13 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/admin?action=displayClass" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/class?action=showAllStudent" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Display Student</p>
                         </a>
@@ -132,13 +132,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllClassDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllStudentDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Student Diary</p>
                                 </a>
@@ -184,6 +184,7 @@
                                         <th>ID</th>
                                         <th>Name</th>
                                         <th>Start Date</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -194,7 +195,8 @@
                                         <td><c:out value="${classroom.getName()}"/></td>
                                         <td><c:out value="${classroom.getStartDate()}"/></td>
                                         <td>
-                                            <a href="/class?action=showStudentInClass&&ID=${classroom.getClassID()}">Select</a>
+                                            <a href="/class?action=showStudentInClass&&ID=${classroom.getClassID()}">Show Student</a>
+                                            <a href="/diary?action=showClassDiary&&ID=${classroom.getClassID()}">Show Diary</a>
                                         </td>
                                     </tr>
                                     </c:forEach>

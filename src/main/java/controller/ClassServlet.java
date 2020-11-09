@@ -86,7 +86,7 @@ public class ClassServlet extends HttpServlet {
         Classroom classroom = new Classroom(className);
         IClassroomService classroomService = new ClassroomService();
         classroomService.createNewClassroom(classroom);
-        response.sendRedirect("/login");
+        response.sendRedirect("/class");
     }
 
 

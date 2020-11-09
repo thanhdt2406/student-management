@@ -2,15 +2,19 @@ package controller;
 
 import dao.academic_service.AcademicService;
 import dao.classdiary_service.ClassDiaryService;
+import dao.classdiary_service.IClassDiaryService;
 import dao.classroom_service.ClassroomService;
 import dao.classroom_service.IClassroomService;
 import dao.student_service.StudentService;
+import dao.studentdiary_sevice.IStudentDiaryService;
+import dao.studentdiary_sevice.StudentDiaryService;
 import dao.teacher_service.TeacherService;
 import dao.user_service.UserService;
 import model.Classroom;
 import model.Student;
 import model.User;
 import model.diary.ClassDiary;
+import model.diary.StudentDiary;
 import model.staff.AcademicStaff;
 import model.staff.Teacher;
 
@@ -145,10 +149,30 @@ public class AdminServlet extends HttpServlet {
                 break;
             case "listUser":
                 listAllUser(request, response);
-
+                break;
+            case "displayClassDiary":
+                displayClassDiary(request,response);
+                break;
+            case "displayStudentDiary":
+                displayStudentDiary(request,response);
                 break;
             default:
         }
+    }
+
+    private void displayClassDiary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        IClassDiaryService classDiaryService = new ClassDiaryService();
+        List<ClassDiary> classDiaryList =  classDiaryService.getAllClassDiary();
+        request.setAttribute("diaryList",classDiaryList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/admin/admin_displayClassDiary.jsp");
+        requestDispatcher.forward(request,response);
+    }
+    private void displayStudentDiary(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        IStudentDiaryService studentDiaryService = new StudentDiaryService();
+        List<StudentDiary> diaryList =  studentDiaryService.getAllStudentDiary();
+        request.setAttribute("diaryList",diaryList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/admin/admin_displayStudentDiary.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     private void listAllTeacher(HttpServletRequest request, HttpServletResponse response) {

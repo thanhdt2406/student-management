@@ -1,6 +1,5 @@
 package dao.teacher_service;
 
-import com.mysql.cj.x.protobuf.MysqlxCursor;
 import dao.ConnectDB;
 import model.Classroom;
 import model.staff.Teacher;
@@ -117,7 +116,7 @@ public class TeacherService implements ITeacherService {
                 String phone_number = rs.getString("phone number");
                 String status = rs.getString(" status");
                 float salary = Float.parseFloat(rs.getString("salary"));
-                classRooms.add(new Classroom());
+                //classRooms.add(new Classroom());
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

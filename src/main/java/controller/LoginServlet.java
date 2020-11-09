@@ -27,6 +27,8 @@ public class LoginServlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
                 dispatcher.forward(request, response);
             } else if (session.getAttribute("roleLogin").equals("teacher")) {
+                request.removeAttribute("fileNameRes");
+                request.setAttribute("fileNameRes", "ListUser");
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                 dispatcher.forward(request, response);
             } else {
@@ -51,7 +53,6 @@ public class LoginServlet extends HttpServlet {
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("academic_staff")){
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/accountInformation");
-
                     dispatcher.forward(request, response);
                 } else if (user.getRole().equals("teacher")) {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
@@ -60,7 +61,7 @@ public class LoginServlet extends HttpServlet {
                     request.removeAttribute("fileNameRes");
                     request.setAttribute("userId", user.getUserId());
                     request.setAttribute("fileNameRes", "ListStudent");
-
+                    request.setAttribute("user", user.getUserId());
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                     dispatcher.forward(request, response);
                 }

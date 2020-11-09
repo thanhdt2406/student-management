@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-=======
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
->>>>>>> 48e9926662104f0d901008e2ab41dc78e3825b30
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +50,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/Logout" class="nav-link">Logout</a>
+                <a href="#" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -92,17 +84,13 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-<<<<<<< HEAD
-                        <a href="/Admin?action=createNewClass" class="nav-link">
-=======
-                        <a href="/Admin?action=createClass" class="nav-link">
->>>>>>> 48e9926662104f0d901008e2ab41dc78e3825b30
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-plus"></i>
                             <p>Create New Class</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="/Admin?action=displayClass" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Display Class</p>
                         </a>
@@ -117,19 +105,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin?fileName=CreateNewAcaStaff" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Academic Staff</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=CreateNewTeacher" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=CreateNewStudent" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
@@ -146,25 +134,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin?fileName=ListAcademicStaff" class="nav-link">
-                                    <i class="far fa-star nav-icon"></i>
-                                    <p>Academic Staff</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="/Admin?fileName=ListTeacher" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Teacher</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=ListStudent" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Student</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/Admin?fileName=ListUser" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>All user</p>
                                 </a>
@@ -181,7 +163,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/Admin?action=createDiaryForm" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
@@ -196,35 +178,109 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas  fa-trophy"></i>
+                            <i class="nav-icon fas fa-search"></i>
                             <p>
-                                Mark
+                                Display Diary
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="far  fa-star nav-icon"></i>
-                                    <p>Class</p>
+                                    <i class="far  fa-bookmark nav-icon"></i>
+                                    <p>Class Diary</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
-                                    <i class="far  fa-star nav-icon"></i>
-                                    <p>All Student</p>
+                                    <i class="far  fa-bookmark nav-icon"></i>
+                                    <p>Student Diary</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
         </div>
         <!-- /.sidebar -->
     </aside>
-    <jsp:include page="../PageContent/${fileNameRes}.jsp" />
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>DataTables</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">DataTables</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Username</th>
+                                        <th>Password</th>
+                                        <th>Position</th>
+                                        <th>PhoneNumber</th>
+                                        <th>PhoneNumber</th>
+                                        <th>PhoneNumber</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Trident</td>
+                                        <td>Internet
+                                            Explorer 4.0
+                                        </td>
+                                        <td>Win 95+</td>
+                                        <td> 4</td>
+                                        <td>X</td>
+                                        <td>X</td>
+                                        <td>X</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ABC</td>
+                                        <td>ABC
+                                        </td>
+                                        <td>ABC</td>
+                                        <td>ABC</td>
+                                        <td>ABC</td>
+                                        <td>ABC</td>
+                                        <td>ABC</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>
@@ -254,6 +310,22 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../data/dist/js/demo.js"></script>
 <!-- page script -->
-
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
 </body>
 </html>

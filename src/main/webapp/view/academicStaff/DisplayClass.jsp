@@ -1,9 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
+    <title>AS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="/Logout" class="nav-link">Log out</a>
+                <a href="#" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -75,7 +78,7 @@
                     <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Teacher</a>
+                    <a href="#" class="d-block">Academic Staff</a>
                 </div>
             </div>
 
@@ -85,7 +88,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="/accountInformation" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Account
@@ -121,29 +124,6 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-paint-brush"></i>
-                            <p>
-                                Write Daily Diary
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Class Diary</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Student Diary</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-search"></i>
                             <p>
                                 Display Diary
@@ -173,81 +153,67 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="wrapper">
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1>Student Information</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Student Information</li>
-                            </ol>
-                        </div>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>DataTables</h1>
                     </div>
-                </div><!-- /.container-fluid -->
-            </section>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">DataTables</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
 
-            <!-- Main content -->
-            <section class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <table id="example2" class="table table-bordered table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Class</th>
-                                            <th>PhoneNumber</th>
-                                            <th>Address</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
-                                            </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>X</td>
-                                        </tr>
-                                        <tr>
-                                            <td>ABC</td>
-                                            <td>ABC
-                                            </td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <!-- /.card-body -->
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <table id="example2" class="table table-bordered table-hover" onload="alert('load')">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Start Date</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%--@elvariable id="classrooms" type="java.util.List"--%>
+                                    <c:forEach items="${classrooms}" var="classroom" >
+                                    <tr>
+                                        <td><c:out value="${classroom.getClassID()}"/></td>
+                                        <td><c:out value="${classroom.getName()}"/></td>
+                                        <td><c:out value="${classroom.getStartDate()}"/></td>
+                                        <td>
+                                            <a href="/class?action=showStudentInClass&&ID=${classroom.getClassID()}">Select</a>
+                                        </td>
+                                    </tr>
+                                    </c:forEach>
+                                </table>
                             </div>
-                            <!-- /.card -->
+                            <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
-                    <!-- /.col -->
+                    <!-- /.card -->
                 </div>
-                <!-- /.row -->
-            </section>
-            <!-- /.content -->
-        </div>
-        <!-- /.content-wrapper -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
             <b>Lorem ipsum dolor.</b>

@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.*;
 
 public class StudentService implements IStudentService {
-    Map<Integer, Student> studentMap = new HashMap<>();
+    List<Student> list = new ArrayList<>();
 
     private final String ADD_NEW_STUDENT = "call createNewStudentFullInformation(?, ?, ?, ?, ?, ?)";
     private final String GET_ALL_STUDENT = "call getAllStudent();";
@@ -17,12 +17,12 @@ public class StudentService implements IStudentService {
     public StudentService() {
     }
 
-    public Map<Integer, Student> getStudentMap() {
-        return studentMap;
+    public List<Student> getStudentList() {
+        return list;
     }
 
-    public void setStudentMap(Map<Integer, Student> studentMap) {
-        this.studentMap = studentMap;
+    public void setStudentList(List<Student> studentList) {
+        this.list = studentList;
     }
 
 
@@ -59,15 +59,12 @@ public class StudentService implements IStudentService {
                 boolean status = rs.getBoolean(5);
                 int classID = rs.getInt(6);
                 Student student = new Student(id, name, phone, status, classID);
-                studentMap.put(id, student);
+                list.add(student);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-        Collection<Student> values = studentMap.values();
-        List<Student> students = new ArrayList<>(values);
-        return students;
+        return list;
     }
 
     @Override
@@ -91,15 +88,6 @@ public class StudentService implements IStudentService {
         }
         return student;
     }
-
-//    public static void main(String[] args) {
-//        IStudentService service = new StudentService();
-//        List<Student> list;
-//        list = service.getAllStudent();
-//        for (Student one: list) {
-//            System.out.println(one.getName());
-//        }
-//    }
 
     @Override
     public boolean deleteStudent(int studentID) {
@@ -140,5 +128,27 @@ public class StudentService implements IStudentService {
     @Override
     public int AvgTheoreticalMark() {
         return 0;
+    }
+
+    @Override
+    public List<Student> getStudentInClass(int classID) {
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("select * from student where classID = ?;");
+            preparedStatement.setInt(1,classID);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String phone = rs.getString("phone_number");
+                String address = rs.getString("address");
+                boolean status = rs.getBoolean("status");
+                Student student = new Student(id,name,phone,address,status,classID);
+                list.add(student);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return list;
     }
 }

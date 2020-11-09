@@ -2,6 +2,7 @@ package controller;
 
 import dao.classdiary_service.ClassDiaryService;
 import dao.classroom_service.ClassroomService;
+import dao.classroom_service.IClassroomService;
 import model.Classroom;
 import model.diary.ClassDiary;
 
@@ -26,22 +27,27 @@ public class AdminServlet extends HttpServlet {
         System.out.println(request.getParameter("action"));
         System.out.println(action);
         switch (action){
-            case "createDiaryForm":
-                System.out.println("create");
-                showCreateDiaryClassForm(request,response);
-                break;
             case "createNewClass":
                 System.out.println("create new class form");
                 showCreateNewClassForm(request,response);
+                break;
+            case "createClass":
+                createClassForm(request,response);
+                break;
+            case "displayClass":
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/class");
+                requestDispatcher.forward(request,response);
+//                displayClass(request,response);
+                break;
             default:
         }
     }
 
     private void showCreateNewClassForm(HttpServletRequest request, HttpServletResponse response) {
         request.setAttribute("fileNameRes", "CreateClassForm");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/class");
         try {
-            dispatcher.forward(request,response);
+            requestDispatcher.forward(request,response);
         } catch (ServletException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -49,15 +55,9 @@ public class AdminServlet extends HttpServlet {
         }
     }
 
-    private void showCreateDiaryClassForm(HttpServletRequest request, HttpServletResponse response) {
-        request.setAttribute("fileNameRes", "createDiaryForm");
+    private void createClassForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("fileNameRes","CreateClassForm");
         RequestDispatcher dispatcher = request.getRequestDispatcher("view/admin/AdminIndex.jsp");
-        try {
-            dispatcher.forward(request,response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        dispatcher.forward(request,response);
     }
 }

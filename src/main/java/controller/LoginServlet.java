@@ -52,6 +52,7 @@ public class LoginServlet extends HttpServlet {
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
                     dispatcher.forward(request, response);
                 } else {
+                    request.setAttribute("fileNameRes","showAccountInfor");
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
                     dispatcher.forward(request, response);
                 }

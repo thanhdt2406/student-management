@@ -27,7 +27,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-body">
-                <form action="<%=request.getContextPath() %>/login" class="was-validated" method="post">
+                <form action="/class?action=create" class="was-validated" method="post">
                   <div class="form-group">
                     <label for="uname">Class name:</label>
                     <input type="text" class="form-control" id="uname" placeholder="Enter class name" name="className" required autofocus>

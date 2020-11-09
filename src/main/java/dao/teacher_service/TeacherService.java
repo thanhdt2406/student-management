@@ -43,7 +43,7 @@ public class TeacherService implements ITeacherService {
                 String phone = rs.getString("phone_number");
                 float salary = Float.parseFloat(rs.getString("salary"));
                 boolean status = rs.getInt("status") == 1;
-                teachers.add(new Teacher(id, name,phone,address,status, (int) salary));
+                teachers.add(new Teacher(id, name, phone, address, status, (int) salary));
 //                id, name, phone, address, status, salary
             }
         } catch (SQLException throwable) {
@@ -53,7 +53,7 @@ public class TeacherService implements ITeacherService {
     }
 
     @Override
-    public boolean addNewTeacher(User user,Teacher teacher) {
+    public boolean addNewTeacher(User user, Teacher teacher) {
         boolean isAdded = false;
         Connection connection = ConnectDB.getInstance().getConnection();
         String sql = "insert into teacher(id,name,phone_number,status,salary)" + "values(?,?,?,?,?)";
@@ -119,7 +119,7 @@ public class TeacherService implements ITeacherService {
                 String phone_number = rs.getString("phone number");
                 String status = rs.getString(" status");
                 float salary = Float.parseFloat(rs.getString("salary"));
-                classRooms.add(new Classroom(id,name,role,phone_number,status,salary));
+                classRooms.add(new Classroom(id, name, role, phone_number, status, salary));
             }
         } catch (SQLException throwable) {
             throwable.printStackTrace();

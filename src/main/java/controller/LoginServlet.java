@@ -20,16 +20,16 @@ public class LoginServlet extends HttpServlet {
         if(session.getAttribute("roleLogin")!=null){
             if(session.getAttribute("roleLogin").equals("admin")){
                 request.setAttribute("fileNameRes","ListUser");
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Admin/AdminIndex.jsp");
                 dispatcher.forward(request, response);
             } else if(session.getAttribute("roleLogin").equals("academic_staff")){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AcademicStaff/AcademicStaffIndex.jsp");
                 dispatcher.forward(request, response);
             }else if(session.getAttribute("roleLogin").equals("teacher")){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/teacher/TeacherIndex.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Teacher/TeacherIndex.jsp");
                 dispatcher.forward(request, response);
             } else {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Student/StudentIndex.jsp");
                 dispatcher.forward(request, response);
             }
         }
@@ -43,10 +43,10 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("idLogin", user.getUserId());
                 if(user.getRole().equals("admin")){
                     request.setAttribute("fileNameRes","ListUser");
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Admin/AdminIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("academic_staff")){
-                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/academicStaff/AcademicStaffIndex.jsp");
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("/view/AcademicStaff/AcademicStaffIndex.jsp");
                     dispatcher.forward(request, response);
                 } else if(user.getRole().equals("teacher")){
                     RequestDispatcher dispatcher = request.getRequestDispatcher("/view/Teacher/TeacherIndex.jsp");

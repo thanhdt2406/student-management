@@ -9,6 +9,7 @@ public interface IStudentService {
     List<Student> getAllStudent();
     boolean deleteStudent(int studentID);
     void editStudent(Student student);
+    Student getStudentInfor(int id);
 
     int AvgPracticeMark();
     int AvgTheoreticalMark();

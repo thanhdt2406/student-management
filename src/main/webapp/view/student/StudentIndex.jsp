@@ -37,9 +37,9 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-3" action="#">
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" name="seachName">
                 <div class="input-group-append">
-                    <button class="btn btn-navbar" type="submit">
+                    <button class="btn btn-navbar" type="submit" action="/student_handle">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -50,7 +50,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Log out</a>
+                <a href="/Logout" class="nav-link">Log out</a>
             </li>
         </ul>
     </nav>
@@ -84,7 +84,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/student_handle?action=acc_infor" class="nav-link">
                             <i class="nav-icon fas fa-book"></i>
                             <p>Class Information</p>
                         </a>

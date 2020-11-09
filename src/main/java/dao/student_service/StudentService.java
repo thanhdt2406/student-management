@@ -10,7 +10,11 @@ import java.util.*;
 public class StudentService implements IStudentService {
     Map<Integer, Student> studentMap = new HashMap<>();
 
+<<<<<<< HEAD
     private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ?, ?)";
+=======
+    private final String ADD_NEW_STUDENT = "call creatNewStudent(?, ?, ?, ?, ? , ?)";
+>>>>>>> 5d3ccf1bf187dc506c546be54757dfadb816ed32
     private final String GET_ALL_STUDENT = "call getAllStudent();";
     private final String EDIT_STUDENT = "call editStudent(?, ?, ?, ?, ?, ?);";
     private final String DELETE_STUDENT = "call deleteStudent(?);";
@@ -67,6 +71,28 @@ public class StudentService implements IStudentService {
         Collection<Student> values = studentMap.values();
         List<Student> students = new ArrayList<>(values);
         return students;
+    }
+
+    @Override
+    public Student getStudentInfor(int id){
+        Connection connection = ConnectDB.getInstance().getConnection();
+        String sql = "select * from student where id = " + id;
+        Student student = null;
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while (rs.next()){
+                String name = rs.getString(2);
+                String phone = rs.getString(4);
+                String role = rs.getString(3);
+                boolean status = rs.getBoolean(5);
+                int classID = rs.getInt(6);
+                student = new Student(id, name, phone, status, classID);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return student;
     }
 
 //    public static void main(String[] args) {

@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +20,7 @@
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
-<%--    <jsp:include page="sideBar_admin.jsp" />--%>
+    <jsp:include page="sideBar_admin.jsp" />
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
@@ -173,59 +172,86 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1>Create New Diary</h1>
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Create New Academic Staff</h1>
+                        </div>
+                        <div class="col-sm-6">
+                            <ol class="breadcrumb float-sm-right">
+                                <li class="breadcrumb-item"><a href="AdminIndex.jsp">Home</a></li>
+                                <li class="breadcrumb-item active">Create New Class</li>
+                            </ol>
+                        </div>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/Class?fileName=AdminIndex">Home</a></li>
-                            <li class="breadcrumb-item active">Create New Diary</li>
-                        </ol>
-                    </div>
-                </div>
-            </div><!-- /.container-fluid -->
-        </section>
+                </div><!-- /.container-fluid -->
+            </section>
 
-        <!-- Main content -->
-        <section class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <form action="/diary?action=create?type=class" class="was-validated" method="post">
-                                    <div class="form-group">
-                                        <label for="className">Class name:</label>
-                                        <select name="className" id="className">
-                                            <c:forEach items="listClass" var="class">
-                                                <option value="${class.getClassID()}">${class.getName()}</option>
-                                            </c:forEach>
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="content">Content:</label>
-                                        <textarea type="text" class="form-control" id="content" placeholder="class diary . . ." name="content" required autofocus></textarea>
-                                        <div class="invalid-feedback">Content can't be empty!</div>
-                                    </div>
-                                    <button type="submit" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Create New Class</button>
-                                </form>
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form action="<%=request.getContextPath() %>/login" class="was-validated" method="post">
+                                        <div class="form-group">
+                                            <label for="uname">Username:</label>
+                                            <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required autofocus>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uname">Password:</label>
+                                            <input type="text" class="form-control" id="password" placeholder="Enter password" name="password" required autofocus>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uname">Full name:</label>
+                                            <input type="text" class="form-control" id="name" placeholder="Enter full name" name="name" required autofocus>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uname">Phone number:</label>
+                                            <input type="text" class="form-control" id="phoneNumber" placeholder="Enter phone number" name="phoneNumber" required autofocus>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uname">Address:</label>
+                                            <input type="text" class="form-control" id="address" placeholder="Enter address" name="address" required autofocus>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="uname">Salary:</label>
+                                            <input type="text" class="form-control" id="salary" placeholder="Enter salary" name="salary" required autofocus>
+                                            <div class="valid-feedback">Valid.</div>
+                                            <div class="invalid-feedback">Please fill out this field.</div>
+                                        </div>
+                                        <button type="submit" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Create New Academic staff</button>
+                                    </form>
+                                </div>
+                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card-body -->
+                            <!-- /.card -->
                         </div>
                         <!-- /.card -->
                     </div>
-                    <!-- /.card -->
+                    <!-- /.col -->
                 </div>
-                <!-- /.col -->
-            </div>
-            <!-- /.row -->
-        </section>
-        <!-- /.content -->
+                <!-- /.row -->
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">

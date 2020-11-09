@@ -32,15 +32,24 @@ public class ClassServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
-//        int ID = Integer.parseInt(request.getParameter("ID"));
-        System.out.println("get class action" + action);
         switch (action) {
             case "showStudentInClass":
                 showStudentInClass(request, response);
                 break;
+            case "showAllStudent":
+                showAllStudent(request,response);
+                break;
             default:
                 displayClassRoom(request, response);
         }
+    }
+
+    private void showAllStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        IStudentService studentService = new StudentService();
+        List<Student> students = studentService.getAllStudent();
+        request.setAttribute("students",students);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/academicStaff/DisplayStudent.jsp");
+        requestDispatcher.forward(request,response);
     }
 
     private void showStudentInClass(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

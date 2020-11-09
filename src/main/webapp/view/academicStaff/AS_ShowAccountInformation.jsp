@@ -53,7 +53,7 @@
         <ul class="navbar-nav ml-auto">
             <!-- Messages Dropdown Menu -->
             <li class="nav-item d-none d-sm-inline-block">
-                <a href="#" class="nav-link">Log out</a>
+                <a href="/Logout" class="nav-link">Logout</a>
             </li>
         </ul>
     </nav>
@@ -78,7 +78,7 @@
                     <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Academic Staff</a>
+                    <a href="/accountInformation" class="d-block">Academic Staff</a>
                 </div>
             </div>
 
@@ -88,7 +88,7 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item has-treeview">
-                        <a href="/accountInformation" class="nav-link">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-user"></i>
                             <p>
                                 Account
@@ -97,7 +97,7 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/accountInformation" class="nav-link">
                                     <i class="far fa-star nav-icon"></i>
                                     <p>Account Information</p>
                                 </a>
@@ -117,7 +117,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="/class?action=showAllStudent" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>Display Student</p>
                         </a>
@@ -132,13 +132,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllClassDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Class Diary</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/diary?action=displayAllStudentDiary" class="nav-link">
                                     <i class="far  fa-bookmark nav-icon"></i>
                                     <p>Student Diary</p>
                                 </a>
@@ -159,12 +159,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>DataTables</h1>
+                        <h1>Account Information</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">DataTables</li>
+                            <li class="breadcrumb-item"><a href="/accountInformation">Home</a></li>
+                            <li class="breadcrumb-item active">Account Information</li>
                         </ol>
                     </div>
                 </div>
@@ -189,6 +189,7 @@
                                         <th>Phone Number</th>
                                         <th>Address</th>
                                         <th>Salary</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -203,7 +204,7 @@
                                             <td><c:out value="${as.getAddress()}"/></td>
                                             <td><c:out value="${as.getSalary()}"/></td>
                                             <td>
-                                                <a href="/editAccount">Edit</a>
+                                                <a href="/editAccount?action=editAccount">Edit</a>
                                             </td>
                                         </tr>
                                     </tbody>

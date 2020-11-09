@@ -31,9 +31,6 @@ public class ConnectDB {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        if (connection != null) {
-            System.out.println("connect database succeed!");
-        }
         return connection;
     }
 }

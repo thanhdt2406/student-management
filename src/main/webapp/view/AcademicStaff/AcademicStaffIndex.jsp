@@ -3,17 +3,17 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Index</title>
+    <title>AS</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="../data/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../../data/plugins/fontawesome-free/css/all.min.css">
     <!-- DataTables -->
-    <link rel="stylesheet" href="../data/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../data/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../data/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../../data/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="../data/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="../../data/dist/css/adminlte.min.css">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -60,7 +60,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="#" class="brand-link">
-            <img src="../data/dist/img/AdminLTELogo.png"
+            <img src="../../data/dist/img/AdminLTELogo.png"
                  alt="AdminLTE Logo"
                  class="brand-image img-circle elevation-3"
                  style="opacity: .8">
@@ -72,10 +72,10 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    <img src="../../data/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Admin</a>
+                    <a href="#" class="d-block">Academic Staff</a>
                 </div>
             </div>
 
@@ -121,29 +121,6 @@
                     </li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-paint-brush"></i>
-                            <p>
-                                Write Daily Diary
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Class Diary</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="far  fa-bookmark nav-icon"></i>
-                                    <p>Student Diary</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-search"></i>
                             <p>
                                 Display Diary
@@ -179,12 +156,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>DataTables</h1>
+                        <h1>Class</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">DataTables</li>
+                            <li class="breadcrumb-item active">Class</li>
                         </ol>
                     </div>
                 </div>
@@ -202,12 +179,9 @@
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Username</th>
+                                        <th>Class nmae</th>
                                         <th>Password</th>
-                                        <th>Position</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
-                                        <th>PhoneNumber</th>
+                                        <th>Start date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -218,17 +192,11 @@
                                         </td>
                                         <td>Win 95+</td>
                                         <td> 4</td>
-                                        <td>X</td>
-                                        <td>X</td>
-                                        <td>X</td>
                                     </tr>
                                     <tr>
                                         <td>ABC</td>
                                         <td>ABC
                                         </td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
-                                        <td>ABC</td>
                                         <td>ABC</td>
                                         <td>ABC</td>
                                     </tr>
@@ -263,18 +231,18 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="../data/plugins/jquery/jquery.min.js"></script>
+<script src="../../data/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="../data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../data/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
-<script src="../data/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="../data/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-<script src="../data/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-<script src="../data/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="../../data/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="../../data/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="../../data/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="../../data/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->
-<script src="../data/dist/js/adminlte.min.js"></script>
+<script src="../../data/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="../data/dist/js/demo.js"></script>
+<script src="../../data/dist/js/demo.js"></script>
 <!-- page script -->
 <script>
     $(function () {

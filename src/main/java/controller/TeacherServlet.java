@@ -33,6 +33,9 @@ public class TeacherServlet extends HttpServlet {
                 listAllStudent(request, response);
                 break;
             case "listClass":
+                System.out.println("teacher get líhclass");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/class?action=#");
+                dispatcher.forward(request,response);
                 break;
             case "listClassDiary":
                 displayClassDiary(request, response);

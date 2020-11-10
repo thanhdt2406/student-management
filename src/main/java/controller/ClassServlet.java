@@ -97,6 +97,10 @@ public class ClassServlet extends HttpServlet {
                 dispatcher = request.getRequestDispatcher("view/admin/admin_displayClass.jsp");
                 dispatcher.forward(request, response);
                 break;
+            case "teacher":
+                dispatcher = request.getRequestDispatcher("view/teacher/teacher_displayClass.jsp");
+                dispatcher.forward(request, response);
+                break;
             case "academic_staff":
                 dispatcher = request.getRequestDispatcher("view/academicStaff/DisplayClass.jsp");
                 dispatcher.forward(request, response);

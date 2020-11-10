@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = request.getSession(true);
         if (session.getAttribute("roleLogin") != null) {
             if (session.getAttribute("roleLogin").equals("admin")) {
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/AdminIndex.jsp");
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/admin?action=listUser");
                 dispatcher.forward(request, response);
             } else if (session.getAttribute("roleLogin").equals("academic_staff")) {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/accountInformation");

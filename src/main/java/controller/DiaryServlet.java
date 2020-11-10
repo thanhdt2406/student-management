@@ -42,18 +42,14 @@ public class DiaryServlet extends HttpServlet {
 
     private void createNewClassDiary(HttpServletRequest request, HttpServletResponse response) {
     String type = request.getParameter("type");
+        System.out.println(type);
     switch (type){
         case "class":
-            System.out.println("class tyoe");
             ClassDiaryService service = new ClassDiaryService();
             String content = request.getParameter("content");
-            System.out.println("classID: "+request.getParameter("classId"));
             System.out.println(content);
-            int classID = Integer.parseInt(request.getParameter("classId"));
-            System.out.println("classiD"+classID);
+            int classID = Integer.parseInt(request.getParameter("className"));
             boolean rs = service.createNewClassDiary(new ClassDiary(content,classID));
-            System.out.println("create class diary "+rs);
-
             RequestDispatcher dispatcher = request.getRequestDispatcher("/diary?action=displayAllClassDiary");
             try {
                 dispatcher.forward(request,response);
@@ -64,6 +60,19 @@ public class DiaryServlet extends HttpServlet {
             }
             break;
         case "student":
+            StudentDiaryService studentDiaryService = new StudentDiaryService();
+            content = request.getParameter("content");
+            System.out.println(content);
+            int studentID = Integer.parseInt(request.getParameter("ID"));
+            rs = studentDiaryService.createNewStudentDiary(new StudentDiary(content,studentID));
+            dispatcher = request.getRequestDispatcher("/diary?action=displayAllStudentDiary");
+            try {
+                dispatcher.forward(request,response);
+            } catch (ServletException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             break;
         default:
     }

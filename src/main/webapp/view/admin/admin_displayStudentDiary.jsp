@@ -54,6 +54,7 @@
                                     <tr>
                                         <th>Diary ID</th>
                                         <th>Student ID</th>
+                                        <th>Student Name</th>
                                         <th>Date</th>
                                         <th>Content</th>
                                     </tr>
@@ -64,6 +65,7 @@
                                     <tr>
                                         <td><c:out value="${diary.getId()}"/></td>
                                         <td><c:out value="${diary.getStudentID()}"/></td>
+                                        <td><c:out value="${diary.getStudentName()}"/></td>
                                         <td><c:out value="${diary.getDate()}"/></td>
                                         <td><c:out value="${diary.getContent()}"/></td>
                                     </tr>

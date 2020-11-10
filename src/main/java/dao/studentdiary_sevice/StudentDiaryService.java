@@ -93,13 +93,14 @@ public class StudentDiaryService implements IStudentDiaryService{
         List<StudentDiary> studentDiaryList = new ArrayList<>();
         try{
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from student_diary;");
+            ResultSet rs = statement.executeQuery("select * from student_diary join student s on s.id = student_diary.studentID;");
             while (rs.next()){
                 int diaryID = rs.getInt("diaryID");
                 String content = rs.getString("content");
                 String date = rs.getString("date");
+                String name = rs.getString("name");
                 int studentID = rs.getInt("studentID");
-                StudentDiary studentDiary = new StudentDiary(diaryID,content,date,studentID);
+                StudentDiary studentDiary = new StudentDiary(diaryID,content,date,studentID,name);
                 studentDiaryList.add(studentDiary);
             }
         } catch (SQLException exception) {

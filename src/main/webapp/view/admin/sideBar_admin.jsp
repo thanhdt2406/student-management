@@ -29,7 +29,7 @@
     <ul class="navbar-nav ml-auto">
         <!-- Messages Dropdown Menu -->
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Log out</a>
+            <a href="/Logout" class="nav-link">Logout</a>
         </li>
     </ul>
 </nav>

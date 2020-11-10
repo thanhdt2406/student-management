@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,8 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <jsp:include page="menuBar_teacher.jsp" />
+    <!-- Main Sidebar Container -->
+    <
     <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
@@ -29,12 +32,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Student Information</h1>
+                            <h1>Write Student Diary</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Student Information</li>
+                                <li class="breadcrumb-item active">Student diary</li>
                             </ol>
                         </div>
                     </div>
@@ -48,37 +51,44 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
+                                    <script>
+                                        function showForm(id){
+                                            document.getElementById("contentForm").setAttribute("style","block");
+                                            document.getElementById("id").setAttribute("value", id);
+                                        }
+                                        function hideForm(){
+                                            document.getElementById("contentForm").setAttribute("style","none");
+                                        }
+                                    </script>
+                                    <form action="/diary?action=create&&type=student" class="was-validated" method="post" id="contentForm" style="display: none">
+                                        <div class="form-group">
+                                            <input type="text" value="" name="ID" id="id">
+                                            <label for="content">Content:</label>
+                                            <textarea type="text" class="form-control" id="content" placeholder="class diary . . ." name="content" required autofocus></textarea>
+                                            <div class="invalid-feedback">Content can't be empty!</div>
+                                        </div>
+                                        <button type="submit" onclick="hideForm()" class="u-active-palette-2-dark-2 u-black u-btn u-button-style u-hover-palette-2-light-1 u-btn-1">Submit</button>
+                                    </form>
                                     <table id="example2" class="table table-bordered table-hover">
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Class</th>
-                                            <th>PhoneNumber</th>
-                                            <th>Address</th>
+                                            <th>Name</th>
+                                            <th>ClassID</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${listStudent}" var="student" >
                                         <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
+                                            <td><c:out value="${student.getUserId()}"/></td>
+                                            <td><c:out value="${student.getName()}"/></td>
+                                            <td><c:out value="${student.getClassID()}"/></td>
+                                            <td>
+                                                    <button onclick="showForm(${student.getUserId()})">Write diary</button>
                                             </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>X</td>
                                         </tr>
-                                        <tr>
-                                            <td>ABC</td>
-                                            <td>ABC
-                                            </td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                        </tr>
+                                        </c:forEach>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -144,3 +154,6 @@
 </script>
 </body>
 </html>
+
+
+

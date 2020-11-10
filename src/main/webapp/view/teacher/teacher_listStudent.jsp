@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +21,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <jsp:include page="menuBar_teacher.jsp" />
+    <!-- Main Sidebar Container -->
     <!-- Content Wrapper. Contains page content -->
     <div class="wrapper">
         <!-- Content Wrapper. Contains page content -->
@@ -52,33 +54,28 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Class</th>
-                                            <th>PhoneNumber</th>
+                                            <th>Name</th>
+                                            <th>ClassID</th>
+                                            <th>Phone Number</th>
                                             <th>Address</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <c:forEach items="${listStudent}" var="student" >
                                         <tr>
-                                            <td>Trident</td>
-                                            <td>Internet
-                                                Explorer 4.0
+                                            <td><c:out value="${student.getUserId()}"/></td>
+                                            <td><c:out value="${student.getName()}"/></td>
+                                            <td><c:out value="${student.getClassID()}"/></td>
+                                            <td><c:out value="${student.getPhoneNumber()}"/></td>
+                                            <td><c:out value="${student.getAddress()}"/></td>
+                                            <td><c:out value="${student.isStatus()}"/></td>
+                                            <td>
+                                                <a href="/editAccount?action=editStudentAccount&&ID=${student.getUserId()}">Change Status</a>
                                             </td>
-                                            <td>Win 95+</td>
-                                            <td> 4</td>
-                                            <td>X</td>
-                                            <td>X</td>
                                         </tr>
-                                        <tr>
-                                            <td>ABC</td>
-                                            <td>ABC
-                                            </td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                            <td>ABC</td>
-                                        </tr>
+                                        </c:forEach>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
@@ -144,3 +141,6 @@
 </script>
 </body>
 </html>
+
+
+

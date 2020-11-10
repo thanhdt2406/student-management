@@ -104,7 +104,7 @@
             
             
           </span>
-                    <h4 class="u-align-center u-text u-text-1">convenient</h4>
+                    <h4 class="u-align-center u-text u-text-1">covenient</h4>
                 </div>
             </div>
             <div class="u-align-center u-black u-container-style u-list-item u-opacity u-opacity-60 u-repeater-item u-video-cover u-list-item-2">

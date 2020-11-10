@@ -36,6 +36,9 @@ public class DiaryServlet extends HttpServlet {
             case "create":
                 createNewClassDiary(request,response);
                 break;
+            case "showClassDiary":
+                displayClassDiaryByClassID(request,response);
+                break;
             default:
         }
     }
@@ -85,4 +88,12 @@ public class DiaryServlet extends HttpServlet {
         requestDispatcher.forward(request,response);
     }
 
+    private void displayClassDiaryByClassID(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int ID = Integer.parseInt(request.getParameter("ID"));
+        IClassDiaryService classDiaryService = new ClassDiaryService();
+        List<ClassDiary> classDiaryList =  classDiaryService.getClassDiary(ID);
+        request.setAttribute("diaryList",classDiaryList);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("view/academicStaff/DisplayClassDiary.jsp");
+        requestDispatcher.forward(request,response);
+    }
 }

@@ -154,7 +154,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin?action=displayStudentDiary" class="nav-link">
+                            <a href="/admin?action=createStudentDiary" class="nav-link">
                                 <i class="far  fa-bookmark nav-icon"></i>
                                 <p>Student Diary</p>
                             </a>

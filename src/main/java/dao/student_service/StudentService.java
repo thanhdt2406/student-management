@@ -133,15 +133,19 @@ public class StudentService implements IStudentService {
         Connection connection = ConnectDB.getInstance().getConnection();
         try {
             Statement statement = connection.createStatement();
-            ResultSet rs = statement.executeQuery("select * from student;");
+            ResultSet rs = statement.executeQuery("select * from user join student st on user.role='student' and user.id = st.id;");
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
+                String username = rs.getString("username");
+                String password = rs.getString("password");
                 String phone = rs.getString("phone_number");
                 String address = rs.getString("address");
+                String date = rs.getString("signUp_date");
                 boolean status = rs.getBoolean("status");
+                String role = rs.getString("role");
                 int classID = rs.getInt("classID");
-                Student student = new Student(id,name,phone,address,status,classID);
+                Student student = new Student(id,username,password,role,date,name,phone,address,status,classID);
                 list.add(student);
             }
         } catch (SQLException throwables) {

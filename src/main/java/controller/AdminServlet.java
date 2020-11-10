@@ -56,6 +56,7 @@ public class AdminServlet extends HttpServlet {
                 dispatcher.forward(request, response);
                 break;
             default:
+                doGet(request,response);
         }
     }
 
@@ -137,6 +138,9 @@ public class AdminServlet extends HttpServlet {
             case "createClassDiary":
                 createClassDiaryForm(request,response);
                 break;
+            case "createStudentDiary":
+                createStudentDiaryForm(request,response);
+                break;
             case "displayClass":
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/class");
                 dispatcher.forward(request,response);
@@ -160,6 +164,21 @@ public class AdminServlet extends HttpServlet {
                 displayStudentDiary(request,response);
                 break;
             default:
+        }
+    }
+
+    private void createStudentDiaryForm(HttpServletRequest request, HttpServletResponse response) {
+        StudentService service = new StudentService();
+        List<Student> list = service.getAllStudent();
+        request.setAttribute("listStudent",list);
+        System.out.println(list.size());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_createStudentDiaryForm.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -238,6 +257,18 @@ public class AdminServlet extends HttpServlet {
         }
     }
     private void listAllUser(HttpServletRequest request, HttpServletResponse response) {
+        UserService service = new UserService();
+        List<User> list = service.getAllUser();
+        request.setAttribute("listUser",list);
+        System.out.println(list.size());
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/admin/admin_listUser.jsp");
+        try {
+            dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void createNewTeacherForm(HttpServletRequest request, HttpServletResponse response) {

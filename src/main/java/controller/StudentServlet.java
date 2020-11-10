@@ -1,27 +1,29 @@
 package controller;
 
 import dao.ConnectDB;
+import dao.mark_service.MarkService;
 import dao.student_service.IStudentService;
 import dao.student_service.StudentService;
+import dao.subject_service.SubjectService;
+import model.Mark;
 import model.Student;
-import model.User;
+import model.Subject;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @WebServlet(name = "StudentServlet", urlPatterns = "/student_handle")
 public class StudentServlet extends HttpServlet {
     IStudentService service = new StudentService();
+    Student student = new Student();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -69,14 +71,27 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void displayStudentInClass(HttpServletRequest request, HttpServletResponse response) {
+        StudentService service = new StudentService();
+        List<Student> studentList = service.getStudentInClass(student.getClassID());
+        String classRoom = service.getClassOfStudent(student.getClassID());
+        request.setAttribute("studentList", studentList);
+        request.setAttribute("classRoom", classRoom);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/student_displayClass.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     private void displayAccInfor(HttpServletRequest request, HttpServletResponse response) {
-        Student student = (Student) request.getAttribute("student");
         StudentService service = new StudentService();
         String classRoom = service.getClassOfStudent(student.getClassID());
         request.setAttribute("classRoom", classRoom);
+        request.setAttribute("student", student);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
         try {
             dispatcher.forward(request, response);
@@ -88,9 +103,13 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void displayMark(HttpServletRequest request, HttpServletResponse response) {
-        request.removeAttribute("fileNameRes");
-        request.setAttribute("fileNameRes", "ListStudent");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/StudentIndex.jsp");
+        SubjectService subjectService = new SubjectService();
+        MarkService markService = new MarkService();
+        List<Mark> markList = markService.getMarkOfStudent(student.getUserId());
+        List<Subject> subjectList = subjectService.getAllSubject();
+        request.setAttribute("markList", markList);
+        request.setAttribute("subjectList", subjectList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/view/student/student_marks.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -101,7 +120,7 @@ public class StudentServlet extends HttpServlet {
     }
 
     private void displayDefault(HttpServletRequest request, HttpServletResponse response) {
-        Student student = (Student) request.getAttribute("student");
+        student = (Student) request.getAttribute("student");
         StudentService service = new StudentService();
         String classRoom = service.getClassOfStudent(student.getClassID());
         request.setAttribute("classRoom", classRoom);

@@ -4,11 +4,14 @@ import dao.ConnectDB;
 import model.Mark;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MarkService implements IMarkService{
     private final String INPUT_MARK = "call createNewMark(?,?,?,?);";
     private final String EDIT_MARK = "call editMark(?,?,?,?);";
     private final String GET_MARK = "call getMark(?,?);";
+    private final String GET_MARK_OF_STUDENT = "select * from mark where studentID = ?";
 
     @Override
     public boolean inputMark(int studentID, int subID, double practiceMark, double theoreticalMark) {
@@ -88,4 +91,26 @@ public class MarkService implements IMarkService{
         }
         return null;
     }
+
+    @Override
+    public List<Mark> getMarkOfStudent(int studentID) {
+        List<Mark> markList = new ArrayList<>();
+        Connection connection = ConnectDB.getInstance().getConnection();
+        try {
+            PreparedStatement ps = connection.prepareStatement(GET_MARK_OF_STUDENT);
+            ps.setInt(1, studentID);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                int markID = rs.getInt(1);
+                int subID = rs.getInt(2);
+                double practiceMark = rs.getDouble("practiceMark");
+                double theoreticalMark = rs.getDouble("theoreticalMark");
+                markList.add(new Mark(markID, subID, practiceMark, theoreticalMark));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return markList;
+    }
+
 }
